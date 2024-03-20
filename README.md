@@ -13,9 +13,9 @@
 ~~~ shell
 git clone https://github.com/EverGrowRN/ublib21.git
 ~~~
-2. Create a virtual environment with Python 3.11.3 or above.
+2. Create a virtual environment with Python 3.10 or above.
 ~~~ shell
-virtualenv venv --python=3.11.3
+virtualenv venv --python=3.10
 ~~~ 
 3. Activate environment
 ~~~ shell
@@ -55,6 +55,7 @@ py -m build
 ~~~
 
 #### To push package (test):
+Replace **username** with yours. Replace **token_filename** with path to your file that contains the pypi project test server token.
 ~~~ shell
-py -m twine upload --repository testpypi dist/*
+py -m twine upload --repository testpypi dist/* -u <username> -p $(cat <token_filename>)
 ~~~
