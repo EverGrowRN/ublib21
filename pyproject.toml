@@ -7,7 +7,7 @@ authors = [
 ]
 description = "UBL 2.1 python object parsing"
 readme = "README.md"
-requires-python = ">=3.11.3"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
 ]
