@@ -2,7 +2,7 @@
 CCTS Core Component Type Schema Module
 """
 
-from ubl.common import UBLParseableObject
+from ublib21.base import UBLParseableObject
 
 class AmountType(UBLParseableObject):
     """

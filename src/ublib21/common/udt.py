@@ -5,7 +5,7 @@ CCTS 2.01 http://www.unece.org/cefact/ebxml/CCTS_V2-01_Final.pdf tables
 8-1, 8-2 and 8-3.
 """
 
-from ubl.ccts_cct import AmountType as AmountType_
+from ublib21.common.ccts_cct import AmountType as AmountType_
 
 
 class AmountType(AmountType_):
