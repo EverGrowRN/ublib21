@@ -15,12 +15,14 @@ from ublib21.common.ccts_cct import NumericType as NumericType_
 from ublib21.common.ccts_cct import QuantityType as QuantityType_
 from ublib21.common.ccts_cct import TextType as TextType_
 
-from ublib21.base import UBLParseableObject 
+from ublib21.base import BasicXMLParseableObject
+
 
 class AmountType(AmountType_):
     """
     A number of monetary units specified using a given unit of currency.
     """
+
     def __init__(self, value: float, currency_id: str, currency_code_list_version_id: str = None):
         super().__init__(value, currency_id, currency_code_list_version_id)
 
@@ -29,9 +31,11 @@ class BinaryObjectType(BinaryObjectType_):
     """
     A set of finite-length sequences of binary octets.
     """
-    def __init__(self, value, mime_code, format_=None, encoding=None, 
+
+    def __init__(self, value, mime_code, format_=None, encoding=None,
                  character_set_code=None, uri=None, filename=None):
-        super().__init__(value, mime_code, format_,  encoding, character_set_code, uri, filename)
+        super().__init__(value, mime_code, format_,
+                         encoding, character_set_code, uri, filename)
 
 
 class GraphicType(BinaryObjectType):
@@ -54,11 +58,13 @@ class SoundType(BinaryObjectType):
     """
     pass
 
+
 class VideoType(BinaryObjectType):
     """
     A video representation.
     """
     pass
+
 
 class CodeType(CodeType_):
     """
@@ -77,17 +83,29 @@ class DateTimeType(DateTimeType_):
     pass
 
 
-class DateType(UBLParseableObject):
+class DateType(BasicXMLParseableObject):
     """
     One calendar day according the Gregorian calendar.
     """
-    pass
 
-class TimeType(UBLParseableObject):
+    def __init__(self, value) -> None:
+        self.value = value
+        # TODO: Check what to do with attribute mappings
+        # if self.attr_names_mapping is None:
+        #     raise MissingAttributeNamesMappingException(f"{self.__class__.__name__}")
+
+
+class TimeType(BasicXMLParseableObject):
     """
     An instance of time that occurs every day.
     """
-    pass
+
+    def __init__(self, value) -> None:
+        self.value = value
+        # TODO: Check what to do with attribute mappings
+        # if self.attr_names_mapping is None:
+        #     raise MissingAttributeNamesMappingException(f"{self.__class__.__name__}")
+
 
 class IdentifierType(IdentifierType_):
     """
@@ -98,19 +116,25 @@ class IdentifierType(IdentifierType_):
     pass
 
 
-class IndicatorType(UBLParseableObject):
+class IndicatorType(BasicXMLParseableObject):
     """
     A list of two mutually exclusive Boolean values that express the only possible states of a property.
-    
+
     """
-    pass
+
+    def __init__(self, value) -> None:
+        self.value = value
+        # TODO: Check what to do with attribute mappings
+        # if self.attr_names_mapping is None:
+        #     raise MissingAttributeNamesMappingException(f"{self.__class__.__name__}")
 
 
 class MeasureType(MeasureType_):
     """
     A numeric value determined by measuring an object using a specified unit of measure.
     """
-    def __init__(self,value, unit_code, unit_code_list_version_id=None):
+
+    def __init__(self, value, unit_code, unit_code_list_version_id=None):
         super().__init__(value, unit_code, unit_code_list_version_id)
 
 
@@ -118,7 +142,7 @@ class NumericType(NumericType_):
     """
     Numeric information that is assigned or is determined by calculation, counting,
       or sequencing. It does not require a unit of quantity or unit of measure.
-    
+
     """
     pass
 
@@ -146,17 +170,20 @@ class RateType(NumericType_):
     """
     pass
 
+
 class QuantityType(QuantityType_):
     """
     A counted number of non-monetary units, possibly including a fractional part.
     """
     pass
 
+
 class TextType(TextType_):
     """
     A character string (i.e. a finite set of characters), generally in the form of words of a language.
     """
     pass
+
 
 class NameType(TextType_):
     """

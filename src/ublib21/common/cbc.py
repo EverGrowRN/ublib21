@@ -13,3495 +13,3497 @@ from ublib21.common.udt import RateType
 from ublib21.common.udt import NumericType
 from ublib21.common.udt import BinaryObjectType
 
-class AcceptedIndicator(IndicatorType):
-	pass
+class PrefixCBC:
+    prefix = 'cbc'
 
 
-class AcceptedVariantsDescription(TextType):
-	pass
+class AcceptedIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class AccountFormatCode(CodeType):
-	pass
+class AcceptedVariantsDescription(PrefixCBC,TextType):
+    pass
 
 
-class AccountID(IdentifierType):
-	pass
+class AccountFormatCode(PrefixCBC,CodeType):
+    pass
 
 
-class AccountTypeCode(CodeType):
-	pass
+class AccountID(PrefixCBC,IdentifierType):
+    pass
 
 
-class AccountingCostCode(CodeType):
-	pass
+class AccountTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class AccountingCost(TextType):
-	pass
+class AccountingCostCode(PrefixCBC,CodeType):
+    pass
 
 
-class ActionCode(CodeType):
-	pass
+class AccountingCost(PrefixCBC,TextType):
+    pass
 
 
-class ActivityTypeCode(CodeType):
-	pass
+class ActionCode(PrefixCBC,CodeType):
+    pass
 
 
-class ActivityType(TextType):
-	pass
+class ActivityTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ActualDeliveryDate(DateType):
-	pass
+class ActivityType(PrefixCBC,TextType):
+    pass
 
 
-class ActualDeliveryTime(TimeType):
-	pass
+class ActualDeliveryDate(PrefixCBC,DateType):
+    pass
 
 
-class ActualDespatchDate(DateType):
-	pass
+class ActualDeliveryTime(PrefixCBC,TimeType):
+    pass
 
 
-class ActualDespatchTime(TimeType):
-	pass
+class ActualDespatchDate(PrefixCBC,DateType):
+    pass
 
 
-class ActualPickupDate(DateType):
-	pass
+class ActualDespatchTime(PrefixCBC,TimeType):
+    pass
 
 
-class ActualPickupTime(TimeType):
-	pass
+class ActualPickupDate(PrefixCBC,DateType):
+    pass
 
 
-class ActualTemperatureReductionQuantity(QuantityType):
-	pass
+class ActualPickupTime(PrefixCBC,TimeType):
+    pass
 
 
-class AdValoremIndicator(IndicatorType):
-	pass
+class ActualTemperatureReductionQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class AdditionalAccountID(IdentifierType):
-	pass
+class AdValoremIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class AdditionalConditions(TextType):
-	pass
+class AdditionalAccountID(PrefixCBC,IdentifierType):
+    pass
 
 
-class AdditionalInformation(TextType):
-	pass
+class AdditionalConditions(PrefixCBC,TextType):
+    pass
 
 
-class AdditionalStreetName(NameType):
-	pass
+class AdditionalInformation(PrefixCBC,TextType):
+    pass
 
 
-class AddressFormatCode(CodeType):
-	pass
+class AdditionalStreetName(PrefixCBC,NameType):
+    pass
 
 
-class AddressTypeCode(CodeType):
-	pass
+class AddressFormatCode(PrefixCBC,CodeType):
+    pass
 
 
-class AdjustmentReasonCode(CodeType):
-	pass
+class AddressTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class AdmissionCode(CodeType):
-	pass
+class AdjustmentReasonCode(PrefixCBC,CodeType):
+    pass
 
 
-class AdvertisementAmount(AmountType):
-	pass
+class AdmissionCode(PrefixCBC,CodeType):
+    pass
 
 
-class AgencyID(IdentifierType):
-	pass
+class AdvertisementAmount(PrefixCBC,AmountType):
+    pass
 
 
-class AgencyName(TextType):
-	pass
+class AgencyID(PrefixCBC,IdentifierType):
+    pass
 
 
-class AirFlowPercent(PercentType):
-	pass
+class AgencyName(PrefixCBC,TextType):
+    pass
 
 
-class AircraftID(IdentifierType):
-	pass
+class AirFlowPercent(PrefixCBC,PercentType):
+    pass
 
 
-class AliasName(NameType):
-	pass
+class AircraftID(PrefixCBC,IdentifierType):
+    pass
 
 
-class AllowanceChargeReasonCode(CodeType):
-	pass
+class AliasName(PrefixCBC,NameType):
+    pass
 
 
-class AllowanceChargeReason(TextType):
-	pass
+class AllowanceChargeReasonCode(PrefixCBC,CodeType):
+    pass
 
 
-class AllowanceTotalAmount(AmountType):
-	pass
+class AllowanceChargeReason(PrefixCBC,TextType):
+    pass
 
 
-class AltitudeMeasure(MeasureType):
-	pass
+class AllowanceTotalAmount(PrefixCBC,AmountType):
+    pass
 
 
-class AmountRate(RateType):
-	pass
+class AltitudeMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class Amount(AmountType):
-	pass
+class AmountRate(PrefixCBC,RateType):
+    pass
 
 
-class AnimalFoodApprovedIndicator(IndicatorType):
-	pass
+class Amount(PrefixCBC,AmountType):
+    pass
 
 
-class AnimalFoodIndicator(IndicatorType):
-	pass
+class AnimalFoodApprovedIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class AnnualAverageAmount(AmountType):
-	pass
+class AnimalFoodIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class ApplicationStatusCode(CodeType):
-	pass
+class AnnualAverageAmount(PrefixCBC,AmountType):
+    pass
 
 
-class ApprovalDate(DateType):
-	pass
+class ApplicationStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class ApprovalStatus(TextType):
-	pass
+class ApprovalDate(PrefixCBC,DateType):
+    pass
 
 
-class AttributeID(IdentifierType):
-	pass
+class ApprovalStatus(PrefixCBC,TextType):
+    pass
 
 
-class AuctionConstraintIndicator(IndicatorType):
-	pass
+class AttributeID(PrefixCBC,IdentifierType):
+    pass
 
 
-class AuctionURI(IdentifierType):
-	pass
+class AuctionConstraintIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class AvailabilityDate(DateType):
-	pass
+class AuctionURI(PrefixCBC,IdentifierType):
+    pass
 
 
-class AvailabilityStatusCode(CodeType):
-	pass
+class AvailabilityDate(PrefixCBC,DateType):
+    pass
 
 
-class AverageAmount(AmountType):
-	pass
+class AvailabilityStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class AverageSubsequentContractAmount(AmountType):
-	pass
+class AverageAmount(PrefixCBC,AmountType):
+    pass
 
 
-class AwardDate(DateType):
-	pass
+class AverageSubsequentContractAmount(PrefixCBC,AmountType):
+    pass
 
 
-class AwardTime(TimeType):
-	pass
+class AwardDate(PrefixCBC,DateType):
+    pass
 
 
-class AwardingCriterionDescription(TextType):
-	pass
+class AwardTime(PrefixCBC,TimeType):
+    pass
 
 
-class AwardingCriterionID(IdentifierType):
-	pass
+class AwardingCriterionDescription(PrefixCBC,TextType):
+    pass
 
 
-class AwardingCriterionTypeCode(CodeType):
-	pass
+class AwardingCriterionID(PrefixCBC,IdentifierType):
+    pass
 
 
-class AwardingMethodTypeCode(CodeType):
-	pass
+class AwardingCriterionTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class BackOrderAllowedIndicator(IndicatorType):
-	pass
+class AwardingMethodTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class BackorderQuantity(QuantityType):
-	pass
+class BackOrderAllowedIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class BackorderReason(TextType):
-	pass
+class BackorderQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class BalanceAmount(AmountType):
-	pass
+class BackorderReason(PrefixCBC,TextType):
+    pass
 
 
-class BalanceBroughtForwardIndicator(IndicatorType):
-	pass
+class BalanceAmount(PrefixCBC,AmountType):
+    pass
 
 
-class BarcodeSymbologyID(IdentifierType):
-	pass
+class BalanceBroughtForwardIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class BaseAmount(AmountType):
-	pass
+class BarcodeSymbologyID(PrefixCBC,IdentifierType):
+    pass
 
 
-class BaseQuantity(QuantityType):
-	pass
+class BaseAmount(PrefixCBC,AmountType):
+    pass
 
 
-class BaseUnitMeasure(MeasureType):
-	pass
+class BaseQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class BasedOnConsensusIndicator(IndicatorType):
-	pass
+class BaseUnitMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class BasicConsumedQuantity(QuantityType):
-	pass
+class BasedOnConsensusIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class BatchQuantity(QuantityType):
-	pass
+class BasicConsumedQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class BestBeforeDate(DateType):
-	pass
+class BatchQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class BindingOnBuyerIndicator(IndicatorType):
-	pass
+class BestBeforeDate(PrefixCBC,DateType):
+    pass
 
 
-class BirthDate(DateType):
-	pass
+class BindingOnBuyerIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class BirthplaceName(TextType):
-	pass
+class BirthDate(PrefixCBC,DateType):
+    pass
 
 
-class BlockName(NameType):
-	pass
+class BirthplaceName(PrefixCBC,TextType):
+    pass
 
 
-class BrandName(NameType):
-	pass
+class BlockName(PrefixCBC,NameType):
+    pass
 
 
-class BrokerAssignedID(IdentifierType):
-	pass
+class BrandName(PrefixCBC,NameType):
+    pass
 
 
-class BudgetYearNumeric(NumericType):
-	pass
+class BrokerAssignedID(PrefixCBC,IdentifierType):
+    pass
 
 
-class BuildingName(NameType):
-	pass
+class BudgetYearNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class BuildingNumber(TextType):
-	pass
+class BuildingName(PrefixCBC,NameType):
+    pass
 
 
-class BulkCargoIndicator(IndicatorType):
-	pass
+class BuildingNumber(PrefixCBC,TextType):
+    pass
 
 
-class BusinessClassificationEvidenceID(IdentifierType):
-	pass
+class BulkCargoIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class BusinessIdentityEvidenceID(IdentifierType):
-	pass
+class BusinessClassificationEvidenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class BuyerEventID(IdentifierType):
-	pass
+class BusinessIdentityEvidenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class BuyerProfileURI(IdentifierType):
-	pass
+class BuyerEventID(PrefixCBC,IdentifierType):
+    pass
 
 
-class BuyerReference(TextType):
-	pass
+class BuyerProfileURI(PrefixCBC,IdentifierType):
+    pass
 
 
-class CV2ID(IdentifierType):
-	pass
+class BuyerReference(PrefixCBC,TextType):
+    pass
 
 
-class CalculationExpressionCode(CodeType):
-	pass
+class CV2ID(PrefixCBC,IdentifierType):
+    pass
 
 
-class CalculationExpression(TextType):
-	pass
+class CalculationExpressionCode(PrefixCBC,CodeType):
+    pass
 
 
-class CalculationMethodCode(CodeType):
-	pass
+class CalculationExpression(PrefixCBC,TextType):
+    pass
 
 
-class CalculationRate(RateType):
-	pass
+class CalculationMethodCode(PrefixCBC,CodeType):
+    pass
 
 
-class CalculationSequenceNumeric(NumericType):
-	pass
+class CalculationRate(PrefixCBC,RateType):
+    pass
 
 
-class CallBaseAmount(AmountType):
-	pass
+class CalculationSequenceNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class CallDate(DateType):
-	pass
+class CallBaseAmount(PrefixCBC,AmountType):
+    pass
 
 
-class CallExtensionAmount(AmountType):
-	pass
+class CallDate(PrefixCBC,DateType):
+    pass
 
 
-class CallTime(TimeType):
-	pass
+class CallExtensionAmount(PrefixCBC,AmountType):
+    pass
 
 
-class CancellationNote(TextType):
-	pass
+class CallTime(PrefixCBC,TimeType):
+    pass
 
 
-class CandidateReductionConstraintIndicator(IndicatorType):
-	pass
+class CancellationNote(PrefixCBC,TextType):
+    pass
 
 
-class CandidateStatement(TextType):
-	pass
+class CandidateReductionConstraintIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class CanonicalizationMethod(TextType):
-	pass
+class CandidateStatement(PrefixCBC,TextType):
+    pass
 
 
-class CapabilityTypeCode(CodeType):
-	pass
+class CanonicalizationMethod(PrefixCBC,TextType):
+    pass
 
 
-class CardChipCode(CodeType):
-	pass
+class CapabilityTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class CardTypeCode(CodeType):
-	pass
+class CardChipCode(PrefixCBC,CodeType):
+    pass
 
 
-class CargoTypeCode(CodeType):
-	pass
+class CardTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class CarrierAssignedID(IdentifierType):
-	pass
+class CargoTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class CarrierServiceInstructions(TextType):
-	pass
+class CarrierAssignedID(PrefixCBC,IdentifierType):
+    pass
 
 
-class CatalogueIndicator(IndicatorType):
-	pass
+class CarrierServiceInstructions(PrefixCBC,TextType):
+    pass
 
 
-class CategoryName(NameType):
-	pass
+class CatalogueIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class CertificateTypeCode(CodeType):
-	pass
+class CategoryName(PrefixCBC,NameType):
+    pass
 
 
-class CertificateType(TextType):
-	pass
+class CertificateTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ChangeConditions(TextType):
-	pass
+class CertificateType(PrefixCBC,TextType):
+    pass
 
 
-class ChannelCode(CodeType):
-	pass
+class ChangeConditions(PrefixCBC,TextType):
+    pass
 
 
-class Channel(TextType):
-	pass
+class ChannelCode(PrefixCBC,CodeType):
+    pass
 
 
-class CharacterSetCode(CodeType):
-	pass
+class Channel(PrefixCBC,TextType):
+    pass
 
 
-class Characteristics(TextType):
-	pass
+class CharacterSetCode(PrefixCBC,CodeType):
+    pass
 
 
-class ChargeIndicator(IndicatorType):
-	pass
+class Characteristics(PrefixCBC,TextType):
+    pass
 
 
-class ChargeTotalAmount(AmountType):
-	pass
+class ChargeIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class ChargeableQuantity(QuantityType):
-	pass
+class ChargeTotalAmount(PrefixCBC,AmountType):
+    pass
 
 
-class ChargeableWeightMeasure(MeasureType):
-	pass
+class ChargeableQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ChildConsignmentQuantity(QuantityType):
-	pass
+class ChargeableWeightMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class ChipApplicationID(IdentifierType):
-	pass
+class ChildConsignmentQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class CityName(NameType):
-	pass
+class ChipApplicationID(PrefixCBC,IdentifierType):
+    pass
 
 
-class CitySubdivisionName(NameType):
-	pass
+class CityName(PrefixCBC,NameType):
+    pass
 
 
-class CodeValue(TextType):
-	pass
+class CitySubdivisionName(PrefixCBC,NameType):
+    pass
 
 
-class CollaborationPriorityCode(CodeType):
-	pass
+class CodeValue(PrefixCBC,TextType):
+    pass
 
 
-class Comment(TextType):
-	pass
+class CollaborationPriorityCode(PrefixCBC,CodeType):
+    pass
 
 
-class CommodityCode(CodeType):
-	pass
+class Comment(PrefixCBC,TextType):
+    pass
 
 
-class CompanyID(IdentifierType):
-	pass
+class CommodityCode(PrefixCBC,CodeType):
+    pass
 
 
-class CompanyLegalFormCode(CodeType):
-	pass
+class CompanyID(PrefixCBC,IdentifierType):
+    pass
 
 
-class CompanyLegalForm(TextType):
-	pass
+class CompanyLegalFormCode(PrefixCBC,CodeType):
+    pass
 
 
-class CompanyLiquidationStatusCode(CodeType):
-	pass
+class CompanyLegalForm(PrefixCBC,TextType):
+    pass
 
 
-class ComparedValueMeasure(MeasureType):
-	pass
+class CompanyLiquidationStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class ComparisonDataCode(CodeType):
-	pass
+class ComparedValueMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class ComparisonDataSourceCode(CodeType):
-	pass
+class ComparisonDataCode(PrefixCBC,CodeType):
+    pass
 
 
-class ComparisonForecastIssueDate(DateType):
-	pass
+class ComparisonDataSourceCode(PrefixCBC,CodeType):
+    pass
 
 
-class ComparisonForecastIssueTime(TimeType):
-	pass
+class ComparisonForecastIssueDate(PrefixCBC,DateType):
+    pass
 
 
-class CompletionIndicator(IndicatorType):
-	pass
+class ComparisonForecastIssueTime(PrefixCBC,TimeType):
+    pass
 
 
-class ConditionCode(CodeType):
-	pass
+class CompletionIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class Condition(TextType):
-	pass
+class ConditionCode(PrefixCBC,CodeType):
+    pass
 
 
-class ConditionsDescription(TextType):
-	pass
+class Condition(PrefixCBC,TextType):
+    pass
 
 
-class Conditions(TextType):
-	pass
+class ConditionsDescription(PrefixCBC,TextType):
+    pass
 
 
-class ConsigneeAssignedID(IdentifierType):
-	pass
+class Conditions(PrefixCBC,TextType):
+    pass
 
 
-class ConsignmentQuantity(QuantityType):
-	pass
+class ConsigneeAssignedID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ConsignorAssignedID(IdentifierType):
-	pass
+class ConsignmentQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ConsolidatableIndicator(IndicatorType):
-	pass
+class ConsignorAssignedID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ConstitutionCode(CodeType):
-	pass
+class ConsolidatableIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class ConsumerIncentiveTacticTypeCode(CodeType):
-	pass
+class ConstitutionCode(PrefixCBC,CodeType):
+    pass
 
 
-class ConsumerUnitQuantity(QuantityType):
-	pass
+class ConsumerIncentiveTacticTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ConsumersEnergyLevelCode(CodeType):
-	pass
+class ConsumerUnitQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ConsumersEnergyLevel(TextType):
-	pass
+class ConsumersEnergyLevelCode(PrefixCBC,CodeType):
+    pass
 
 
-class ConsumptionEnergyQuantity(QuantityType):
-	pass
+class ConsumersEnergyLevel(PrefixCBC,TextType):
+    pass
 
 
-class ConsumptionID(IdentifierType):
-	pass
+class ConsumptionEnergyQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ConsumptionLevelCode(CodeType):
-	pass
+class ConsumptionID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ConsumptionLevel(TextType):
-	pass
+class ConsumptionLevelCode(PrefixCBC,CodeType):
+    pass
 
 
-class ConsumptionReportID(IdentifierType):
-	pass
+class ConsumptionLevel(PrefixCBC,TextType):
+    pass
 
 
-class ConsumptionTypeCode(CodeType):
-	pass
+class ConsumptionReportID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ConsumptionType(TextType):
-	pass
+class ConsumptionTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ConsumptionWaterQuantity(QuantityType):
-	pass
+class ConsumptionType(PrefixCBC,TextType):
+    pass
 
 
-class ContainerizedIndicator(IndicatorType):
-	pass
+class ConsumptionWaterQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class Content(TextType):
-	pass
+class ContainerizedIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class ContentUnitQuantity(QuantityType):
-	pass
+class Content(PrefixCBC,TextType):
+    pass
 
 
-class ContractFolderID(IdentifierType):
-	pass
+class ContentUnitQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ContractName(TextType):
-	pass
+class ContractFolderID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ContractSubdivision(TextType):
-	pass
+class ContractName(PrefixCBC,TextType):
+    pass
 
 
-class ContractTypeCode(CodeType):
-	pass
+class ContractSubdivision(PrefixCBC,TextType):
+    pass
 
 
-class ContractType(TextType):
-	pass
+class ContractTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ContractedCarrierAssignedID(IdentifierType):
-	pass
+class ContractType(PrefixCBC,TextType):
+    pass
 
 
-class ContractingSystemCode(CodeType):
-	pass
+class ContractedCarrierAssignedID(PrefixCBC,IdentifierType):
+    pass
 
 
-class CoordinateSystemCode(CodeType):
-	pass
+class ContractingSystemCode(PrefixCBC,CodeType):
+    pass
 
 
-class CopyIndicator(IndicatorType):
-	pass
+class CoordinateSystemCode(PrefixCBC,CodeType):
+    pass
 
 
-class CorporateRegistrationTypeCode(CodeType):
-	pass
+class CopyIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class CorporateStockAmount(AmountType):
-	pass
+class CorporateRegistrationTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class CorrectionAmount(AmountType):
-	pass
+class CorporateStockAmount(PrefixCBC,AmountType):
+    pass
 
 
-class CorrectionTypeCode(CodeType):
-	pass
+class CorrectionAmount(PrefixCBC,AmountType):
+    pass
 
 
-class CorrectionType(TextType):
-	pass
+class CorrectionTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class CorrectionUnitAmount(AmountType):
-	pass
+class CorrectionType(PrefixCBC,TextType):
+    pass
 
 
-class CountrySubentityCode(CodeType):
-	pass
+class CorrectionUnitAmount(PrefixCBC,AmountType):
+    pass
 
 
-class CountrySubentity(TextType):
-	pass
+class CountrySubentityCode(PrefixCBC,CodeType):
+    pass
 
 
-class CreditLineAmount(AmountType):
-	pass
+class CountrySubentity(PrefixCBC,TextType):
+    pass
 
 
-class CreditNoteTypeCode(CodeType):
-	pass
+class CreditLineAmount(PrefixCBC,AmountType):
+    pass
 
 
-class CreditedQuantity(QuantityType):
-	pass
+class CreditNoteTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class CrewQuantity(QuantityType):
-	pass
+class CreditedQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class CurrencyCode(CodeType):
-	pass
+class CrewQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class CurrentChargeTypeCode(CodeType):
-	pass
+class CurrencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class CurrentChargeType(TextType):
-	pass
+class CurrentChargeTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class CustomerAssignedAccountID(IdentifierType):
-	pass
+class CurrentChargeType(PrefixCBC,TextType):
+    pass
 
 
-class CustomerReference(TextType):
-	pass
+class CustomerAssignedAccountID(PrefixCBC,IdentifierType):
+    pass
 
 
-class CustomizationID(IdentifierType):
-	pass
+class CustomerReference(PrefixCBC,TextType):
+    pass
 
 
-class CustomsClearanceServiceInstructions(TextType):
-	pass
+class CustomizationID(PrefixCBC,IdentifierType):
+    pass
 
 
-class CustomsImportClassifiedIndicator(IndicatorType):
-	pass
+class CustomsClearanceServiceInstructions(PrefixCBC,TextType):
+    pass
 
 
-class CustomsStatusCode(CodeType):
-	pass
+class CustomsImportClassifiedIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class CustomsTariffQuantity(QuantityType):
-	pass
+class CustomsStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class DamageRemarks(TextType):
-	pass
+class CustomsTariffQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class DangerousGoodsApprovedIndicator(IndicatorType):
-	pass
+class DamageRemarks(PrefixCBC,TextType):
+    pass
 
 
-class DataSendingCapability(TextType):
-	pass
+class DangerousGoodsApprovedIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class DataSourceCode(CodeType):
-	pass
+class DataSendingCapability(PrefixCBC,TextType):
+    pass
 
 
-class Date(DateType):
-	pass
+class DataSourceCode(PrefixCBC,CodeType):
+    pass
 
 
-class DebitLineAmount(AmountType):
-	pass
+class Date(PrefixCBC,DateType):
+    pass
 
 
-class DebitedQuantity(QuantityType):
-	pass
+class DebitLineAmount(PrefixCBC,AmountType):
+    pass
 
 
-class DeclarationTypeCode(CodeType):
-	pass
+class DebitedQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class DeclaredCarriageValueAmount(AmountType):
-	pass
+class DeclarationTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class DeclaredCustomsValueAmount(AmountType):
-	pass
+class DeclaredCarriageValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class DeclaredForCarriageValueAmount(AmountType):
-	pass
+class DeclaredCustomsValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class DeclaredStatisticsValueAmount(AmountType):
-	pass
+class DeclaredForCarriageValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class DeliveredQuantity(QuantityType):
-	pass
+class DeclaredStatisticsValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class DeliveryInstructions(TextType):
-	pass
+class DeliveredQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class DemurrageInstructions(TextType):
-	pass
+class DeliveryInstructions(PrefixCBC,TextType):
+    pass
 
 
-class Department(TextType):
-	pass
+class DemurrageInstructions(PrefixCBC,TextType):
+    pass
 
 
-class DescriptionCode(CodeType):
-	pass
+class Department(PrefixCBC,TextType):
+    pass
 
 
-class Description(TextType):
-	pass
+class DescriptionCode(PrefixCBC,CodeType):
+    pass
 
 
-class DespatchAdviceTypeCode(CodeType):
-	pass
+class Description(PrefixCBC,TextType):
+    pass
 
 
-class DifferenceTemperatureReductionQuantity(QuantityType):
-	pass
+class DespatchAdviceTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class DirectionCode(CodeType):
-	pass
+class DifferenceTemperatureReductionQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class DisplayTacticTypeCode(CodeType):
-	pass
+class DirectionCode(PrefixCBC,CodeType):
+    pass
 
 
-class DispositionCode(CodeType):
-	pass
+class DisplayTacticTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class District(TextType):
-	pass
+class DispositionCode(PrefixCBC,CodeType):
+    pass
 
 
-class DocumentCurrencyCode(CodeType):
-	pass
+class District(PrefixCBC,TextType):
+    pass
 
 
-class DocumentDescription(TextType):
-	pass
+class DocumentCurrencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class DocumentHash(TextType):
-	pass
+class DocumentDescription(PrefixCBC,TextType):
+    pass
 
 
-class DocumentID(IdentifierType):
-	pass
+class DocumentHash(PrefixCBC,TextType):
+    pass
 
 
-class DocumentStatusCode(CodeType):
-	pass
+class DocumentID(PrefixCBC,IdentifierType):
+    pass
 
 
-class DocumentStatusReasonCode(CodeType):
-	pass
+class DocumentStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class DocumentStatusReasonDescription(TextType):
-	pass
+class DocumentStatusReasonCode(PrefixCBC,CodeType):
+    pass
 
 
-class DocumentTypeCode(CodeType):
-	pass
+class DocumentStatusReasonDescription(PrefixCBC,TextType):
+    pass
 
 
-class DocumentType(TextType):
-	pass
+class DocumentTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class DocumentationFeeAmount(AmountType):
-	pass
+class DocumentType(PrefixCBC,TextType):
+    pass
 
 
-class DueDate(DateType):
-	pass
+class DocumentationFeeAmount(PrefixCBC,AmountType):
+    pass
 
 
-class DurationMeasure(MeasureType):
-	pass
+class DueDate(PrefixCBC,DateType):
+    pass
 
 
-class DutyCode(CodeType):
-	pass
+class DurationMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class Duty(TextType):
-	pass
+class DutyCode(PrefixCBC,CodeType):
+    pass
 
 
-class EarliestPickupDate(DateType):
-	pass
+class Duty(PrefixCBC,TextType):
+    pass
 
 
-class EarliestPickupTime(TimeType):
-	pass
+class EarliestPickupDate(PrefixCBC,DateType):
+    pass
 
 
-class EconomicOperatorRegistryURI(IdentifierType):
-	pass
+class EarliestPickupTime(PrefixCBC,TimeType):
+    pass
 
 
-class EffectiveDate(DateType):
-	pass
+class EconomicOperatorRegistryURI(PrefixCBC,IdentifierType):
+    pass
 
 
-class EffectiveTime(TimeType):
-	pass
+class EffectiveDate(PrefixCBC,DateType):
+    pass
 
 
-class ElectronicDeviceDescription(TextType):
-	pass
+class EffectiveTime(PrefixCBC,TimeType):
+    pass
 
 
-class ElectronicMail(TextType):
-	pass
+class ElectronicDeviceDescription(PrefixCBC,TextType):
+    pass
 
 
-class EmbeddedDocumentBinaryObject(BinaryObjectType):
-	pass
+class ElectronicMail(PrefixCBC,TextType):
+    pass
 
 
-class EmergencyProceduresCode(CodeType):
-	pass
+class EmbeddedDocumentBinaryObject(PrefixCBC,BinaryObjectType):
+    pass
 
 
-class EmployeeQuantity(QuantityType):
-	pass
+class EmergencyProceduresCode(PrefixCBC,CodeType):
+    pass
 
 
-class EncodingCode(CodeType):
-	pass
+class EmployeeQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class EndDate(DateType):
-	pass
+class EncodingCode(PrefixCBC,CodeType):
+    pass
 
 
-class EndTime(TimeType):
-	pass
+class EndDate(PrefixCBC,DateType):
+    pass
 
 
-class EndpointID(IdentifierType):
-	pass
+class EndTime(PrefixCBC,TimeType):
+    pass
 
 
-class EnvironmentalEmissionTypeCode(CodeType):
-	pass
+class EndpointID(PrefixCBC,IdentifierType):
+    pass
 
 
-class EstimatedAmount(AmountType):
-	pass
+class EnvironmentalEmissionTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class EstimatedConsumedQuantity(QuantityType):
-	pass
+class EstimatedAmount(PrefixCBC,AmountType):
+    pass
 
 
-class EstimatedDeliveryDate(DateType):
-	pass
+class EstimatedConsumedQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class EstimatedDeliveryTime(TimeType):
-	pass
+class EstimatedDeliveryDate(PrefixCBC,DateType):
+    pass
 
 
-class EstimatedDespatchDate(DateType):
-	pass
+class EstimatedDeliveryTime(PrefixCBC,TimeType):
+    pass
 
 
-class EstimatedDespatchTime(TimeType):
-	pass
+class EstimatedDespatchDate(PrefixCBC,DateType):
+    pass
 
 
-class EstimatedOverallContractAmount(AmountType):
-	pass
+class EstimatedDespatchTime(PrefixCBC,TimeType):
+    pass
 
 
-class EstimatedOverallContractQuantity(QuantityType):
-	pass
+class EstimatedOverallContractAmount(PrefixCBC,AmountType):
+    pass
 
 
-class EvaluationCriterionTypeCode(CodeType):
-	pass
+class EstimatedOverallContractQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class EvidenceTypeCode(CodeType):
-	pass
+class EvaluationCriterionTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ExceptionResolutionCode(CodeType):
-	pass
+class EvidenceTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ExceptionStatusCode(CodeType):
-	pass
+class ExceptionResolutionCode(PrefixCBC,CodeType):
+    pass
 
 
-class ExchangeMarketID(IdentifierType):
-	pass
+class ExceptionStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class ExclusionReason(TextType):
-	pass
+class ExchangeMarketID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ExecutionRequirementCode(CodeType):
-	pass
+class ExclusionReason(PrefixCBC,TextType):
+    pass
 
 
-class ExemptionReasonCode(CodeType):
-	pass
+class ExecutionRequirementCode(PrefixCBC,CodeType):
+    pass
 
 
-class ExemptionReason(TextType):
-	pass
+class ExemptionReasonCode(PrefixCBC,CodeType):
+    pass
 
 
-class ExpectedOperatorQuantity(QuantityType):
-	pass
+class ExemptionReason(PrefixCBC,TextType):
+    pass
 
 
-class ExpectedQuantity(QuantityType):
-	pass
+class ExpectedOperatorQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ExpenseCode(CodeType):
-	pass
+class ExpectedQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ExpiryDate(DateType):
-	pass
+class ExpenseCode(PrefixCBC,CodeType):
+    pass
 
 
-class ExpiryTime(TimeType):
-	pass
+class ExpiryDate(PrefixCBC,DateType):
+    pass
 
 
-class ExpressionCode(CodeType):
-	pass
+class ExpiryTime(PrefixCBC,TimeType):
+    pass
 
 
-class Expression(TextType):
-	pass
+class ExpressionCode(PrefixCBC,CodeType):
+    pass
 
 
-class ExtendedID(IdentifierType):
-	pass
+class Expression(PrefixCBC,TextType):
+    pass
 
 
-class Extension(TextType):
-	pass
+class ExtendedID(PrefixCBC,IdentifierType):
+    pass
 
 
-class FaceValueAmount(AmountType):
-	pass
+class Extension(PrefixCBC,TextType):
+    pass
 
 
-class FamilyName(NameType):
-	pass
+class FaceValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class FeatureTacticTypeCode(CodeType):
-	pass
+class FamilyName(PrefixCBC,NameType):
+    pass
 
 
-class FeeAmount(AmountType):
-	pass
+class FeatureTacticTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class FeeDescription(TextType):
-	pass
+class FeeAmount(PrefixCBC,AmountType):
+    pass
 
 
-class FileName(NameType):
-	pass
+class FeeDescription(PrefixCBC,TextType):
+    pass
 
 
-class FinancingInstrumentCode(CodeType):
-	pass
+class FileName(PrefixCBC,NameType):
+    pass
 
 
-class FirstName(NameType):
-	pass
+class FinancingInstrumentCode(PrefixCBC,CodeType):
+    pass
 
 
-class FirstShipmentAvailibilityDate(DateType):
-	pass
+class FirstName(PrefixCBC,NameType):
+    pass
 
 
-class Floor(TextType):
-	pass
+class FirstShipmentAvailibilityDate(PrefixCBC,DateType):
+    pass
 
 
-class FollowupContractIndicator(IndicatorType):
-	pass
+class Floor(PrefixCBC,TextType):
+    pass
 
 
-class ForecastPurposeCode(CodeType):
-	pass
+class FollowupContractIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class ForecastTypeCode(CodeType):
-	pass
+class ForecastPurposeCode(PrefixCBC,CodeType):
+    pass
 
 
-class FormatCode(CodeType):
-	pass
+class ForecastTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ForwarderServiceInstructions(TextType):
-	pass
+class FormatCode(PrefixCBC,CodeType):
+    pass
 
 
-class FreeOfChargeIndicator(IndicatorType):
-	pass
+class ForwarderServiceInstructions(PrefixCBC,TextType):
+    pass
 
 
-class FreeOnBoardValueAmount(AmountType):
-	pass
+class FreeOfChargeIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class FreightForwarderAssignedID(IdentifierType):
-	pass
+class FreeOnBoardValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class FreightRateClassCode(CodeType):
-	pass
+class FreightForwarderAssignedID(PrefixCBC,IdentifierType):
+    pass
 
 
-class Frequency(TextType):
-	pass
+class FreightRateClassCode(PrefixCBC,CodeType):
+    pass
 
 
-class FrozenDocumentIndicator(IndicatorType):
-	pass
+class Frequency(PrefixCBC,TextType):
+    pass
 
 
-class FrozenPeriodDaysNumeric(NumericType):
-	pass
+class FrozenDocumentIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class FullnessIndicationCode(CodeType):
-	pass
+class FrozenPeriodDaysNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class FullyPaidSharesIndicator(IndicatorType):
-	pass
+class FullnessIndicationCode(PrefixCBC,CodeType):
+    pass
 
 
-class FundingProgramCode(CodeType):
-	pass
+class FullyPaidSharesIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class FundingProgram(TextType):
-	pass
+class FundingProgramCode(PrefixCBC,CodeType):
+    pass
 
 
-class GasPressureQuantity(QuantityType):
-	pass
+class FundingProgram(PrefixCBC,TextType):
+    pass
 
 
-class GenderCode(CodeType):
-	pass
+class GasPressureQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class GeneralCargoIndicator(IndicatorType):
-	pass
+class GenderCode(PrefixCBC,CodeType):
+    pass
 
 
-class GovernmentAgreementConstraintIndicator(IndicatorType):
-	pass
+class GeneralCargoIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class GrossTonnageMeasure(MeasureType):
-	pass
+class GovernmentAgreementConstraintIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class GrossVolumeMeasure(MeasureType):
-	pass
+class GrossTonnageMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class GrossWeightMeasure(MeasureType):
-	pass
+class GrossVolumeMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class GuaranteeTypeCode(CodeType):
-	pass
+class GrossWeightMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class GuaranteedDespatchDate(DateType):
-	pass
+class GuaranteeTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class GuaranteedDespatchTime(TimeType):
-	pass
+class GuaranteedDespatchDate(PrefixCBC,DateType):
+    pass
 
 
-class HandlingCode(CodeType):
-	pass
+class GuaranteedDespatchTime(PrefixCBC,TimeType):
+    pass
 
 
-class HandlingInstructions(TextType):
-	pass
+class HandlingCode(PrefixCBC,CodeType):
+    pass
 
 
-class HashAlgorithmMethod(TextType):
-	pass
+class HandlingInstructions(PrefixCBC,TextType):
+    pass
 
 
-class HaulageInstructions(TextType):
-	pass
+class HashAlgorithmMethod(PrefixCBC,TextType):
+    pass
 
 
-class HazardClassID(IdentifierType):
-	pass
+class HaulageInstructions(PrefixCBC,TextType):
+    pass
 
 
-class HazardousCategoryCode(CodeType):
-	pass
+class HazardClassID(PrefixCBC,IdentifierType):
+    pass
 
 
-class HazardousRegulationCode(CodeType):
-	pass
+class HazardousCategoryCode(PrefixCBC,CodeType):
+    pass
 
 
-class HazardousRiskIndicator(IndicatorType):
-	pass
+class HazardousRegulationCode(PrefixCBC,CodeType):
+    pass
 
 
-class HeatingTypeCode(CodeType):
-	pass
+class HazardousRiskIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class HeatingType(TextType):
-	pass
+class HeatingTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class HigherTenderAmount(AmountType):
-	pass
+class HeatingType(PrefixCBC,TextType):
+    pass
 
 
-class HolderName(NameType):
-	pass
+class HigherTenderAmount(PrefixCBC,AmountType):
+    pass
 
 
-class HumanFoodApprovedIndicator(IndicatorType):
-	pass
+class HolderName(PrefixCBC,NameType):
+    pass
 
 
-class HumanFoodIndicator(IndicatorType):
-	pass
+class HumanFoodApprovedIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class HumidityPercent(PercentType):
-	pass
+class HumanFoodIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class ID(IdentifierType):
-	pass
+class HumidityPercent(PrefixCBC,PercentType):
+    pass
 
 
-class IdentificationCode(CodeType):
-	pass
+class ID(PrefixCBC,IdentifierType):
+    pass
 
 
-class IdentificationID(IdentifierType):
-	pass
+class IdentificationCode(PrefixCBC,CodeType):
+    pass
 
 
-class ImmobilizationCertificateID(IdentifierType):
-	pass
+class IdentificationID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ImportanceCode(CodeType):
-	pass
+class ImmobilizationCertificateID(PrefixCBC,IdentifierType):
+    pass
 
 
-class IndicationIndicator(IndicatorType):
-	pass
+class ImportanceCode(PrefixCBC,CodeType):
+    pass
 
 
-class IndustryClassificationCode(CodeType):
-	pass
+class IndicationIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class Information(TextType):
-	pass
+class IndustryClassificationCode(PrefixCBC,CodeType):
+    pass
 
 
-class InformationURI(IdentifierType):
-	pass
+class Information(PrefixCBC,TextType):
+    pass
 
 
-class InhalationToxicityZoneCode(CodeType):
-	pass
+class InformationURI(PrefixCBC,IdentifierType):
+    pass
 
 
-class InhouseMail(TextType):
-	pass
+class InhalationToxicityZoneCode(PrefixCBC,CodeType):
+    pass
 
 
-class InspectionMethodCode(CodeType):
-	pass
+class InhouseMail(PrefixCBC,TextType):
+    pass
 
 
-class InstallmentDueDate(DateType):
-	pass
+class InspectionMethodCode(PrefixCBC,CodeType):
+    pass
 
 
-class InstructionID(IdentifierType):
-	pass
+class InstallmentDueDate(PrefixCBC,DateType):
+    pass
 
 
-class InstructionNote(TextType):
-	pass
+class InstructionID(PrefixCBC,IdentifierType):
+    pass
 
 
-class Instructions(TextType):
-	pass
+class InstructionNote(PrefixCBC,TextType):
+    pass
 
 
-class InsurancePremiumAmount(AmountType):
-	pass
+class Instructions(PrefixCBC,TextType):
+    pass
 
 
-class InsuranceValueAmount(AmountType):
-	pass
+class InsurancePremiumAmount(PrefixCBC,AmountType):
+    pass
 
 
-class InventoryValueAmount(AmountType):
-	pass
+class InsuranceValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class InvoiceTypeCode(CodeType):
-	pass
+class InventoryValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class InvoicedQuantity(QuantityType):
-	pass
+class InvoiceTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class InvoicingPartyReference(TextType):
-	pass
+class InvoicedQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class IssueDate(DateType):
-	pass
+class InvoicingPartyReference(PrefixCBC,TextType):
+    pass
 
 
-class IssueNumberID(IdentifierType):
-	pass
+class IssueDate(PrefixCBC,DateType):
+    pass
 
 
-class IssueTime(TimeType):
-	pass
+class IssueNumberID(PrefixCBC,IdentifierType):
+    pass
 
 
-class IssuerID(IdentifierType):
-	pass
+class IssueTime(PrefixCBC,TimeType):
+    pass
 
 
-class ItemClassificationCode(CodeType):
-	pass
+class IssuerID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ItemUpdateRequestIndicator(IndicatorType):
-	pass
+class ItemClassificationCode(PrefixCBC,CodeType):
+    pass
 
 
-class JobTitle(TextType):
-	pass
+class ItemUpdateRequestIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class JourneyID(IdentifierType):
-	pass
+class JobTitle(PrefixCBC,TextType):
+    pass
 
 
-class JustificationDescription(TextType):
-	pass
+class JourneyID(PrefixCBC,IdentifierType):
+    pass
 
 
-class Justification(TextType):
-	pass
+class JustificationDescription(PrefixCBC,TextType):
+    pass
 
 
-class Keyword(TextType):
-	pass
+class Justification(PrefixCBC,TextType):
+    pass
 
 
-class LanguageID(IdentifierType):
-	pass
+class Keyword(PrefixCBC,TextType):
+    pass
 
 
-class LastRevisionDate(DateType):
-	pass
+class LanguageID(PrefixCBC,IdentifierType):
+    pass
 
 
-class LastRevisionTime(TimeType):
-	pass
+class LastRevisionDate(PrefixCBC,DateType):
+    pass
 
 
-class LatestDeliveryDate(DateType):
-	pass
+class LastRevisionTime(PrefixCBC,TimeType):
+    pass
 
 
-class LatestDeliveryTime(TimeType):
-	pass
+class LatestDeliveryDate(PrefixCBC,DateType):
+    pass
 
 
-class LatestMeterQuantity(QuantityType):
-	pass
+class LatestDeliveryTime(PrefixCBC,TimeType):
+    pass
 
 
-class LatestMeterReadingDate(DateType):
-	pass
+class LatestMeterQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class LatestMeterReadingMethodCode(CodeType):
-	pass
+class LatestMeterReadingDate(PrefixCBC,DateType):
+    pass
 
 
-class LatestMeterReadingMethod(TextType):
-	pass
+class LatestMeterReadingMethodCode(PrefixCBC,CodeType):
+    pass
 
 
-class LatestPickupDate(DateType):
-	pass
+class LatestMeterReadingMethod(PrefixCBC,TextType):
+    pass
 
 
-class LatestPickupTime(TimeType):
-	pass
+class LatestPickupDate(PrefixCBC,DateType):
+    pass
 
 
-class LatestProposalAcceptanceDate(DateType):
-	pass
+class LatestPickupTime(PrefixCBC,TimeType):
+    pass
 
 
-class LatestSecurityClearanceDate(DateType):
-	pass
+class LatestProposalAcceptanceDate(PrefixCBC,DateType):
+    pass
 
 
-class LatitudeDegreesMeasure(MeasureType):
-	pass
+class LatestSecurityClearanceDate(PrefixCBC,DateType):
+    pass
 
 
-class LatitudeDirectionCode(CodeType):
-	pass
+class LatitudeDegreesMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class LatitudeMinutesMeasure(MeasureType):
-	pass
+class LatitudeDirectionCode(PrefixCBC,CodeType):
+    pass
 
 
-class LeadTimeMeasure(MeasureType):
-	pass
+class LatitudeMinutesMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class LegalReference(TextType):
-	pass
+class LeadTimeMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class LegalStatusIndicator(IndicatorType):
-	pass
+class LegalReference(PrefixCBC,TextType):
+    pass
 
 
-class LiabilityAmount(AmountType):
-	pass
+class LegalStatusIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class LicensePlateID(IdentifierType):
-	pass
+class LiabilityAmount(PrefixCBC,AmountType):
+    pass
 
 
-class LifeCycleStatusCode(CodeType):
-	pass
+class LicensePlateID(PrefixCBC,IdentifierType):
+    pass
 
 
-class LimitationDescription(TextType):
-	pass
+class LifeCycleStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class LineCountNumeric(NumericType):
-	pass
+class LimitationDescription(PrefixCBC,TextType):
+    pass
 
 
-class LineExtensionAmount(AmountType):
-	pass
+class LineCountNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class LineID(IdentifierType):
-	pass
+class LineExtensionAmount(PrefixCBC,AmountType):
+    pass
 
 
-class LineNumberNumeric(NumericType):
-	pass
+class LineID(PrefixCBC,IdentifierType):
+    pass
 
 
-class LineStatusCode(CodeType):
-	pass
+class LineNumberNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class Line(TextType):
-	pass
+class LineStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class ListValue(TextType):
-	pass
+class Line(PrefixCBC,TextType):
+    pass
 
 
-class LivestockIndicator(IndicatorType):
-	pass
+class ListValue(PrefixCBC,TextType):
+    pass
 
 
-class LoadingLengthMeasure(MeasureType):
-	pass
+class LivestockIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class LoadingSequenceID(IdentifierType):
-	pass
+class LoadingLengthMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class LocaleCode(CodeType):
-	pass
+class LoadingSequenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class LocationID(IdentifierType):
-	pass
+class LocaleCode(PrefixCBC,CodeType):
+    pass
 
 
-class Location(TextType):
-	pass
+class LocationID(PrefixCBC,IdentifierType):
+    pass
 
 
-class LocationTypeCode(CodeType):
-	pass
+class Location(PrefixCBC,TextType):
+    pass
 
 
-class Login(TextType):
-	pass
+class LocationTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class LogoReferenceID(IdentifierType):
-	pass
+class Login(PrefixCBC,TextType):
+    pass
 
 
-class LongitudeDegreesMeasure(MeasureType):
-	pass
+class LogoReferenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class LongitudeDirectionCode(CodeType):
-	pass
+class LongitudeDegreesMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class LongitudeMinutesMeasure(MeasureType):
-	pass
+class LongitudeDirectionCode(PrefixCBC,CodeType):
+    pass
 
 
-class LossRiskResponsibilityCode(CodeType):
-	pass
+class LongitudeMinutesMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class LossRisk(TextType):
-	pass
+class LossRiskResponsibilityCode(PrefixCBC,CodeType):
+    pass
 
 
-class LotNumberID(IdentifierType):
-	pass
+class LossRisk(PrefixCBC,TextType):
+    pass
 
 
-class LowTendersDescription(TextType):
-	pass
+class LotNumberID(PrefixCBC,IdentifierType):
+    pass
 
 
-class LowerOrangeHazardPlacardID(IdentifierType):
-	pass
+class LowTendersDescription(PrefixCBC,TextType):
+    pass
 
 
-class LowerTenderAmount(AmountType):
-	pass
+class LowerOrangeHazardPlacardID(PrefixCBC,IdentifierType):
+    pass
 
 
-class MandateTypeCode(CodeType):
-	pass
+class LowerTenderAmount(PrefixCBC,AmountType):
+    pass
 
 
-class ManufactureDate(DateType):
-	pass
+class MandateTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ManufactureTime(TimeType):
-	pass
+class ManufactureDate(PrefixCBC,DateType):
+    pass
 
 
-class MarkAttentionIndicator(IndicatorType):
-	pass
+class ManufactureTime(PrefixCBC,TimeType):
+    pass
 
 
-class MarkAttention(TextType):
-	pass
+class MarkAttentionIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class MarkCareIndicator(IndicatorType):
-	pass
+class MarkAttention(PrefixCBC,TextType):
+    pass
 
 
-class MarkCare(TextType):
-	pass
+class MarkCareIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class MarketValueAmount(AmountType):
-	pass
+class MarkCare(PrefixCBC,TextType):
+    pass
 
 
-class MarkingID(IdentifierType):
-	pass
+class MarketValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class MathematicOperatorCode(CodeType):
-	pass
+class MarkingID(PrefixCBC,IdentifierType):
+    pass
 
 
-class MaximumAdvertisementAmount(AmountType):
-	pass
+class MathematicOperatorCode(PrefixCBC,CodeType):
+    pass
 
 
-class MaximumAmount(AmountType):
-	pass
+class MaximumAdvertisementAmount(PrefixCBC,AmountType):
+    pass
 
 
-class MaximumBackorderQuantity(QuantityType):
-	pass
+class MaximumAmount(PrefixCBC,AmountType):
+    pass
 
 
-class MaximumCopiesNumeric(NumericType):
-	pass
+class MaximumBackorderQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class MaximumMeasure(MeasureType):
-	pass
+class MaximumCopiesNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class MaximumNumberNumeric(NumericType):
-	pass
+class MaximumMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class MaximumOperatorQuantity(QuantityType):
-	pass
+class MaximumNumberNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class MaximumOrderQuantity(QuantityType):
-	pass
+class MaximumOperatorQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class MaximumPaidAmount(AmountType):
-	pass
+class MaximumOrderQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class MaximumPaymentInstructionsNumeric(NumericType):
-	pass
+class MaximumPaidAmount(PrefixCBC,AmountType):
+    pass
 
 
-class MaximumPercent(PercentType):
-	pass
+class MaximumPaymentInstructionsNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class MaximumQuantity(QuantityType):
-	pass
+class MaximumPercent(PrefixCBC,PercentType):
+    pass
 
 
-class MaximumValue(TextType):
-	pass
+class MaximumQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class MaximumVariantQuantity(QuantityType):
-	pass
+class MaximumValue(PrefixCBC,TextType):
+    pass
 
 
-class Measure(MeasureType):
-	pass
+class MaximumVariantQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class MedicalFirstAidGuideCode(CodeType):
-	pass
+class Measure(PrefixCBC,MeasureType):
+    pass
 
 
-class MeterConstantCode(CodeType):
-	pass
+class MedicalFirstAidGuideCode(PrefixCBC,CodeType):
+    pass
 
 
-class MeterConstant(TextType):
-	pass
+class MeterConstantCode(PrefixCBC,CodeType):
+    pass
 
 
-class MeterName(TextType):
-	pass
+class MeterConstant(PrefixCBC,TextType):
+    pass
 
 
-class MeterNumber(TextType):
-	pass
+class MeterName(PrefixCBC,TextType):
+    pass
 
 
-class MeterReadingComments(TextType):
-	pass
+class MeterNumber(PrefixCBC,TextType):
+    pass
 
 
-class MeterReadingTypeCode(CodeType):
-	pass
+class MeterReadingComments(PrefixCBC,TextType):
+    pass
 
 
-class MeterReadingType(TextType):
-	pass
+class MeterReadingTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class MiddleName(NameType):
-	pass
+class MeterReadingType(PrefixCBC,TextType):
+    pass
 
 
-class MimeCode(CodeType):
-	pass
+class MiddleName(PrefixCBC,NameType):
+    pass
 
 
-class MinimumAmount(AmountType):
-	pass
+class MimeCode(PrefixCBC,CodeType):
+    pass
 
 
-class MinimumBackorderQuantity(QuantityType):
-	pass
+class MinimumAmount(PrefixCBC,AmountType):
+    pass
 
 
-class MinimumImprovementBid(TextType):
-	pass
+class MinimumBackorderQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class MinimumInventoryQuantity(QuantityType):
-	pass
+class MinimumImprovementBid(PrefixCBC,TextType):
+    pass
 
 
-class MinimumMeasure(MeasureType):
-	pass
+class MinimumInventoryQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class MinimumNumberNumeric(NumericType):
-	pass
+class MinimumMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class MinimumOrderQuantity(QuantityType):
-	pass
+class MinimumNumberNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class MinimumPercent(PercentType):
-	pass
+class MinimumOrderQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class MinimumQuantity(QuantityType):
-	pass
+class MinimumPercent(PrefixCBC,PercentType):
+    pass
 
 
-class MinimumValue(TextType):
-	pass
+class MinimumQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class MiscellaneousEventTypeCode(CodeType):
-	pass
+class MinimumValue(PrefixCBC,TextType):
+    pass
 
 
-class ModelName(NameType):
-	pass
+class MiscellaneousEventTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class MonetaryScope(TextType):
-	pass
+class ModelName(PrefixCBC,NameType):
+    pass
 
 
-class MovieTitle(TextType):
-	pass
+class MonetaryScope(PrefixCBC,TextType):
+    pass
 
 
-class MultipleOrderQuantity(QuantityType):
-	pass
+class MovieTitle(PrefixCBC,TextType):
+    pass
 
 
-class MultiplierFactorNumeric(NumericType):
-	pass
+class MultipleOrderQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class NameCode(CodeType):
-	pass
+class MultiplierFactorNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class NameSuffix(TextType):
-	pass
+class NameCode(PrefixCBC,CodeType):
+    pass
 
 
-class Name(NameType):
-	pass
+class NameSuffix(PrefixCBC,TextType):
+    pass
 
 
-class NationalityID(IdentifierType):
-	pass
+class Name(PrefixCBC,NameType):
+    pass
 
 
-class NatureCode(CodeType):
-	pass
+class NationalityID(PrefixCBC,IdentifierType):
+    pass
 
 
-class NegotiationDescription(TextType):
-	pass
+class NatureCode(PrefixCBC,CodeType):
+    pass
 
 
-class NetNetWeightMeasure(MeasureType):
-	pass
+class NegotiationDescription(PrefixCBC,TextType):
+    pass
 
 
-class NetTonnageMeasure(MeasureType):
-	pass
+class NetNetWeightMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class NetVolumeMeasure(MeasureType):
-	pass
+class NetTonnageMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class NetWeightMeasure(MeasureType):
-	pass
+class NetVolumeMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class NetworkID(IdentifierType):
-	pass
+class NetWeightMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class NominationDate(DateType):
-	pass
+class NetworkID(PrefixCBC,IdentifierType):
+    pass
 
 
-class NominationTime(TimeType):
-	pass
+class NominationDate(PrefixCBC,DateType):
+    pass
 
 
-class NormalTemperatureReductionQuantity(QuantityType):
-	pass
+class NominationTime(PrefixCBC,TimeType):
+    pass
 
 
-class Note(TextType):
-	pass
+class NormalTemperatureReductionQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class NotificationTypeCode(CodeType):
-	pass
+class Note(PrefixCBC,TextType):
+    pass
 
 
-class OccurrenceDate(DateType):
-	pass
+class NotificationTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class OccurrenceTime(TimeType):
-	pass
+class OccurrenceDate(PrefixCBC,DateType):
+    pass
 
 
-class OnCarriageIndicator(IndicatorType):
-	pass
+class OccurrenceTime(PrefixCBC,TimeType):
+    pass
 
 
-class OneTimeChargeTypeCode(CodeType):
-	pass
+class OnCarriageIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class OneTimeChargeType(TextType):
-	pass
+class OneTimeChargeTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class OntologyURI(IdentifierType):
-	pass
+class OneTimeChargeType(PrefixCBC,TextType):
+    pass
 
 
-class OpenTenderID(IdentifierType):
-	pass
+class OntologyURI(PrefixCBC,IdentifierType):
+    pass
 
 
-class OperatingYearsQuantity(QuantityType):
-	pass
+class OpenTenderID(PrefixCBC,IdentifierType):
+    pass
 
 
-class OptionalLineItemIndicator(IndicatorType):
-	pass
+class OperatingYearsQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class OptionsDescription(TextType):
-	pass
+class OptionalLineItemIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class OrderIntervalDaysNumeric(NumericType):
-	pass
+class OptionsDescription(PrefixCBC,TextType):
+    pass
 
 
-class OrderQuantityIncrementNumeric(NumericType):
-	pass
+class OrderIntervalDaysNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class OrderResponseCode(CodeType):
-	pass
+class OrderQuantityIncrementNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class OrderTypeCode(CodeType):
-	pass
+class OrderResponseCode(PrefixCBC,CodeType):
+    pass
 
 
-class OrderableIndicator(IndicatorType):
-	pass
+class OrderTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class OrderableUnitFactorRate(RateType):
-	pass
+class OrderableIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class OrderableUnit(TextType):
-	pass
+class OrderableUnitFactorRate(PrefixCBC,RateType):
+    pass
 
 
-class OrganizationDepartment(TextType):
-	pass
+class OrderableUnit(PrefixCBC,TextType):
+    pass
 
 
-class OriginalContractingSystemID(IdentifierType):
-	pass
+class OrganizationDepartment(PrefixCBC,TextType):
+    pass
 
 
-class OriginalJobID(IdentifierType):
-	pass
+class OriginalContractingSystemID(PrefixCBC,IdentifierType):
+    pass
 
 
-class OtherConditionsIndicator(IndicatorType):
-	pass
+class OriginalJobID(PrefixCBC,IdentifierType):
+    pass
 
 
-class OtherInstruction(TextType):
-	pass
+class OtherConditionsIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class OtherName(NameType):
-	pass
+class OtherInstruction(PrefixCBC,TextType):
+    pass
 
 
-class OutstandingQuantity(QuantityType):
-	pass
+class OtherName(PrefixCBC,NameType):
+    pass
 
 
-class OutstandingReason(TextType):
-	pass
+class OutstandingQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class OversupplyQuantity(QuantityType):
-	pass
+class OutstandingReason(PrefixCBC,TextType):
+    pass
 
 
-class OwnerTypeCode(CodeType):
-	pass
+class OversupplyQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class PackLevelCode(CodeType):
-	pass
+class OwnerTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class PackQuantity(QuantityType):
-	pass
+class PackLevelCode(PrefixCBC,CodeType):
+    pass
 
 
-class PackSizeNumeric(NumericType):
-	pass
+class PackQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class PackageLevelCode(CodeType):
-	pass
+class PackSizeNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class PackagingTypeCode(CodeType):
-	pass
+class PackageLevelCode(PrefixCBC,CodeType):
+    pass
 
 
-class PackingCriteriaCode(CodeType):
-	pass
+class PackagingTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class PackingMaterial(TextType):
-	pass
+class PackingCriteriaCode(PrefixCBC,CodeType):
+    pass
 
 
-class PaidAmount(AmountType):
-	pass
+class PackingMaterial(PrefixCBC,TextType):
+    pass
 
 
-class PaidDate(DateType):
-	pass
+class PaidAmount(PrefixCBC,AmountType):
+    pass
 
 
-class PaidTime(TimeType):
-	pass
+class PaidDate(PrefixCBC,DateType):
+    pass
 
 
-class ParentDocumentID(IdentifierType):
-	pass
+class PaidTime(PrefixCBC,TimeType):
+    pass
 
 
-class ParentDocumentLineReferenceID(IdentifierType):
-	pass
+class ParentDocumentID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ParentDocumentTypeCode(CodeType):
-	pass
+class ParentDocumentLineReferenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ParentDocumentVersionID(IdentifierType):
-	pass
+class ParentDocumentTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class PartPresentationCode(CodeType):
-	pass
+class ParentDocumentVersionID(PrefixCBC,IdentifierType):
+    pass
 
 
-class PartecipationPercent(PercentType):
-	pass
+class PartPresentationCode(PrefixCBC,CodeType):
+    pass
 
 
-class PartialDeliveryIndicator(IndicatorType):
-	pass
+class PartecipationPercent(PrefixCBC,PercentType):
+    pass
 
 
-class ParticipationPercent(PercentType):
-	pass
+class PartialDeliveryIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class PartyCapacityAmount(AmountType):
-	pass
+class ParticipationPercent(PrefixCBC,PercentType):
+    pass
 
 
-class PartyTypeCode(CodeType):
-	pass
+class PartyCapacityAmount(PrefixCBC,AmountType):
+    pass
 
 
-class PartyType(TextType):
-	pass
+class PartyTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class PassengerQuantity(QuantityType):
-	pass
+class PartyType(PrefixCBC,TextType):
+    pass
 
 
-class Password(TextType):
-	pass
+class PassengerQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class PayPerView(TextType):
-	pass
+class Password(PrefixCBC,TextType):
+    pass
 
 
-class PayableAlternativeAmount(AmountType):
-	pass
+class PayPerView(PrefixCBC,TextType):
+    pass
 
 
-class PayableAmount(AmountType):
-	pass
+class PayableAlternativeAmount(PrefixCBC,AmountType):
+    pass
 
 
-class PayableRoundingAmount(AmountType):
-	pass
+class PayableAmount(PrefixCBC,AmountType):
+    pass
 
 
-class PayerReference(TextType):
-	pass
+class PayableRoundingAmount(PrefixCBC,AmountType):
+    pass
 
 
-class PaymentAlternativeCurrencyCode(CodeType):
-	pass
+class PayerReference(PrefixCBC,TextType):
+    pass
 
 
-class PaymentChannelCode(CodeType):
-	pass
+class PaymentAlternativeCurrencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class PaymentCurrencyCode(CodeType):
-	pass
+class PaymentChannelCode(PrefixCBC,CodeType):
+    pass
 
 
-class PaymentDescription(TextType):
-	pass
+class PaymentCurrencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class PaymentDueDate(DateType):
-	pass
+class PaymentDescription(PrefixCBC,TextType):
+    pass
 
 
-class PaymentFrequencyCode(CodeType):
-	pass
+class PaymentDueDate(PrefixCBC,DateType):
+    pass
 
 
-class PaymentID(IdentifierType):
-	pass
+class PaymentFrequencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class PaymentMeansCode(CodeType):
-	pass
+class PaymentID(PrefixCBC,IdentifierType):
+    pass
 
 
-class PaymentMeansID(IdentifierType):
-	pass
+class PaymentMeansCode(PrefixCBC,CodeType):
+    pass
 
 
-class PaymentNote(TextType):
-	pass
+class PaymentMeansID(PrefixCBC,IdentifierType):
+    pass
 
 
-class PaymentOrderReference(TextType):
-	pass
+class PaymentNote(PrefixCBC,TextType):
+    pass
 
 
-class PaymentPercent(PercentType):
-	pass
+class PaymentOrderReference(PrefixCBC,TextType):
+    pass
 
 
-class PaymentPurposeCode(CodeType):
-	pass
+class PaymentPercent(PrefixCBC,PercentType):
+    pass
 
 
-class PaymentTermsDetailsURI(IdentifierType):
-	pass
+class PaymentPurposeCode(PrefixCBC,CodeType):
+    pass
 
 
-class PenaltyAmount(AmountType):
-	pass
+class PaymentTermsDetailsURI(PrefixCBC,IdentifierType):
+    pass
 
 
-class PenaltySurchargePercent(PercentType):
-	pass
+class PenaltyAmount(PrefixCBC,AmountType):
+    pass
 
 
-class PerUnitAmount(AmountType):
-	pass
+class PenaltySurchargePercent(PrefixCBC,PercentType):
+    pass
 
 
-class Percent(PercentType):
-	pass
+class PerUnitAmount(PrefixCBC,AmountType):
+    pass
 
 
-class PerformanceMetricTypeCode(CodeType):
-	pass
+class Percent(PrefixCBC,PercentType):
+    pass
 
 
-class PerformanceValueQuantity(QuantityType):
-	pass
+class PerformanceMetricTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class PerformingCarrierAssignedID(IdentifierType):
-	pass
+class PerformanceValueQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class PersonalSituation(TextType):
-	pass
+class PerformingCarrierAssignedID(PrefixCBC,IdentifierType):
+    pass
 
 
-class PhoneNumber(TextType):
-	pass
+class PersonalSituation(PrefixCBC,TextType):
+    pass
 
 
-class PlacardEndorsement(TextType):
-	pass
+class PhoneNumber(PrefixCBC,TextType):
+    pass
 
 
-class PlacardNotation(TextType):
-	pass
+class PlacardEndorsement(PrefixCBC,TextType):
+    pass
 
 
-class PlannedDate(DateType):
-	pass
+class PlacardNotation(PrefixCBC,TextType):
+    pass
 
 
-class PlotIdentification(TextType):
-	pass
+class PlannedDate(PrefixCBC,DateType):
+    pass
 
 
-class PositionCode(CodeType):
-	pass
+class PlotIdentification(PrefixCBC,TextType):
+    pass
 
 
-class PostEventNotificationDurationMeasure(MeasureType):
-	pass
+class PositionCode(PrefixCBC,CodeType):
+    pass
 
 
-class PostalZone(TextType):
-	pass
+class PostEventNotificationDurationMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class Postbox(TextType):
-	pass
+class PostalZone(PrefixCBC,TextType):
+    pass
 
 
-class PowerIndicator(IndicatorType):
-	pass
+class Postbox(PrefixCBC,TextType):
+    pass
 
 
-class PreCarriageIndicator(IndicatorType):
-	pass
+class PowerIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class PreEventNotificationDurationMeasure(MeasureType):
-	pass
+class PreCarriageIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class PreferenceCriterionCode(CodeType):
-	pass
+class PreEventNotificationDurationMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class PrepaidAmount(AmountType):
-	pass
+class PreferenceCriterionCode(PrefixCBC,CodeType):
+    pass
 
 
-class PrepaidIndicator(IndicatorType):
-	pass
+class PrepaidAmount(PrefixCBC,AmountType):
+    pass
 
 
-class PrepaidPaymentReferenceID(IdentifierType):
-	pass
+class PrepaidIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class PreviousCancellationReasonCode(CodeType):
-	pass
+class PrepaidPaymentReferenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class PreviousJobID(IdentifierType):
-	pass
+class PreviousCancellationReasonCode(PrefixCBC,CodeType):
+    pass
 
 
-class PreviousMeterQuantity(QuantityType):
-	pass
+class PreviousJobID(PrefixCBC,IdentifierType):
+    pass
 
 
-class PreviousMeterReadingDate(DateType):
-	pass
+class PreviousMeterQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class PreviousMeterReadingMethodCode(CodeType):
-	pass
+class PreviousMeterReadingDate(PrefixCBC,DateType):
+    pass
 
 
-class PreviousMeterReadingMethod(TextType):
-	pass
+class PreviousMeterReadingMethodCode(PrefixCBC,CodeType):
+    pass
 
 
-class PreviousVersionID(IdentifierType):
-	pass
+class PreviousMeterReadingMethod(PrefixCBC,TextType):
+    pass
 
 
-class PriceAmount(AmountType):
-	pass
+class PreviousVersionID(PrefixCBC,IdentifierType):
+    pass
 
 
-class PriceChangeReason(TextType):
-	pass
+class PriceAmount(PrefixCBC,AmountType):
+    pass
 
 
-class PriceEvaluationCode(CodeType):
-	pass
+class PriceChangeReason(PrefixCBC,TextType):
+    pass
 
 
-class PriceRevisionFormulaDescription(TextType):
-	pass
+class PriceEvaluationCode(PrefixCBC,CodeType):
+    pass
 
 
-class PriceTypeCode(CodeType):
-	pass
+class PriceRevisionFormulaDescription(PrefixCBC,TextType):
+    pass
 
 
-class PriceType(TextType):
-	pass
+class PriceTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class PricingCurrencyCode(CodeType):
-	pass
+class PriceType(PrefixCBC,TextType):
+    pass
 
 
-class PricingUpdateRequestIndicator(IndicatorType):
-	pass
+class PricingCurrencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class PrimaryAccountNumberID(IdentifierType):
-	pass
+class PricingUpdateRequestIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class PrintQualifier(TextType):
-	pass
+class PrimaryAccountNumberID(PrefixCBC,IdentifierType):
+    pass
 
 
-class Priority(TextType):
-	pass
+class PrintQualifier(PrefixCBC,TextType):
+    pass
 
 
-class PrivacyCode(CodeType):
-	pass
+class Priority(PrefixCBC,TextType):
+    pass
 
 
-class PrizeDescription(TextType):
-	pass
+class PrivacyCode(PrefixCBC,CodeType):
+    pass
 
 
-class PrizeIndicator(IndicatorType):
-	pass
+class PrizeDescription(PrefixCBC,TextType):
+    pass
 
 
-class ProcedureCode(CodeType):
-	pass
+class PrizeIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class ProcessDescription(TextType):
-	pass
+class ProcedureCode(PrefixCBC,CodeType):
+    pass
 
 
-class ProcessReasonCode(CodeType):
-	pass
+class ProcessDescription(PrefixCBC,TextType):
+    pass
 
 
-class ProcessReason(TextType):
-	pass
+class ProcessReasonCode(PrefixCBC,CodeType):
+    pass
 
 
-class ProcurementSubTypeCode(CodeType):
-	pass
+class ProcessReason(PrefixCBC,TextType):
+    pass
 
 
-class ProcurementTypeCode(CodeType):
-	pass
+class ProcurementSubTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ProductTraceID(IdentifierType):
-	pass
+class ProcurementTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ProfileExecutionID(IdentifierType):
-	pass
+class ProductTraceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ProfileID(IdentifierType):
-	pass
+class ProfileExecutionID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ProfileStatusCode(CodeType):
-	pass
+class ProfileID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ProgressPercent(PercentType):
-	pass
+class ProfileStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class PromotionalEventTypeCode(CodeType):
-	pass
+class ProgressPercent(PrefixCBC,PercentType):
+    pass
 
 
-class ProviderTypeCode(CodeType):
-	pass
+class PromotionalEventTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class PublishAwardIndicator(IndicatorType):
-	pass
+class ProviderTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class PurposeCode(CodeType):
-	pass
+class PublishAwardIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class Purpose(TextType):
-	pass
+class PurposeCode(PrefixCBC,CodeType):
+    pass
 
 
-class QualityControlCode(CodeType):
-	pass
+class Purpose(PrefixCBC,TextType):
+    pass
 
 
-class QuantityDiscrepancyCode(CodeType):
-	pass
+class QualityControlCode(PrefixCBC,CodeType):
+    pass
 
 
-class Quantity(QuantityType):
-	pass
+class QuantityDiscrepancyCode(PrefixCBC,CodeType):
+    pass
 
 
-class RadioCallSignID(IdentifierType):
-	pass
+class Quantity(PrefixCBC,QuantityType):
+    pass
 
 
-class RailCarID(IdentifierType):
-	pass
+class RadioCallSignID(PrefixCBC,IdentifierType):
+    pass
 
 
-class Rank(TextType):
-	pass
+class RailCarID(PrefixCBC,IdentifierType):
+    pass
 
 
-class Rate(RateType):
-	pass
+class Rank(PrefixCBC,TextType):
+    pass
 
 
-class ReceiptAdviceTypeCode(CodeType):
-	pass
+class Rate(PrefixCBC,RateType):
+    pass
 
 
-class ReceivedDate(DateType):
-	pass
+class ReceiptAdviceTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ReceivedElectronicTenderQuantity(QuantityType):
-	pass
+class ReceivedDate(PrefixCBC,DateType):
+    pass
 
 
-class ReceivedForeignTenderQuantity(QuantityType):
-	pass
+class ReceivedElectronicTenderQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ReceivedQuantity(QuantityType):
-	pass
+class ReceivedForeignTenderQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ReceivedTenderQuantity(QuantityType):
-	pass
+class ReceivedQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ReferenceDate(DateType):
-	pass
+class ReceivedTenderQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ReferenceEventCode(CodeType):
-	pass
+class ReferenceDate(PrefixCBC,DateType):
+    pass
 
 
-class ReferenceID(IdentifierType):
-	pass
+class ReferenceEventCode(PrefixCBC,CodeType):
+    pass
 
 
-class ReferenceTime(TimeType):
-	pass
+class ReferenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class Reference(TextType):
-	pass
+class ReferenceTime(PrefixCBC,TimeType):
+    pass
 
 
-class ReferencedConsignmentID(IdentifierType):
-	pass
+class Reference(PrefixCBC,TextType):
+    pass
 
 
-class RefrigeratedIndicator(IndicatorType):
-	pass
+class ReferencedConsignmentID(PrefixCBC,IdentifierType):
+    pass
 
 
-class RefrigerationOnIndicator(IndicatorType):
-	pass
+class RefrigeratedIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class Region(TextType):
-	pass
+class RefrigerationOnIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class RegisteredDate(DateType):
-	pass
+class Region(PrefixCBC,TextType):
+    pass
 
 
-class RegisteredTime(TimeType):
-	pass
+class RegisteredDate(PrefixCBC,DateType):
+    pass
 
 
-class RegistrationDate(DateType):
-	pass
+class RegisteredTime(PrefixCBC,TimeType):
+    pass
 
 
-class RegistrationExpirationDate(DateType):
-	pass
+class RegistrationDate(PrefixCBC,DateType):
+    pass
 
 
-class RegistrationID(IdentifierType):
-	pass
+class RegistrationExpirationDate(PrefixCBC,DateType):
+    pass
 
 
-class RegistrationName(NameType):
-	pass
+class RegistrationID(PrefixCBC,IdentifierType):
+    pass
 
 
-class RegistrationNationalityID(IdentifierType):
-	pass
+class RegistrationName(PrefixCBC,NameType):
+    pass
 
 
-class RegistrationNationality(TextType):
-	pass
+class RegistrationNationalityID(PrefixCBC,IdentifierType):
+    pass
 
 
-class RegulatoryDomain(TextType):
-	pass
+class RegistrationNationality(PrefixCBC,TextType):
+    pass
 
 
-class RejectActionCode(CodeType):
-	pass
+class RegulatoryDomain(PrefixCBC,TextType):
+    pass
 
 
-class RejectReasonCode(CodeType):
-	pass
+class RejectActionCode(PrefixCBC,CodeType):
+    pass
 
 
-class RejectReason(TextType):
-	pass
+class RejectReasonCode(PrefixCBC,CodeType):
+    pass
 
 
-class RejectedQuantity(QuantityType):
-	pass
+class RejectReason(PrefixCBC,TextType):
+    pass
 
 
-class RejectionNote(TextType):
-	pass
+class RejectedQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ReleaseID(IdentifierType):
-	pass
+class RejectionNote(PrefixCBC,TextType):
+    pass
 
 
-class ReliabilityPercent(PercentType):
-	pass
+class ReleaseID(PrefixCBC,IdentifierType):
+    pass
 
 
-class Remarks(TextType):
-	pass
+class ReliabilityPercent(PrefixCBC,PercentType):
+    pass
 
 
-class ReminderSequenceNumeric(NumericType):
-	pass
+class Remarks(PrefixCBC,TextType):
+    pass
 
 
-class ReminderTypeCode(CodeType):
-	pass
+class ReminderSequenceNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class ReplenishmentOwnerDescription(TextType):
-	pass
+class ReminderTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class RequestForQuotationLineID(IdentifierType):
-	pass
+class ReplenishmentOwnerDescription(PrefixCBC,TextType):
+    pass
 
 
-class RequestedDeliveryDate(DateType):
-	pass
+class RequestForQuotationLineID(PrefixCBC,IdentifierType):
+    pass
 
 
-class RequestedDespatchDate(DateType):
-	pass
+class RequestedDeliveryDate(PrefixCBC,DateType):
+    pass
 
 
-class RequestedDespatchTime(TimeType):
-	pass
+class RequestedDespatchDate(PrefixCBC,DateType):
+    pass
 
 
-class RequestedInvoiceCurrencyCode(CodeType):
-	pass
+class RequestedDespatchTime(PrefixCBC,TimeType):
+    pass
 
 
-class RequestedPublicationDate(DateType):
-	pass
+class RequestedInvoiceCurrencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class RequiredCurriculaIndicator(IndicatorType):
-	pass
+class RequestedPublicationDate(PrefixCBC,DateType):
+    pass
 
 
-class RequiredCustomsID(IdentifierType):
-	pass
+class RequiredCurriculaIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class RequiredDeliveryDate(DateType):
-	pass
+class RequiredCustomsID(PrefixCBC,IdentifierType):
+    pass
 
 
-class RequiredDeliveryTime(TimeType):
-	pass
+class RequiredDeliveryDate(PrefixCBC,DateType):
+    pass
 
 
-class RequiredFeeAmount(AmountType):
-	pass
+class RequiredDeliveryTime(PrefixCBC,TimeType):
+    pass
 
 
-class ResidenceTypeCode(CodeType):
-	pass
+class RequiredFeeAmount(PrefixCBC,AmountType):
+    pass
 
 
-class ResidenceType(TextType):
-	pass
+class ResidenceTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ResidentOccupantsNumeric(NumericType):
-	pass
+class ResidenceType(PrefixCBC,TextType):
+    pass
 
 
-class ResolutionCode(CodeType):
-	pass
+class ResidentOccupantsNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class ResolutionDate(DateType):
-	pass
+class ResolutionCode(PrefixCBC,CodeType):
+    pass
 
 
-class ResolutionTime(TimeType):
-	pass
+class ResolutionDate(PrefixCBC,DateType):
+    pass
 
 
-class Resolution(TextType):
-	pass
+class ResolutionTime(PrefixCBC,TimeType):
+    pass
 
 
-class ResponseCode(CodeType):
-	pass
+class Resolution(PrefixCBC,TextType):
+    pass
 
 
-class ResponseDate(DateType):
-	pass
+class ResponseCode(PrefixCBC,CodeType):
+    pass
 
 
-class ResponseTime(TimeType):
-	pass
+class ResponseDate(PrefixCBC,DateType):
+    pass
 
 
-class RetailEventName(NameType):
-	pass
+class ResponseTime(PrefixCBC,TimeType):
+    pass
 
 
-class RetailEventStatusCode(CodeType):
-	pass
+class RetailEventName(PrefixCBC,NameType):
+    pass
 
 
-class ReturnabilityIndicator(IndicatorType):
-	pass
+class RetailEventStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class ReturnableMaterialIndicator(IndicatorType):
-	pass
+class ReturnabilityIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class ReturnableQuantity(QuantityType):
-	pass
+class ReturnableMaterialIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class RevisedForecastLineID(IdentifierType):
-	pass
+class ReturnableQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class RevisionDate(DateType):
-	pass
+class RevisedForecastLineID(PrefixCBC,IdentifierType):
+    pass
 
 
-class RevisionStatusCode(CodeType):
-	pass
+class RevisionDate(PrefixCBC,DateType):
+    pass
 
 
-class RevisionTime(TimeType):
-	pass
+class RevisionStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class RoamingPartnerName(NameType):
-	pass
+class RevisionTime(PrefixCBC,TimeType):
+    pass
 
 
-class RoleCode(CodeType):
-	pass
+class RoamingPartnerName(PrefixCBC,NameType):
+    pass
 
 
-class RoleDescription(TextType):
-	pass
+class RoleCode(PrefixCBC,CodeType):
+    pass
 
 
-class Room(TextType):
-	pass
+class RoleDescription(PrefixCBC,TextType):
+    pass
 
 
-class RoundingAmount(AmountType):
-	pass
+class Room(PrefixCBC,TextType):
+    pass
 
 
-class SalesOrderID(IdentifierType):
-	pass
+class RoundingAmount(PrefixCBC,AmountType):
+    pass
 
 
-class SalesOrderLineID(IdentifierType):
-	pass
+class SalesOrderID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SchemeURI(IdentifierType):
-	pass
+class SalesOrderLineID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SealIssuerTypeCode(CodeType):
-	pass
+class SchemeURI(PrefixCBC,IdentifierType):
+    pass
 
 
-class SealStatusCode(CodeType):
-	pass
+class SealIssuerTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class SealingPartyType(TextType):
-	pass
+class SealStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class SecurityClassificationCode(CodeType):
-	pass
+class SealingPartyType(PrefixCBC,TextType):
+    pass
 
 
-class SecurityID(IdentifierType):
-	pass
+class SecurityClassificationCode(PrefixCBC,CodeType):
+    pass
 
 
-class SellerEventID(IdentifierType):
-	pass
+class SecurityID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SequenceID(IdentifierType):
-	pass
+class SellerEventID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SequenceNumberID(IdentifierType):
-	pass
+class SequenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SequenceNumeric(NumericType):
-	pass
+class SequenceNumberID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SerialID(IdentifierType):
-	pass
+class SequenceNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class ServiceInformationPreferenceCode(CodeType):
-	pass
+class SerialID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ServiceName(NameType):
-	pass
+class ServiceInformationPreferenceCode(PrefixCBC,CodeType):
+    pass
 
 
-class ServiceNumberCalled(TextType):
-	pass
+class ServiceName(PrefixCBC,NameType):
+    pass
 
 
-class ServiceTypeCode(CodeType):
-	pass
+class ServiceNumberCalled(PrefixCBC,TextType):
+    pass
 
 
-class ServiceType(TextType):
-	pass
+class ServiceTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class SettlementDiscountAmount(AmountType):
-	pass
+class ServiceType(PrefixCBC,TextType):
+    pass
 
 
-class SettlementDiscountPercent(PercentType):
-	pass
+class SettlementDiscountAmount(PrefixCBC,AmountType):
+    pass
 
 
-class SharesNumberQuantity(QuantityType):
-	pass
+class SettlementDiscountPercent(PrefixCBC,PercentType):
+    pass
 
 
-class ShippingMarks(TextType):
-	pass
+class SharesNumberQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class ShippingOrderID(IdentifierType):
-	pass
+class ShippingMarks(PrefixCBC,TextType):
+    pass
 
 
-class ShippingPriorityLevelCode(CodeType):
-	pass
+class ShippingOrderID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ShipsRequirements(TextType):
-	pass
+class ShippingPriorityLevelCode(PrefixCBC,CodeType):
+    pass
 
 
-class ShortQuantity(QuantityType):
-	pass
+class ShipsRequirements(PrefixCBC,TextType):
+    pass
 
 
-class ShortageActionCode(CodeType):
-	pass
+class ShortQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class SignatureID(IdentifierType):
-	pass
+class ShortageActionCode(PrefixCBC,CodeType):
+    pass
 
 
-class SignatureMethod(TextType):
-	pass
+class SignatureID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SizeTypeCode(CodeType):
-	pass
+class SignatureMethod(PrefixCBC,TextType):
+    pass
 
 
-class SoleProprietorshipIndicator(IndicatorType):
-	pass
+class SizeTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class SourceCurrencyBaseRate(RateType):
-	pass
+class SoleProprietorshipIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class SourceCurrencyCode(CodeType):
-	pass
+class SourceCurrencyBaseRate(PrefixCBC,RateType):
+    pass
 
 
-class SourceForecastIssueDate(DateType):
-	pass
+class SourceCurrencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class SourceForecastIssueTime(TimeType):
-	pass
+class SourceForecastIssueDate(PrefixCBC,DateType):
+    pass
 
 
-class SourceValueMeasure(MeasureType):
-	pass
+class SourceForecastIssueTime(PrefixCBC,TimeType):
+    pass
 
 
-class SpecialInstructions(TextType):
-	pass
+class SourceValueMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class SpecialSecurityIndicator(IndicatorType):
-	pass
+class SpecialInstructions(PrefixCBC,TextType):
+    pass
 
 
-class SpecialServiceInstructions(TextType):
-	pass
+class SpecialSecurityIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class SpecialTerms(TextType):
-	pass
+class SpecialServiceInstructions(PrefixCBC,TextType):
+    pass
 
 
-class SpecialTransportRequirements(TextType):
-	pass
+class SpecialTerms(PrefixCBC,TextType):
+    pass
 
 
-class SpecificationID(IdentifierType):
-	pass
+class SpecialTransportRequirements(PrefixCBC,TextType):
+    pass
 
 
-class SpecificationTypeCode(CodeType):
-	pass
+class SpecificationID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SplitConsignmentIndicator(IndicatorType):
-	pass
+class SpecificationTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class StartDate(DateType):
-	pass
+class SplitConsignmentIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class StartTime(TimeType):
-	pass
+class StartDate(PrefixCBC,DateType):
+    pass
 
 
-class StatementTypeCode(CodeType):
-	pass
+class StartTime(PrefixCBC,TimeType):
+    pass
 
 
-class StatusAvailableIndicator(IndicatorType):
-	pass
+class StatementTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class StatusCode(CodeType):
-	pass
+class StatusAvailableIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class StatusReasonCode(CodeType):
-	pass
+class StatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class StatusReason(TextType):
-	pass
+class StatusReasonCode(PrefixCBC,CodeType):
+    pass
 
 
-class StreetName(NameType):
-	pass
+class StatusReason(PrefixCBC,TextType):
+    pass
 
 
-class SubcontractingConditionsCode(CodeType):
-	pass
+class StreetName(PrefixCBC,NameType):
+    pass
 
 
-class SubmissionDate(DateType):
-	pass
+class SubcontractingConditionsCode(PrefixCBC,CodeType):
+    pass
 
 
-class SubmissionDueDate(DateType):
-	pass
+class SubmissionDate(PrefixCBC,DateType):
+    pass
 
 
-class SubmissionMethodCode(CodeType):
-	pass
+class SubmissionDueDate(PrefixCBC,DateType):
+    pass
 
 
-class SubscriberID(IdentifierType):
-	pass
+class SubmissionMethodCode(PrefixCBC,CodeType):
+    pass
 
 
-class SubscriberTypeCode(CodeType):
-	pass
+class SubscriberID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SubscriberType(TextType):
-	pass
+class SubscriberTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class SubstitutionStatusCode(CodeType):
-	pass
+class SubscriberType(PrefixCBC,TextType):
+    pass
 
 
-class SuccessiveSequenceID(IdentifierType):
-	pass
+class SubstitutionStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class SummaryDescription(TextType):
-	pass
+class SuccessiveSequenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class SupplierAssignedAccountID(IdentifierType):
-	pass
+class SummaryDescription(PrefixCBC,TextType):
+    pass
 
 
-class SupplyChainActivityTypeCode(CodeType):
-	pass
+class SupplierAssignedAccountID(PrefixCBC,IdentifierType):
+    pass
 
 
-class TareWeightMeasure(MeasureType):
-	pass
+class SupplyChainActivityTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TargetCurrencyBaseRate(RateType):
-	pass
+class TareWeightMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class TargetCurrencyCode(CodeType):
-	pass
+class TargetCurrencyBaseRate(PrefixCBC,RateType):
+    pass
 
 
-class TargetInventoryQuantity(QuantityType):
-	pass
+class TargetCurrencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class TargetServicePercent(PercentType):
-	pass
+class TargetInventoryQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TariffClassCode(CodeType):
-	pass
+class TargetServicePercent(PrefixCBC,PercentType):
+    pass
 
 
-class TariffCode(CodeType):
-	pass
+class TariffClassCode(PrefixCBC,CodeType):
+    pass
 
 
-class TariffDescription(TextType):
-	pass
+class TariffCode(PrefixCBC,CodeType):
+    pass
 
 
-class TaxAmount(AmountType):
-	pass
+class TariffDescription(PrefixCBC,TextType):
+    pass
 
 
-class TaxCurrencyCode(CodeType):
-	pass
+class TaxAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TaxEnergyAmount(AmountType):
-	pass
+class TaxCurrencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class TaxEnergyBalanceAmount(AmountType):
-	pass
+class TaxEnergyAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TaxEnergyOnAccountAmount(AmountType):
-	pass
+class TaxEnergyBalanceAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TaxEvidenceIndicator(IndicatorType):
-	pass
+class TaxEnergyOnAccountAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TaxExclusiveAmount(AmountType):
-	pass
+class TaxEvidenceIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class TaxExemptionReasonCode(CodeType):
-	pass
+class TaxExclusiveAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TaxExemptionReason(TextType):
-	pass
+class TaxExemptionReasonCode(PrefixCBC,CodeType):
+    pass
 
 
-class TaxIncludedIndicator(IndicatorType):
-	pass
+class TaxExemptionReason(PrefixCBC,TextType):
+    pass
 
 
-class TaxInclusiveAmount(AmountType):
-	pass
+class TaxIncludedIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class TaxLevelCode(CodeType):
-	pass
+class TaxInclusiveAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TaxPointDate(DateType):
-	pass
+class TaxLevelCode(PrefixCBC,CodeType):
+    pass
 
 
-class TaxTypeCode(CodeType):
-	pass
+class TaxPointDate(PrefixCBC,DateType):
+    pass
 
 
-class TaxableAmount(AmountType):
-	pass
+class TaxTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TechnicalCommitteeDescription(TextType):
-	pass
+class TaxableAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TechnicalName(NameType):
-	pass
+class TechnicalCommitteeDescription(PrefixCBC,TextType):
+    pass
 
 
-class TelecommunicationsServiceCallCode(CodeType):
-	pass
+class TechnicalName(PrefixCBC,NameType):
+    pass
 
 
-class TelecommunicationsServiceCall(TextType):
-	pass
+class TelecommunicationsServiceCallCode(PrefixCBC,CodeType):
+    pass
 
 
-class TelecommunicationsServiceCategoryCode(CodeType):
-	pass
+class TelecommunicationsServiceCall(PrefixCBC,TextType):
+    pass
 
 
-class TelecommunicationsServiceCategory(TextType):
-	pass
+class TelecommunicationsServiceCategoryCode(PrefixCBC,CodeType):
+    pass
 
 
-class TelecommunicationsSupplyTypeCode(CodeType):
-	pass
+class TelecommunicationsServiceCategory(PrefixCBC,TextType):
+    pass
 
 
-class TelecommunicationsSupplyType(TextType):
-	pass
+class TelecommunicationsSupplyTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class Telefax(TextType):
-	pass
+class TelecommunicationsSupplyType(PrefixCBC,TextType):
+    pass
 
 
-class Telephone(TextType):
-	pass
+class Telefax(PrefixCBC,TextType):
+    pass
 
 
-class TenderEnvelopeID(IdentifierType):
-	pass
+class Telephone(PrefixCBC,TextType):
+    pass
 
 
-class TenderEnvelopeTypeCode(CodeType):
-	pass
+class TenderEnvelopeID(PrefixCBC,IdentifierType):
+    pass
 
 
-class TenderResultCode(CodeType):
-	pass
+class TenderEnvelopeTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TenderTypeCode(CodeType):
-	pass
+class TenderResultCode(PrefixCBC,CodeType):
+    pass
 
 
-class TendererRequirementTypeCode(CodeType):
-	pass
+class TenderTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TendererRoleCode(CodeType):
-	pass
+class TendererRequirementTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TestMethod(TextType):
-	pass
+class TendererRoleCode(PrefixCBC,CodeType):
+    pass
 
 
-class Text(TextType):
-	pass
+class TestMethod(PrefixCBC,TextType):
+    pass
 
 
-class ThirdPartyPayerIndicator(IndicatorType):
-	pass
+class Text(PrefixCBC,TextType):
+    pass
 
 
-class ThresholdAmount(AmountType):
-	pass
+class ThirdPartyPayerIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class ThresholdQuantity(QuantityType):
-	pass
+class ThresholdAmount(PrefixCBC,AmountType):
+    pass
 
 
-class ThresholdValueComparisonCode(CodeType):
-	pass
+class ThresholdQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TierRange(TextType):
-	pass
+class ThresholdValueComparisonCode(PrefixCBC,CodeType):
+    pass
 
 
-class TierRatePercent(PercentType):
-	pass
+class TierRange(PrefixCBC,TextType):
+    pass
 
 
-class TimeAmount(TextType):
-	pass
+class TierRatePercent(PrefixCBC,PercentType):
+    pass
 
 
-class TimeDeltaDaysQuantity(QuantityType):
-	pass
+class TimeAmount(PrefixCBC,TextType):
+    pass
 
 
-class TimeFrequencyCode(CodeType):
-	pass
+class TimeDeltaDaysQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TimezoneOffset(TextType):
-	pass
+class TimeFrequencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class TimingComplaintCode(CodeType):
-	pass
+class TimezoneOffset(PrefixCBC,TextType):
+    pass
 
 
-class TimingComplaint(TextType):
-	pass
+class TimingComplaintCode(PrefixCBC,CodeType):
+    pass
 
 
-class Title(TextType):
-	pass
+class TimingComplaint(PrefixCBC,TextType):
+    pass
 
 
-class ToOrderIndicator(IndicatorType):
-	pass
+class Title(PrefixCBC,TextType):
+    pass
 
 
-class TotalAmount(AmountType):
-	pass
+class ToOrderIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class TotalBalanceAmount(AmountType):
-	pass
+class TotalAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TotalConsumedQuantity(QuantityType):
-	pass
+class TotalBalanceAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TotalCreditAmount(AmountType):
-	pass
+class TotalConsumedQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TotalDebitAmount(AmountType):
-	pass
+class TotalCreditAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TotalDeliveredQuantity(QuantityType):
-	pass
+class TotalDebitAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TotalGoodsItemQuantity(QuantityType):
-	pass
+class TotalDeliveredQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TotalInvoiceAmount(AmountType):
-	pass
+class TotalGoodsItemQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TotalMeteredQuantity(QuantityType):
-	pass
+class TotalInvoiceAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TotalPackageQuantity(QuantityType):
-	pass
+class TotalMeteredQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TotalPackagesQuantity(QuantityType):
-	pass
+class TotalPackageQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TotalPaymentAmount(AmountType):
-	pass
+class TotalPackagesQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TotalTaskAmount(AmountType):
-	pass
+class TotalPaymentAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TotalTaxAmount(AmountType):
-	pass
+class TotalTaskAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TotalTransportHandlingUnitQuantity(QuantityType):
-	pass
+class TotalTaxAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TraceID(IdentifierType):
-	pass
+class TotalTransportHandlingUnitQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class TrackingDeviceCode(CodeType):
-	pass
+class TraceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class TrackingID(IdentifierType):
-	pass
+class TrackingDeviceCode(PrefixCBC,CodeType):
+    pass
 
 
-class TradeItemPackingLabelingTypeCode(CodeType):
-	pass
+class TrackingID(PrefixCBC,IdentifierType):
+    pass
 
 
-class TradeServiceCode(CodeType):
-	pass
+class TradeItemPackingLabelingTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TradingRestrictions(TextType):
-	pass
+class TradeServiceCode(PrefixCBC,CodeType):
+    pass
 
 
-class TrainID(IdentifierType):
-	pass
+class TradingRestrictions(PrefixCBC,TextType):
+    pass
 
 
-class TransactionCurrencyTaxAmount(AmountType):
-	pass
+class TrainID(PrefixCBC,IdentifierType):
+    pass
 
 
-class TransitDirectionCode(CodeType):
-	pass
+class TransactionCurrencyTaxAmount(PrefixCBC,AmountType):
+    pass
 
 
-class TransportAuthorizationCode(CodeType):
-	pass
+class TransitDirectionCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportEmergencyCardCode(CodeType):
-	pass
+class TransportAuthorizationCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportEquipmentTypeCode(CodeType):
-	pass
+class TransportEmergencyCardCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportEventTypeCode(CodeType):
-	pass
+class TransportEquipmentTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportExecutionPlanReferenceID(IdentifierType):
-	pass
+class TransportEventTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportExecutionStatusCode(CodeType):
-	pass
+class TransportExecutionPlanReferenceID(PrefixCBC,IdentifierType):
+    pass
 
 
-class TransportHandlingUnitTypeCode(CodeType):
-	pass
+class TransportExecutionStatusCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportMeansTypeCode(CodeType):
-	pass
+class TransportHandlingUnitTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportModeCode(CodeType):
-	pass
+class TransportMeansTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportServiceCode(CodeType):
-	pass
+class TransportModeCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportServiceProviderRemarks(TextType):
-	pass
+class TransportServiceCode(PrefixCBC,CodeType):
+    pass
 
 
-class TransportServiceProviderSpecialTerms(TextType):
-	pass
+class TransportServiceProviderRemarks(PrefixCBC,TextType):
+    pass
 
 
-class TransportUserRemarks(TextType):
-	pass
+class TransportServiceProviderSpecialTerms(PrefixCBC,TextType):
+    pass
 
 
-class TransportUserSpecialTerms(TextType):
-	pass
+class TransportUserRemarks(PrefixCBC,TextType):
+    pass
 
 
-class TransportationServiceDescription(TextType):
-	pass
+class TransportUserSpecialTerms(PrefixCBC,TextType):
+    pass
 
 
-class TransportationServiceDetailsURI(IdentifierType):
-	pass
+class TransportationServiceDescription(PrefixCBC,TextType):
+    pass
 
 
-class TransportationStatusTypeCode(CodeType):
-	pass
+class TransportationServiceDetailsURI(PrefixCBC,IdentifierType):
+    pass
 
 
-class TypeCode(CodeType):
-	pass
+class TransportationStatusTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class UBLVersionID(IdentifierType):
-	pass
+class TypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class UNDGCode(CodeType):
-	pass
+class UBLVersionID(PrefixCBC,IdentifierType):
+    pass
 
 
-class URI(IdentifierType):
-	pass
+class UNDGCode(PrefixCBC,CodeType):
+    pass
 
 
-class UUID(IdentifierType):
-	pass
+class URI(PrefixCBC,IdentifierType):
+    pass
 
 
-class UnknownPriceIndicator(IndicatorType):
-	pass
+class UUID(PrefixCBC,IdentifierType):
+    pass
 
 
-class UpperOrangeHazardPlacardID(IdentifierType):
-	pass
+class UnknownPriceIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class UrgencyCode(CodeType):
-	pass
+class UpperOrangeHazardPlacardID(PrefixCBC,IdentifierType):
+    pass
 
 
-class UtilityStatementTypeCode(CodeType):
-	pass
+class UrgencyCode(PrefixCBC,CodeType):
+    pass
 
 
-class ValidateProcess(TextType):
-	pass
+class UtilityStatementTypeCode(PrefixCBC,CodeType):
+    pass
 
 
-class ValidateTool(TextType):
-	pass
+class ValidateProcess(PrefixCBC,TextType):
+    pass
 
 
-class ValidateToolVersion(TextType):
-	pass
+class ValidateTool(PrefixCBC,TextType):
+    pass
 
 
-class ValidationDate(DateType):
-	pass
+class ValidateToolVersion(PrefixCBC,TextType):
+    pass
 
 
-class ValidationResultCode(CodeType):
-	pass
+class ValidationDate(PrefixCBC,DateType):
+    pass
 
 
-class ValidationTime(TimeType):
-	pass
+class ValidationResultCode(PrefixCBC,CodeType):
+    pass
 
 
-class ValidatorID(IdentifierType):
-	pass
+class ValidationTime(PrefixCBC,TimeType):
+    pass
 
 
-class ValidityStartDate(DateType):
-	pass
+class ValidatorID(PrefixCBC,IdentifierType):
+    pass
 
 
-class ValueAmount(AmountType):
-	pass
+class ValidityStartDate(PrefixCBC,DateType):
+    pass
 
 
-class ValueMeasure(MeasureType):
-	pass
+class ValueAmount(PrefixCBC,AmountType):
+    pass
 
 
-class ValueQualifier(TextType):
-	pass
+class ValueMeasure(PrefixCBC,MeasureType):
+    pass
 
 
-class ValueQuantity(QuantityType):
-	pass
+class ValueQualifier(PrefixCBC,TextType):
+    pass
 
 
-class Value(TextType):
-	pass
+class ValueQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class VarianceQuantity(QuantityType):
-	pass
+class Value(PrefixCBC,TextType):
+    pass
 
 
-class VariantConstraintIndicator(IndicatorType):
-	pass
+class VarianceQuantity(PrefixCBC,QuantityType):
+    pass
 
 
-class VariantID(IdentifierType):
-	pass
+class VariantConstraintIndicator(PrefixCBC,IndicatorType):
+    pass
 
 
-class VersionID(IdentifierType):
-	pass
+class VariantID(PrefixCBC,IdentifierType):
+    pass
 
 
-class VesselID(IdentifierType):
-	pass
+class VersionID(PrefixCBC,IdentifierType):
+    pass
 
 
-class VesselName(NameType):
-	pass
+class VesselID(PrefixCBC,IdentifierType):
+    pass
 
 
-class WarrantyInformation(TextType):
-	pass
+class VesselName(PrefixCBC,NameType):
+    pass
 
 
-class WebsiteURI(IdentifierType):
-	pass
+class WarrantyInformation(PrefixCBC,TextType):
+    pass
 
 
-class WeekDayCode(CodeType):
-	pass
+class WebsiteURI(PrefixCBC,IdentifierType):
+    pass
 
 
-class WeightNumeric(NumericType):
-	pass
+class WeekDayCode(PrefixCBC,CodeType):
+    pass
 
 
-class Weight(TextType):
-	pass
+class WeightNumeric(PrefixCBC,NumericType):
+    pass
 
 
-class WeightingAlgorithmCode(CodeType):
-	pass
+class Weight(PrefixCBC,TextType):
+    pass
 
 
-class WorkPhaseCode(CodeType):
-	pass
+class WeightingAlgorithmCode(PrefixCBC,CodeType):
+    pass
 
 
-class WorkPhase(TextType):
-	pass
+class WorkPhaseCode(PrefixCBC,CodeType):
+    pass
 
 
-class XPath(TextType):
-	pass
+class WorkPhase(PrefixCBC,TextType):
+    pass
 
 
+class XPath(PrefixCBC,TextType):
+    pass
