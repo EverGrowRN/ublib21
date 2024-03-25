@@ -10,9 +10,11 @@ class BasicXMLParseableObject:
     prefix = None
     tag = None
     attr_names_mapping = None
+    xml_namespaces = None
 
-    def __init__(self, value) -> None:
+    def __init__(self, value, xml_namespaces = None) -> None:
         self.value = value
+        self.xml_namespaces = xml_namespaces
         if self.attr_names_mapping is None:
             raise MissingAttributeNamesMappingException(
                 f"{self.__class__.__name__}")
@@ -31,6 +33,9 @@ class BasicXMLParseableObject:
         for attr, string_attr in self.attr_names_mapping.items():
             value = getattr(self, attr, '')
             attr_string += value and f' {string_attr}="{value}"' or ''
+        if self.xml_namespaces is not None:
+            for ns in self.xml_namespaces:
+                attr_string += f' {ns}'
         return attr_string
 
     def get_name(self):
@@ -52,10 +57,18 @@ class ComplexXMLParseableObject:
     prefix = None
     tag = None
     order_list = []
+    xml_namespaces = None
+
+    def __init__(self, xml_namespaces=None) -> None:
+        self.xml_namespaces = xml_namespaces
 
     def __str__(self):
         tag = self.get_tag()
-        xml = f"<{tag}>{self.get_value()}</{tag}>"
+        namespaces = ''
+        if self.xml_namespaces is not None:
+            for ns in self.xml_namespaces:
+                namespaces += f' {ns}'
+            xml = f"<{tag}{namespaces}>{self.get_value()}</{tag}>"
         return xml
 
     def get_name(self):
@@ -79,5 +92,9 @@ class ComplexXMLParseableObject:
         for attr in self.order_list:
             value = attrs[attr]
             if value is not None:
-                xml += f"{value}"
+                if isinstance(value, list):
+                    for element_value in value:
+                        xml += f"{element_value}"
+                else:
+                    xml += f"{value}"
         return xml

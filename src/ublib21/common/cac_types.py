@@ -7355,7 +7355,8 @@ class __ShipmentType(PrefixCAC, ComplexXMLParseableObject):
                  first_arrival_port_location: 'FirstArrivalPortLocation' = None,
                  last_exit_port_location: 'LastExitPortLocation' = None,
                  export_country: 'ExportCountry' = None,
-                 freight_allowance_charge: List['FreightAllowanceCharge'] = None):
+                 freight_allowance_charge: List['FreightAllowanceCharge'] = None, xml_namespaces = None):
+        super().__init__(xml_namespaces)
         self.id = id_
         self.shipping_priority_level_code = shipping_priority_level_code
         self.handling_code = handling_code

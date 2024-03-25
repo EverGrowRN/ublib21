@@ -224,8 +224,8 @@ class TextType(BasicXMLParseableObject):
 
     }
 
-    def __init__(self, value, language_id=None, language_locale_id=None):
-        super().__init__(value)
+    def __init__(self, value, language_id=None, language_locale_id=None, xml_namespaces = None):
+        super().__init__(value, xml_namespaces=xml_namespaces)
 
         self.language_id = language_id
         self.language_locale_id = language_locale_id
