@@ -1,8 +1,11 @@
 from typing import List
-from ublib21.exceptions import ListMustNotBeEmptyException
 from ublib21.common import cbc
 from ublib21.common.cac import *
 from ublib21.base import ComplexXMLParseableObject
+
+
+class ListMustNotBeEmptyException(Exception):
+    pass
 
 
 class PrefixCAC:
@@ -10,7 +13,7 @@ class PrefixCAC:
 
 
 class __ActivityDataLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     supply_chain_activity_type_code = None
     activity_origin_location = None
     buyer_customer_party = None
@@ -19,7 +22,7 @@ class __ActivityDataLineType(PrefixCAC, ComplexXMLParseableObject):
     activity_final_location = None
     sales_item = None
     order_list = [
-        'id',
+        'id_',
         'supply_chain_activity_type_code',
         'buyer_customer_party',
         'seller_supplier_party',
@@ -29,17 +32,18 @@ class __ActivityDataLineType(PrefixCAC, ComplexXMLParseableObject):
         'sales_item',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  supply_chain_activity_type_code: cbc.SupplyChainActivityTypeCode,
                  activity_origin_location: 'ActivityOriginLocation',
                  buyer_customer_party: 'BuyerCustomerParty' = None,
                  seller_supplier_party: 'SellerSupplierParty' = None,
                  activity_period: 'ActivityPeriod' = None,
                  activity_final_location: 'ActivityFinalLocation' = None,
-                 sales_item: List['SalesItem'] = None):
+                 sales_item: List['SalesItem'] = None, xml_namespaces=None):
         if not sales_item:
             raise ListMustNotBeEmptyException('sales_item')
-        self.id = id_
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.supply_chain_activity_type_code = supply_chain_activity_type_code
         self.activity_origin_location = activity_origin_location
         self.buyer_customer_party = buyer_customer_party
@@ -56,14 +60,15 @@ class __ActivityPropertyType(PrefixCAC, ComplexXMLParseableObject):
         'name',
         'value',
     ]
-    def __init__(self, name: cbc.Name,
-                 value: cbc.Value):
+    def __init__(self,		name: cbc.Name,
+                 value: cbc.Value, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
         self.value = value
 
 
 class __AddressType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     address_type_code = None
     address_format_code = None
     postbox = None
@@ -91,7 +96,7 @@ class __AddressType(PrefixCAC, ComplexXMLParseableObject):
     country = None
     location_coordinate = None
     order_list = [
-        'id',
+        'id_',
         'address_type_code',
         'address_format_code',
         'postbox',
@@ -120,7 +125,7 @@ class __AddressType(PrefixCAC, ComplexXMLParseableObject):
         'location_coordinate',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  address_type_code: cbc.AddressTypeCode = None,
                  address_format_code: cbc.AddressFormatCode = None,
                  postbox: cbc.Postbox = None,
@@ -146,8 +151,9 @@ class __AddressType(PrefixCAC, ComplexXMLParseableObject):
                  timezone_offset: cbc.TimezoneOffset = None,
                  address_line: List['AddressLine'] = None,
                  country: 'Country' = None,
-                 location_coordinate: List['LocationCoordinate'] = None):
-        self.id = id_
+                 location_coordinate: List['LocationCoordinate'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.address_type_code = address_type_code
         self.address_format_code = address_format_code
         self.postbox = postbox
@@ -182,7 +188,8 @@ class __AddressLineType(PrefixCAC, ComplexXMLParseableObject):
         'line',
     ]
 
-    def __init__(self, line: cbc.Line):
+    def __init__(self,		line: cbc.Line, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.line = line
 
 
@@ -192,14 +199,15 @@ class __AirTransportType(PrefixCAC, ComplexXMLParseableObject):
         'aircraft_id',
     ]
 
-    def __init__(self, aircraft_id: cbc.AircraftID):
+    def __init__(self,		aircraft_id: cbc.AircraftID, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.aircraft_id = aircraft_id
 
 
 class __AllowanceChargeType(PrefixCAC, ComplexXMLParseableObject):
     charge_indicator = None
     amount = None
-    id = None
+    id_ = None
     allowance_charge_reason_code = None
     allowance_charge_reason = None
     multiplier_factor_numeric = None
@@ -213,7 +221,7 @@ class __AllowanceChargeType(PrefixCAC, ComplexXMLParseableObject):
     tax_total = None
     payment_means = None
     order_list = [
-        'id',
+        'id_',
         'charge_indicator',
         'allowance_charge_reason_code',
         'allowance_charge_reason',
@@ -230,7 +238,7 @@ class __AllowanceChargeType(PrefixCAC, ComplexXMLParseableObject):
         'payment_means',
     ]
 
-    def __init__(self, charge_indicator: cbc.ChargeIndicator,
+    def __init__(self,		charge_indicator: cbc.ChargeIndicator,
                  amount: cbc.Amount,
                  id_: cbc.ID = None,
                  allowance_charge_reason_code: cbc.AllowanceChargeReasonCode = None,
@@ -244,10 +252,11 @@ class __AllowanceChargeType(PrefixCAC, ComplexXMLParseableObject):
                  per_unit_amount: cbc.PerUnitAmount = None,
                  tax_category: List['TaxCategory'] = None,
                  tax_total: 'TaxTotal' = None,
-                 payment_means: List['PaymentMeans'] = None):
+                 payment_means: List['PaymentMeans'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.charge_indicator = charge_indicator
         self.amount = amount
-        self.id = id_
+        self.id_ = id_
         self.allowance_charge_reason_code = allowance_charge_reason_code
         self.allowance_charge_reason = allowance_charge_reason
         self.multiplier_factor_numeric = multiplier_factor_numeric
@@ -276,11 +285,12 @@ class __AppealTermsType(PrefixCAC, ComplexXMLParseableObject):
         'mediation_party',
     ]
 
-    def __init__(self, description: List[cbc.Description] = None,
+    def __init__(self,		description: List[cbc.Description] = None,
                  presentation_period: 'PresentationPeriod' = None,
                  appeal_information_party: 'AppealInformationParty' = None,
                  appeal_receiver_party: 'AppealReceiverParty' = None,
-                 mediation_party: 'MediationParty' = None):
+                 mediation_party: 'MediationParty' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.description = description
         self.presentation_period = presentation_period
         self.appeal_information_party = appeal_information_party
@@ -295,8 +305,9 @@ class __AttachmentType(PrefixCAC, ComplexXMLParseableObject):
         'embedded_document_binary_object',
         'external_reference',
     ]
-    def __init__(self, embedded_document_binary_object: cbc.EmbeddedDocumentBinaryObject = None,
-                 external_reference: 'ExternalReference' = None):
+    def __init__(self,		embedded_document_binary_object: cbc.EmbeddedDocumentBinaryObject = None,
+                 external_reference: 'ExternalReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.embedded_document_binary_object = embedded_document_binary_object
         self.external_reference = external_reference
 
@@ -319,13 +330,14 @@ class __AuctionTermsType(PrefixCAC, ComplexXMLParseableObject):
         'auction_uri',
     ]
 
-    def __init__(self, auction_constraint_indicator: cbc.AuctionConstraintIndicator = None,
+    def __init__(self,		auction_constraint_indicator: cbc.AuctionConstraintIndicator = None,
                  justification_description: List[cbc.JustificationDescription] = None,
                  description: List[cbc.Description] = None,
                  process_description: List[cbc.ProcessDescription] = None,
                  conditions_description: List[cbc.ConditionsDescription] = None,
                  electronic_device_description: List[cbc.ElectronicDeviceDescription] = None,
-                 auction_uri: cbc.AuctionURI = None):
+                 auction_uri: cbc.AuctionURI = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.auction_constraint_indicator = auction_constraint_indicator
         self.justification_description = justification_description
         self.description = description
@@ -336,7 +348,7 @@ class __AuctionTermsType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __AwardingCriterionType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     awarding_criterion_type_code = None
     description = None
     weight_numeric = None
@@ -350,7 +362,7 @@ class __AwardingCriterionType(PrefixCAC, ComplexXMLParseableObject):
     minimum_improvement_bid = None
     subordinate_awarding_criterion = None
     order_list = [
-        'id',
+        'id_',
         'awarding_criterion_type_code',
         'description',
         'weight_numeric',
@@ -365,7 +377,7 @@ class __AwardingCriterionType(PrefixCAC, ComplexXMLParseableObject):
         'subordinate_awarding_criterion',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  awarding_criterion_type_code: cbc.AwardingCriterionTypeCode = None,
                  description: List[cbc.Description] = None,
                  weight_numeric: cbc.WeightNumeric = None,
@@ -377,8 +389,9 @@ class __AwardingCriterionType(PrefixCAC, ComplexXMLParseableObject):
                  minimum_amount: cbc.MinimumAmount = None,
                  maximum_amount: cbc.MaximumAmount = None,
                  minimum_improvement_bid: List[cbc.MinimumImprovementBid] = None,
-                 subordinate_awarding_criterion: List['SubordinateAwardingCriterion'] = None):
-        self.id = id_
+                 subordinate_awarding_criterion: List['SubordinateAwardingCriterion'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.awarding_criterion_type_code = awarding_criterion_type_code
         self.description = description
         self.weight_numeric = weight_numeric
@@ -394,7 +407,7 @@ class __AwardingCriterionType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __AwardingCriterionResponseType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     awarding_criterion_id = None
     awarding_criterion_description = None
     description = None
@@ -402,7 +415,7 @@ class __AwardingCriterionResponseType(PrefixCAC, ComplexXMLParseableObject):
     amount = None
     subordinate_awarding_criterion_response = None
     order_list = [
-        'id',
+        'id_',
         'awarding_criterion_id',
         'awarding_criterion_description',
         'description',
@@ -411,14 +424,15 @@ class __AwardingCriterionResponseType(PrefixCAC, ComplexXMLParseableObject):
         'subordinate_awarding_criterion_response',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  awarding_criterion_id: cbc.AwardingCriterionID = None,
                  awarding_criterion_description: List[cbc.AwardingCriterionDescription] = None,
                  description: List[cbc.Description] = None,
                  quantity: cbc.Quantity = None,
                  amount: cbc.Amount = None,
-                 subordinate_awarding_criterion_response: List['SubordinateAwardingCriterionResponse'] = None):
-        self.id = id_
+                 subordinate_awarding_criterion_response: List['SubordinateAwardingCriterionResponse'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.awarding_criterion_id = awarding_criterion_id
         self.awarding_criterion_description = awarding_criterion_description
         self.description = description
@@ -453,7 +467,7 @@ class __AwardingTermsType(PrefixCAC, ComplexXMLParseableObject):
         'technical_committee_person',
     ]
 
-    def __init__(self, weighting_algorithm_code: cbc.WeightingAlgorithmCode = None,
+    def __init__(self,		weighting_algorithm_code: cbc.WeightingAlgorithmCode = None,
                  description: List[cbc.Description] = None,
                  technical_committee_description: List[cbc.TechnicalCommitteeDescription] = None,
                  low_tenders_description: List[cbc.LowTendersDescription] = None,
@@ -463,7 +477,8 @@ class __AwardingTermsType(PrefixCAC, ComplexXMLParseableObject):
                  followup_contract_indicator: cbc.FollowupContractIndicator = None,
                  binding_on_buyer_indicator: cbc.BindingOnBuyerIndicator = None,
                  awarding_criterion: List['AwardingCriterion'] = None,
-                 technical_committee_person: List['TechnicalCommitteePerson'] = None):
+                 technical_committee_person: List['TechnicalCommitteePerson'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.weighting_algorithm_code = weighting_algorithm_code
         self.description = description
         self.technical_committee_description = technical_committee_description
@@ -497,14 +512,15 @@ class __BillingReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'billing_reference_line',
     ]
 
-    def __init__(self, invoice_document_reference: 'InvoiceDocumentReference' = None,
+    def __init__(self,		invoice_document_reference: 'InvoiceDocumentReference' = None,
                  self_billed_invoice_document_reference: 'SelfBilledInvoiceDocumentReference' = None,
                  credit_note_document_reference: 'CreditNoteDocumentReference' = None,
                  self_billed_credit_note_document_reference: 'SelfBilledCreditNoteDocumentReference' = None,
                  debit_note_document_reference: 'DebitNoteDocumentReference' = None,
                  reminder_document_reference: 'ReminderDocumentReference' = None,
                  additional_document_reference: 'AdditionalDocumentReference' = None,
-                 billing_reference_line: List['BillingReferenceLine'] = None):
+                 billing_reference_line: List['BillingReferenceLine'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.invoice_document_reference = invoice_document_reference
         self.self_billed_invoice_document_reference = self_billed_invoice_document_reference
         self.credit_note_document_reference = credit_note_document_reference
@@ -516,77 +532,81 @@ class __BillingReferenceType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __BillingReferenceLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     amount = None
     allowance_charge = None
     order_list = [
-        'id',
+        'id_',
         'amount',
         'allowance_charge',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  amount: cbc.Amount = None,
-                 allowance_charge: List['AllowanceCharge'] = None):
-        self.id = id_
+                 allowance_charge: List['AllowanceCharge'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.amount = amount
         self.allowance_charge = allowance_charge
 
 
 class __BranchType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     name = None
     financial_institution = None
     address = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'financial_institution',
         'address',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  name: cbc.Name = None,
                  financial_institution: 'FinancialInstitution' = None,
-                 address: 'Address' = None):
-        self.id = id_
+                 address: 'Address' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.name = name
         self.financial_institution = financial_institution
         self.address = address
 
 
 class __BudgetAccountType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     budget_year_numeric = None
     required_classification_scheme = None
     order_list = [
-        'id',
+        'id_',
         'budget_year_numeric',
         'required_classification_scheme',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  budget_year_numeric: cbc.BudgetYearNumeric = None,
-                 required_classification_scheme: 'RequiredClassificationScheme' = None):
-        self.id = id_
+                 required_classification_scheme: 'RequiredClassificationScheme' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.budget_year_numeric = budget_year_numeric
         self.required_classification_scheme = required_classification_scheme
 
 
 class __BudgetAccountLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     total_amount = None
     budget_account = None
     order_list = [
-        'id',
+        'id_',
         'total_amount',
         'budget_account',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  total_amount: cbc.TotalAmount = None,
-                 budget_account: List['BudgetAccount'] = None):
-        self.id = id_
+                 budget_account: List['BudgetAccount'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.total_amount = total_amount
         self.budget_account = budget_account
 
@@ -607,12 +627,13 @@ class __CapabilityType(PrefixCAC, ComplexXMLParseableObject):
         'validity_period',
     ]
 
-    def __init__(self, capability_type_code: cbc.CapabilityTypeCode = None,
+    def __init__(self,		capability_type_code: cbc.CapabilityTypeCode = None,
                  description: List[cbc.Description] = None,
                  value_amount: cbc.ValueAmount = None,
                  value_quantity: cbc.ValueQuantity = None,
                  evidence_supplied: List['EvidenceSupplied'] = None,
-                 validity_period: 'ValidityPeriod' = None):
+                 validity_period: 'ValidityPeriod' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.capability_type_code = capability_type_code
         self.description = description
         self.value_amount = value_amount
@@ -647,7 +668,7 @@ class __CardAccountType(PrefixCAC, ComplexXMLParseableObject):
         'holder_name',
     ]
 
-    def __init__(self, primary_account_number_id: cbc.PrimaryAccountNumberID,
+    def __init__(self,		primary_account_number_id: cbc.PrimaryAccountNumberID,
                  network_id: cbc.NetworkID,
                  card_type_code: cbc.CardTypeCode = None,
                  validity_start_date: cbc.ValidityStartDate = None,
@@ -657,7 +678,8 @@ class __CardAccountType(PrefixCAC, ComplexXMLParseableObject):
                  cv2_id: cbc.CV2ID = None,
                  card_chip_code: cbc.CardChipCode = None,
                  chip_application_id: cbc.ChipApplicationID = None,
-                 holder_name: cbc.HolderName = None):
+                 holder_name: cbc.HolderName = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.primary_account_number_id = primary_account_number_id
         self.network_id = network_id
         self.card_type_code = card_type_code
@@ -672,29 +694,30 @@ class __CardAccountType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __CatalogueItemSpecificationUpdateLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     item = None
     contractor_customer_party = None
     seller_supplier_party = None
     order_list = [
-        'id',
+        'id_',
         'contractor_customer_party',
         'seller_supplier_party',
         'item',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  item: 'Item',
                  contractor_customer_party: 'ContractorCustomerParty' = None,
-                 seller_supplier_party: 'SellerSupplierParty' = None):
-        self.id = id_
+                 seller_supplier_party: 'SellerSupplierParty' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.item = item
         self.contractor_customer_party = contractor_customer_party
         self.seller_supplier_party = seller_supplier_party
 
 
 class __CatalogueLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     item = None
     action_code = None
     life_cycle_status_code = None
@@ -726,7 +749,7 @@ class __CatalogueLineType(PrefixCAC, ComplexXMLParseableObject):
     call_for_tenders_line_reference = None
     call_for_tenders_document_reference = None
     order_list = [
-        'id',
+        'id_',
         'action_code',
         'life_cycle_status_code',
         'contract_subdivision',
@@ -759,7 +782,7 @@ class __CatalogueLineType(PrefixCAC, ComplexXMLParseableObject):
         'call_for_tenders_document_reference',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  item: 'Item',
                  action_code: cbc.ActionCode = None,
                  life_cycle_status_code: cbc.LifeCycleStatusCode = None,
@@ -789,8 +812,9 @@ class __CatalogueLineType(PrefixCAC, ComplexXMLParseableObject):
                  document_reference: List['DocumentReference'] = None,
                  keyword_item_property: List['KeywordItemProperty'] = None,
                  call_for_tenders_line_reference: 'CallForTendersLineReference' = None,
-                 call_for_tenders_document_reference: 'CallForTendersDocumentReference' = None):
-        self.id = id_
+                 call_for_tenders_document_reference: 'CallForTendersDocumentReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.item = item
         self.action_code = action_code
         self.life_cycle_status_code = life_cycle_status_code
@@ -824,29 +848,30 @@ class __CatalogueLineType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __CataloguePricingUpdateLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     contractor_customer_party = None
     seller_supplier_party = None
     required_item_location_quantity = None
     order_list = [
-        'id',
+        'id_',
         'contractor_customer_party',
         'seller_supplier_party',
         'required_item_location_quantity',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  contractor_customer_party: 'ContractorCustomerParty' = None,
                  seller_supplier_party: 'SellerSupplierParty' = None,
-                 required_item_location_quantity: List['RequiredItemLocationQuantity'] = None):
-        self.id = id_
+                 required_item_location_quantity: List['RequiredItemLocationQuantity'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.contractor_customer_party = contractor_customer_party
         self.seller_supplier_party = seller_supplier_party
         self.required_item_location_quantity = required_item_location_quantity
 
 
 class __CatalogueReferenceType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     uuid = None
     issue_date = None
     issue_time = None
@@ -857,7 +882,7 @@ class __CatalogueReferenceType(PrefixCAC, ComplexXMLParseableObject):
     version_id = None
     previous_version_id = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'issue_date',
         'issue_time',
@@ -869,7 +894,7 @@ class __CatalogueReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'previous_version_id',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  uuid: cbc.UUID = None,
                  issue_date: cbc.IssueDate = None,
                  issue_time: cbc.IssueTime = None,
@@ -878,8 +903,9 @@ class __CatalogueReferenceType(PrefixCAC, ComplexXMLParseableObject):
                  note: List[cbc.Note] = None,
                  description: List[cbc.Description] = None,
                  version_id: cbc.VersionID = None,
-                 previous_version_id: cbc.PreviousVersionID = None):
-        self.id = id_
+                 previous_version_id: cbc.PreviousVersionID = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.uuid = uuid
         self.issue_date = issue_date
         self.issue_time = issue_time
@@ -892,14 +918,14 @@ class __CatalogueReferenceType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __CatalogueRequestLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     item = None
     contract_subdivision = None
     note = None
     line_validity_period = None
     required_item_location_quantity = None
     order_list = [
-        'id',
+        'id_',
         'contract_subdivision',
         'note',
         'line_validity_period',
@@ -907,13 +933,14 @@ class __CatalogueRequestLineType(PrefixCAC, ComplexXMLParseableObject):
         'item',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  item: 'Item',
                  contract_subdivision: cbc.ContractSubdivision = None,
                  note: List[cbc.Note] = None,
                  line_validity_period: 'LineValidityPeriod' = None,
-                 required_item_location_quantity: List['RequiredItemLocationQuantity'] = None):
-        self.id = id_
+                 required_item_location_quantity: List['RequiredItemLocationQuantity'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.item = item
         self.contract_subdivision = contract_subdivision
         self.note = note
@@ -922,7 +949,7 @@ class __CatalogueRequestLineType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __CertificateType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     certificate_type_code = None
     certificate_type = None
     issuer_party = None
@@ -930,7 +957,7 @@ class __CertificateType(PrefixCAC, ComplexXMLParseableObject):
     document_reference = None
     signature = None
     order_list = [
-        'id',
+        'id_',
         'certificate_type_code',
         'certificate_type',
         'remarks',
@@ -939,14 +966,15 @@ class __CertificateType(PrefixCAC, ComplexXMLParseableObject):
         'signature',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  certificate_type_code: cbc.CertificateTypeCode,
                  certificate_type: cbc.CertificateType,
                  issuer_party: 'IssuerParty',
                  remarks: List[cbc.Remarks] = None,
                  document_reference: List['DocumentReference'] = None,
-                 signature: List['Signature'] = None):
-        self.id = id_
+                 signature: List['Signature'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.certificate_type_code = certificate_type_code
         self.certificate_type = certificate_type
         self.issuer_party = issuer_party
@@ -991,7 +1019,7 @@ class __CertificateOfOriginApplicationType(PrefixCAC, ComplexXMLParseableObject)
         'signature',
     ]
 
-    def __init__(self, reference_id: cbc.ReferenceID,
+    def __init__(self,		reference_id: cbc.ReferenceID,
                  certificate_type: cbc.CertificateType,
                  original_job_id: cbc.OriginalJobID,
                  shipment: 'Shipment',
@@ -1006,9 +1034,10 @@ class __CertificateOfOriginApplicationType(PrefixCAC, ComplexXMLParseableObject)
                  importer_party: 'ImporterParty' = None,
                  document_distribution: List['DocumentDistribution'] = None,
                  supporting_document_reference: List['SupportingDocumentReference'] = None,
-                 signature: List['Signature'] = None):
+                 signature: List['Signature'] = None, xml_namespaces=None):
         if not endorser_party:
             raise ListMustNotBeEmptyException('endorser_party')
+        super().__init__(xml_namespaces)
         self.reference_id = reference_id
         self.certificate_type = certificate_type
         self.original_job_id = original_job_id
@@ -1039,10 +1068,11 @@ class __ClassificationCategoryType(PrefixCAC, ComplexXMLParseableObject):
         'categorizes_classification_category',
     ]
 
-    def __init__(self, name: cbc.Name = None,
+    def __init__(self,		name: cbc.Name = None,
                  code_value: cbc.CodeValue = None,
                  description: List[cbc.Description] = None,
-                 categorizes_classification_category: List['CategorizesClassificationCategory'] = None):
+                 categorizes_classification_category: List['CategorizesClassificationCategory'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
         self.code_value = code_value
         self.description = description
@@ -1050,7 +1080,7 @@ class __ClassificationCategoryType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ClassificationSchemeType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     uuid = None
     last_revision_date = None
     last_revision_time = None
@@ -1065,7 +1095,7 @@ class __ClassificationSchemeType(PrefixCAC, ComplexXMLParseableObject):
     language_id = None
     classification_category = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'last_revision_date',
         'last_revision_time',
@@ -1081,7 +1111,7 @@ class __ClassificationSchemeType(PrefixCAC, ComplexXMLParseableObject):
         'classification_category',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  uuid: cbc.UUID = None,
                  last_revision_date: cbc.LastRevisionDate = None,
                  last_revision_time: cbc.LastRevisionTime = None,
@@ -1094,10 +1124,11 @@ class __ClassificationSchemeType(PrefixCAC, ComplexXMLParseableObject):
                  uri: cbc.URI = None,
                  scheme_uri: cbc.SchemeURI = None,
                  language_id: cbc.LanguageID = None,
-                 classification_category: List['ClassificationCategory'] = None):
+                 classification_category: List['ClassificationCategory'] = None, xml_namespaces=None):
         if not classification_category:
             raise ListMustNotBeEmptyException('classification_category')
-        self.id = id_
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.uuid = uuid
         self.last_revision_date = last_revision_date
         self.last_revision_time = last_revision_time
@@ -1114,15 +1145,16 @@ class __ClassificationSchemeType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ClauseType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     content = None
     order_list = [
-        'id',
+        'id_',
         'content',
     ]
-    def __init__(self, id_: cbc.ID = None,
-                 content: List[cbc.Content] = None):
-        self.id = id_
+    def __init__(self,		id_: cbc.ID = None,
+                 content: List[cbc.Content] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.content = content
 
 
@@ -1138,10 +1170,11 @@ class __CommodityClassificationType(PrefixCAC, ComplexXMLParseableObject):
         'item_classification_code',
     ]
 
-    def __init__(self, nature_code: cbc.NatureCode = None,
+    def __init__(self,		nature_code: cbc.NatureCode = None,
                  cargo_type_code: cbc.CargoTypeCode = None,
                  commodity_code: cbc.CommodityCode = None,
-                 item_classification_code: cbc.ItemClassificationCode = None):
+                 item_classification_code: cbc.ItemClassificationCode = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.nature_code = nature_code
         self.cargo_type_code = cargo_type_code
         self.commodity_code = commodity_code
@@ -1158,9 +1191,10 @@ class __CommunicationType(PrefixCAC, ComplexXMLParseableObject):
         'value',
     ]
 
-    def __init__(self, channel_code: cbc.ChannelCode = None,
+    def __init__(self,		channel_code: cbc.ChannelCode = None,
                  channel: cbc.Channel = None,
-                 value: cbc.Value = None):
+                 value: cbc.Value = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.channel_code = channel_code
         self.channel = channel
         self.value = value
@@ -1184,13 +1218,14 @@ class __CompletedTaskType(PrefixCAC, ComplexXMLParseableObject):
         'recipient_customer_party',
     ]
 
-    def __init__(self, annual_average_amount: cbc.AnnualAverageAmount = None,
+    def __init__(self,		annual_average_amount: cbc.AnnualAverageAmount = None,
                  total_task_amount: cbc.TotalTaskAmount = None,
                  party_capacity_amount: cbc.PartyCapacityAmount = None,
                  description: List[cbc.Description] = None,
                  evidence_supplied: List['EvidenceSupplied'] = None,
                  period: 'Period' = None,
-                 recipient_customer_party: 'RecipientCustomerParty' = None):
+                 recipient_customer_party: 'RecipientCustomerParty' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.annual_average_amount = annual_average_amount
         self.total_task_amount = total_task_amount
         self.party_capacity_amount = party_capacity_amount
@@ -1214,11 +1249,12 @@ class __ConditionType(PrefixCAC, ComplexXMLParseableObject):
         'maximum_measure',
     ]
 
-    def __init__(self, attribute_id: cbc.AttributeID,
+    def __init__(self,		attribute_id: cbc.AttributeID,
                  measure: cbc.Measure = None,
                  description: List[cbc.Description] = None,
                  minimum_measure: cbc.MinimumMeasure = None,
-                 maximum_measure: cbc.MaximumMeasure = None):
+                 maximum_measure: cbc.MaximumMeasure = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.attribute_id = attribute_id
         self.measure = measure
         self.description = description
@@ -1227,7 +1263,7 @@ class __ConditionType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ConsignmentType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     carrier_assigned_id = None
     consignee_assigned_id = None
     consignor_assigned_id = None
@@ -1328,7 +1364,7 @@ class __ConsignmentType(PrefixCAC, ComplexXMLParseableObject):
     first_arrival_port_location = None
     last_exit_port_location = None
     order_list = [
-        'id',
+        'id_',
         'carrier_assigned_id',
         'consignee_assigned_id',
         'consignor_assigned_id',
@@ -1430,7 +1466,7 @@ class __ConsignmentType(PrefixCAC, ComplexXMLParseableObject):
         'last_exit_port_location',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  carrier_assigned_id: cbc.CarrierAssignedID = None,
                  consignee_assigned_id: cbc.ConsigneeAssignedID = None,
                  consignor_assigned_id: cbc.ConsignorAssignedID = None,
@@ -1529,8 +1565,9 @@ class __ConsignmentType(PrefixCAC, ComplexXMLParseableObject):
                  on_carriage_shipment_stage: List['OnCarriageShipmentStage'] = None,
                  transport_handling_unit: List['TransportHandlingUnit'] = None,
                  first_arrival_port_location: 'FirstArrivalPortLocation' = None,
-                 last_exit_port_location: 'LastExitPortLocation' = None):
-        self.id = id_
+                 last_exit_port_location: 'LastExitPortLocation' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.carrier_assigned_id = carrier_assigned_id
         self.consignee_assigned_id = consignee_assigned_id
         self.consignor_assigned_id = consignor_assigned_id
@@ -1650,13 +1687,14 @@ class __ConsumptionType(PrefixCAC, ComplexXMLParseableObject):
         'legal_monetary_total',
     ]
 
-    def __init__(self, legal_monetary_total: 'LegalMonetaryTotal',
+    def __init__(self,		legal_monetary_total: 'LegalMonetaryTotal',
                  utility_statement_type_code: cbc.UtilityStatementTypeCode = None,
                  main_period: 'MainPeriod' = None,
                  allowance_charge: List['AllowanceCharge'] = None,
                  tax_total: List['TaxTotal'] = None,
                  energy_water_supply: 'EnergyWaterSupply' = None,
-                 telecommunications_supply: 'TelecommunicationsSupply' = None):
+                 telecommunications_supply: 'TelecommunicationsSupply' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.legal_monetary_total = legal_monetary_total
         self.utility_statement_type_code = utility_statement_type_code
         self.main_period = main_period
@@ -1673,8 +1711,9 @@ class __ConsumptionAverageType(PrefixCAC, ComplexXMLParseableObject):
         'average_amount',
         'description',
     ]
-    def __init__(self, average_amount: cbc.AverageAmount = None,
-                 description: List[cbc.Description] = None):
+    def __init__(self,		average_amount: cbc.AverageAmount = None,
+                 description: List[cbc.Description] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.average_amount = average_amount
         self.description = description
 
@@ -1707,7 +1746,7 @@ class __ConsumptionCorrectionType(PrefixCAC, ComplexXMLParseableObject):
         'correction_amount',
     ]
 
-    def __init__(self, correction_type: cbc.CorrectionType = None,
+    def __init__(self,		correction_type: cbc.CorrectionType = None,
                  correction_type_code: cbc.CorrectionTypeCode = None,
                  meter_number: cbc.MeterNumber = None,
                  gas_pressure_quantity: cbc.GasPressureQuantity = None,
@@ -1718,7 +1757,8 @@ class __ConsumptionCorrectionType(PrefixCAC, ComplexXMLParseableObject):
                  correction_unit_amount: cbc.CorrectionUnitAmount = None,
                  consumption_energy_quantity: cbc.ConsumptionEnergyQuantity = None,
                  consumption_water_quantity: cbc.ConsumptionWaterQuantity = None,
-                 correction_amount: cbc.CorrectionAmount = None):
+                 correction_amount: cbc.CorrectionAmount = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.correction_type = correction_type
         self.correction_type_code = correction_type_code
         self.meter_number = meter_number
@@ -1751,13 +1791,14 @@ class __ConsumptionHistoryType(PrefixCAC, ComplexXMLParseableObject):
         'period',
     ]
 
-    def __init__(self, quantity: cbc.Quantity,
+    def __init__(self,		quantity: cbc.Quantity,
                  period: 'Period',
                  meter_number: cbc.MeterNumber = None,
                  amount: cbc.Amount = None,
                  consumption_level_code: cbc.ConsumptionLevelCode = None,
                  consumption_level: cbc.ConsumptionLevel = None,
-                 description: List[cbc.Description] = None):
+                 description: List[cbc.Description] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.quantity = quantity
         self.period = period
         self.meter_number = meter_number
@@ -1768,7 +1809,7 @@ class __ConsumptionHistoryType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ConsumptionLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     invoiced_quantity = None
     line_extension_amount = None
     utility_item = None
@@ -1780,7 +1821,7 @@ class __ConsumptionLineType(PrefixCAC, ComplexXMLParseableObject):
     price = None
     unstructured_price = None
     order_list = [
-        'id',
+        'id_',
         'parent_document_line_reference_id',
         'invoiced_quantity',
         'line_extension_amount',
@@ -1793,7 +1834,7 @@ class __ConsumptionLineType(PrefixCAC, ComplexXMLParseableObject):
         'unstructured_price',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  invoiced_quantity: cbc.InvoicedQuantity,
                  line_extension_amount: cbc.LineExtensionAmount,
                  utility_item: 'UtilityItem',
@@ -1803,8 +1844,9 @@ class __ConsumptionLineType(PrefixCAC, ComplexXMLParseableObject):
                  allowance_charge: List['AllowanceCharge'] = None,
                  tax_total: List['TaxTotal'] = None,
                  price: 'Price' = None,
-                 unstructured_price: 'UnstructuredPrice' = None):
-        self.id = id_
+                 unstructured_price: 'UnstructuredPrice' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.invoiced_quantity = invoiced_quantity
         self.line_extension_amount = line_extension_amount
         self.utility_item = utility_item
@@ -1818,7 +1860,7 @@ class __ConsumptionLineType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ConsumptionPointType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     description = None
     subscriber_id = None
     subscriber_type = None
@@ -1828,7 +1870,7 @@ class __ConsumptionPointType(PrefixCAC, ComplexXMLParseableObject):
     web_site_access = None
     utility_meter = None
     order_list = [
-        'id',
+        'id_',
         'description',
         'subscriber_id',
         'subscriber_type',
@@ -1839,7 +1881,7 @@ class __ConsumptionPointType(PrefixCAC, ComplexXMLParseableObject):
         'utility_meter',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  description: List[cbc.Description] = None,
                  subscriber_id: cbc.SubscriberID = None,
                  subscriber_type: cbc.SubscriberType = None,
@@ -1847,8 +1889,9 @@ class __ConsumptionPointType(PrefixCAC, ComplexXMLParseableObject):
                  total_delivered_quantity: cbc.TotalDeliveredQuantity = None,
                  address: 'Address' = None,
                  web_site_access: 'WebSiteAccess' = None,
-                 utility_meter: List['UtilityMeter'] = None):
-        self.id = id_
+                 utility_meter: List['UtilityMeter'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.description = description
         self.subscriber_id = subscriber_id
         self.subscriber_type = subscriber_type
@@ -1860,7 +1903,7 @@ class __ConsumptionPointType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ConsumptionReportType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     consumption_type = None
     consumption_type_code = None
     description = None
@@ -1879,7 +1922,7 @@ class __ConsumptionReportType(PrefixCAC, ComplexXMLParseableObject):
     consumption_report_reference = None
     consumption_history = None
     order_list = [
-        'id',
+        'id_',
         'consumption_type',
         'consumption_type_code',
         'description',
@@ -1899,7 +1942,7 @@ class __ConsumptionReportType(PrefixCAC, ComplexXMLParseableObject):
         'consumption_history',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  consumption_type: cbc.ConsumptionType = None,
                  consumption_type_code: cbc.ConsumptionTypeCode = None,
                  description: List[cbc.Description] = None,
@@ -1916,8 +1959,9 @@ class __ConsumptionReportType(PrefixCAC, ComplexXMLParseableObject):
                  guidance_document_reference: 'GuidanceDocumentReference' = None,
                  document_reference: 'DocumentReference' = None,
                  consumption_report_reference: List['ConsumptionReportReference'] = None,
-                 consumption_history: List['ConsumptionHistory'] = None):
-        self.id = id_
+                 consumption_history: List['ConsumptionHistory'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.consumption_type = consumption_type
         self.consumption_type_code = consumption_type_code
         self.description = description
@@ -1951,11 +1995,12 @@ class __ConsumptionReportReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'period',
     ]
 
-    def __init__(self, consumption_report_id: cbc.ConsumptionReportID,
+    def __init__(self,		consumption_report_id: cbc.ConsumptionReportID,
                  total_consumed_quantity: cbc.TotalConsumedQuantity,
                  period: 'Period',
                  consumption_type: cbc.ConsumptionType = None,
-                 consumption_type_code: cbc.ConsumptionTypeCode = None):
+                 consumption_type_code: cbc.ConsumptionTypeCode = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.consumption_report_id = consumption_report_id
         self.total_consumed_quantity = total_consumed_quantity
         self.period = period
@@ -1964,7 +2009,7 @@ class __ConsumptionReportReferenceType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ContactType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     name = None
     telephone = None
     telefax = None
@@ -1972,7 +2017,7 @@ class __ContactType(PrefixCAC, ComplexXMLParseableObject):
     note = None
     other_communication = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'telephone',
         'telefax',
@@ -1981,14 +2026,15 @@ class __ContactType(PrefixCAC, ComplexXMLParseableObject):
         'other_communication',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  name: cbc.Name = None,
                  telephone: cbc.Telephone = None,
                  telefax: cbc.Telefax = None,
                  electronic_mail: cbc.ElectronicMail = None,
                  note: List[cbc.Note] = None,
-                 other_communication: List['OtherCommunication'] = None):
-        self.id = id_
+                 other_communication: List['OtherCommunication'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.name = name
         self.telephone = telephone
         self.telefax = telefax
@@ -1998,7 +2044,7 @@ class __ContactType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ContractType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     issue_date = None
     issue_time = None
     nomination_date = None
@@ -2013,7 +2059,7 @@ class __ContractType(PrefixCAC, ComplexXMLParseableObject):
     nomination_period = None
     contractual_delivery = None
     order_list = [
-        'id',
+        'id_',
         'issue_date',
         'issue_time',
         'nomination_date',
@@ -2029,7 +2075,7 @@ class __ContractType(PrefixCAC, ComplexXMLParseableObject):
         'contractual_delivery',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  issue_date: cbc.IssueDate = None,
                  issue_time: cbc.IssueTime = None,
                  nomination_date: cbc.NominationDate = None,
@@ -2042,8 +2088,9 @@ class __ContractType(PrefixCAC, ComplexXMLParseableObject):
                  validity_period: 'ValidityPeriod' = None,
                  contract_document_reference: List['ContractDocumentReference'] = None,
                  nomination_period: 'NominationPeriod' = None,
-                 contractual_delivery: 'ContractualDelivery' = None):
-        self.id = id_
+                 contractual_delivery: 'ContractualDelivery' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.issue_date = issue_date
         self.issue_time = issue_time
         self.nomination_date = nomination_date
@@ -2069,9 +2116,10 @@ class __ContractExecutionRequirementType(PrefixCAC, ComplexXMLParseableObject):
         'description',
     ]
 
-    def __init__(self, name: List[cbc.Name] = None,
+    def __init__(self,		name: List[cbc.Name] = None,
                  execution_requirement_code: cbc.ExecutionRequirementCode = None,
-                 description: List[cbc.Description] = None):
+                 description: List[cbc.Description] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
         self.execution_requirement_code = execution_requirement_code
         self.description = description
@@ -2091,11 +2139,12 @@ class __ContractExtensionType(PrefixCAC, ComplexXMLParseableObject):
         'renewal',
     ]
 
-    def __init__(self, options_description: List[cbc.OptionsDescription] = None,
+    def __init__(self,		options_description: List[cbc.OptionsDescription] = None,
                  minimum_number_numeric: cbc.MinimumNumberNumeric = None,
                  maximum_number_numeric: cbc.MaximumNumberNumeric = None,
                  option_validity_period: 'OptionValidityPeriod' = None,
-                 renewal: List['Renewal'] = None):
+                 renewal: List['Renewal'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.options_description = options_description
         self.minimum_number_numeric = minimum_number_numeric
         self.maximum_number_numeric = maximum_number_numeric
@@ -2110,8 +2159,9 @@ class __ContractingActivityType(PrefixCAC, ComplexXMLParseableObject):
         'activity_type_code',
         'activity_type',
     ]
-    def __init__(self, activity_type_code: cbc.ActivityTypeCode = None,
-                 activity_type: cbc.ActivityType = None):
+    def __init__(self,		activity_type_code: cbc.ActivityTypeCode = None,
+                 activity_type: cbc.ActivityType = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.activity_type_code = activity_type_code
         self.activity_type = activity_type
 
@@ -2128,10 +2178,11 @@ class __ContractingPartyType(PrefixCAC, ComplexXMLParseableObject):
         'party',
     ]
 
-    def __init__(self, party: 'Party',
+    def __init__(self,		party: 'Party',
                  buyer_profile_uri: cbc.BuyerProfileURI = None,
                  contracting_party_type: List['ContractingPartyType'] = None,
-                 contracting_activity: List['ContractingActivity'] = None):
+                 contracting_activity: List['ContractingActivity'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.party = party
         self.buyer_profile_uri = buyer_profile_uri
         self.contracting_party_type = contracting_party_type
@@ -2145,29 +2196,31 @@ class __ContractingPartyTypeType(PrefixCAC, ComplexXMLParseableObject):
         'party_type_code',
         'party_type',
     ]
-    def __init__(self, party_type_code: cbc.PartyTypeCode = None,
-                 party_type: cbc.PartyType = None):
+    def __init__(self,		party_type_code: cbc.PartyTypeCode = None,
+                 party_type: cbc.PartyType = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.party_type_code = party_type_code
         self.party_type = party_type
 
 
 class __CorporateRegistrationSchemeType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     name = None
     corporate_registration_type_code = None
     jurisdiction_region_address = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'corporate_registration_type_code',
         'jurisdiction_region_address',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  name: cbc.Name = None,
                  corporate_registration_type_code: cbc.CorporateRegistrationTypeCode = None,
-                 jurisdiction_region_address: List['JurisdictionRegionAddress'] = None):
-        self.id = id_
+                 jurisdiction_region_address: List['JurisdictionRegionAddress'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.name = name
         self.corporate_registration_type_code = corporate_registration_type_code
         self.jurisdiction_region_address = jurisdiction_region_address
@@ -2180,8 +2233,9 @@ class __CountryType(PrefixCAC, ComplexXMLParseableObject):
         'identification_code',
         'name',
     ]
-    def __init__(self, identification_code: cbc.IdentificationCode = None,
-                 name: cbc.Name = None):
+    def __init__(self,		identification_code: cbc.IdentificationCode = None,
+                 name: cbc.Name = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.identification_code = identification_code
         self.name = name
 
@@ -2192,12 +2246,13 @@ class __CreditAccountType(PrefixCAC, ComplexXMLParseableObject):
         'account_id',
     ]
 
-    def __init__(self, account_id: cbc.AccountID):
+    def __init__(self,		account_id: cbc.AccountID, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.account_id = account_id
 
 
 class __CreditNoteLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     uuid = None
     note = None
     credited_quantity = None
@@ -2226,7 +2281,7 @@ class __CreditNoteLineType(PrefixCAC, ComplexXMLParseableObject):
     sub_credit_note_line = None
     item_price_extension = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'note',
         'credited_quantity',
@@ -2256,7 +2311,7 @@ class __CreditNoteLineType(PrefixCAC, ComplexXMLParseableObject):
         'item_price_extension',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  uuid: cbc.UUID = None,
                  note: List[cbc.Note] = None,
                  credited_quantity: cbc.CreditedQuantity = None,
@@ -2283,8 +2338,9 @@ class __CreditNoteLineType(PrefixCAC, ComplexXMLParseableObject):
                  price: 'Price' = None,
                  delivery_terms: List['DeliveryTerms'] = None,
                  sub_credit_note_line: List['SubCreditNoteLine'] = None,
-                 item_price_extension: 'ItemPriceExtension' = None):
-        self.id = id_
+                 item_price_extension: 'ItemPriceExtension' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.uuid = uuid
         self.note = note
         self.credited_quantity = credited_quantity
@@ -2332,13 +2388,14 @@ class __CustomerPartyType(PrefixCAC, ComplexXMLParseableObject):
         'buyer_contact',
     ]
 
-    def __init__(self, customer_assigned_account_id: cbc.CustomerAssignedAccountID = None,
+    def __init__(self,		customer_assigned_account_id: cbc.CustomerAssignedAccountID = None,
                  supplier_assigned_account_id: cbc.SupplierAssignedAccountID = None,
                  additional_account_id: List[cbc.AdditionalAccountID] = None,
                  party: 'Party' = None,
                  delivery_contact: 'DeliveryContact' = None,
                  accounting_contact: 'AccountingContact' = None,
-                 buyer_contact: 'BuyerContact' = None):
+                 buyer_contact: 'BuyerContact' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.customer_assigned_account_id = customer_assigned_account_id
         self.supplier_assigned_account_id = supplier_assigned_account_id
         self.additional_account_id = additional_account_id
@@ -2349,20 +2406,21 @@ class __CustomerPartyType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __CustomsDeclarationType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     issuer_party = None
     order_list = [
-        'id',
+        'id_',
         'issuer_party',
     ]
-    def __init__(self, id_: cbc.ID,
-                 issuer_party: 'IssuerParty' = None):
-        self.id = id_
+    def __init__(self,		id_: cbc.ID,
+                 issuer_party: 'IssuerParty' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.issuer_party = issuer_party
 
 
 class __DebitNoteLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     line_extension_amount = None
     uuid = None
     note = None
@@ -2384,7 +2442,7 @@ class __DebitNoteLineType(PrefixCAC, ComplexXMLParseableObject):
     price = None
     sub_debit_note_line = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'note',
         'debited_quantity',
@@ -2407,7 +2465,7 @@ class __DebitNoteLineType(PrefixCAC, ComplexXMLParseableObject):
         'sub_debit_note_line',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  line_extension_amount: cbc.LineExtensionAmount,
                  uuid: cbc.UUID = None,
                  note: List[cbc.Note] = None,
@@ -2427,8 +2485,9 @@ class __DebitNoteLineType(PrefixCAC, ComplexXMLParseableObject):
                  allowance_charge: List['AllowanceCharge'] = None,
                  item: 'Item' = None,
                  price: 'Price' = None,
-                 sub_debit_note_line: List['SubDebitNoteLine'] = None):
-        self.id = id_
+                 sub_debit_note_line: List['SubDebitNoteLine'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.line_extension_amount = line_extension_amount
         self.uuid = uuid
         self.note = note
@@ -2463,10 +2522,11 @@ class __DeclarationType(PrefixCAC, ComplexXMLParseableObject):
         'evidence_supplied',
     ]
 
-    def __init__(self, name: List[cbc.Name] = None,
+    def __init__(self,		name: List[cbc.Name] = None,
                  declaration_type_code: cbc.DeclarationTypeCode = None,
                  description: List[cbc.Description] = None,
-                 evidence_supplied: List['EvidenceSupplied'] = None):
+                 evidence_supplied: List['EvidenceSupplied'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
         self.declaration_type_code = declaration_type_code
         self.description = description
@@ -2474,7 +2534,7 @@ class __DeclarationType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __DeliveryType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     quantity = None
     minimum_quantity = None
     maximum_quantity = None
@@ -2499,7 +2559,7 @@ class __DeliveryType(PrefixCAC, ComplexXMLParseableObject):
     maximum_delivery_unit = None
     shipment = None
     order_list = [
-        'id',
+        'id_',
         'quantity',
         'minimum_quantity',
         'maximum_quantity',
@@ -2525,7 +2585,7 @@ class __DeliveryType(PrefixCAC, ComplexXMLParseableObject):
         'shipment',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  quantity: cbc.Quantity = None,
                  minimum_quantity: cbc.MinimumQuantity = None,
                  maximum_quantity: cbc.MaximumQuantity = None,
@@ -2548,8 +2608,9 @@ class __DeliveryType(PrefixCAC, ComplexXMLParseableObject):
                  delivery_terms: List['DeliveryTerms'] = None,
                  minimum_delivery_unit: 'MinimumDeliveryUnit' = None,
                  maximum_delivery_unit: 'MaximumDeliveryUnit' = None,
-                 shipment: 'Shipment' = None):
-        self.id = id_
+                 shipment: 'Shipment' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.quantity = quantity
         self.minimum_quantity = minimum_quantity
         self.maximum_quantity = maximum_quantity
@@ -2576,7 +2637,7 @@ class __DeliveryType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __DeliveryTermsType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     special_terms = None
     loss_risk_responsibility_code = None
     loss_risk = None
@@ -2584,7 +2645,7 @@ class __DeliveryTermsType(PrefixCAC, ComplexXMLParseableObject):
     delivery_location = None
     allowance_charge = None
     order_list = [
-        'id',
+        'id_',
         'special_terms',
         'loss_risk_responsibility_code',
         'loss_risk',
@@ -2593,14 +2654,15 @@ class __DeliveryTermsType(PrefixCAC, ComplexXMLParseableObject):
         'allowance_charge',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  special_terms: List[cbc.SpecialTerms] = None,
                  loss_risk_responsibility_code: cbc.LossRiskResponsibilityCode = None,
                  loss_risk: List[cbc.LossRisk] = None,
                  amount: cbc.Amount = None,
                  delivery_location: 'DeliveryLocation' = None,
-                 allowance_charge: 'AllowanceCharge' = None):
-        self.id = id_
+                 allowance_charge: 'AllowanceCharge' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.special_terms = special_terms
         self.loss_risk_responsibility_code = loss_risk_responsibility_code
         self.loss_risk = loss_risk
@@ -2619,9 +2681,10 @@ class __DeliveryUnitType(PrefixCAC, ComplexXMLParseableObject):
         'hazardous_risk_indicator',
     ]
 
-    def __init__(self, batch_quantity: cbc.BatchQuantity,
+    def __init__(self,		batch_quantity: cbc.BatchQuantity,
                  consumer_unit_quantity: cbc.ConsumerUnitQuantity = None,
-                 hazardous_risk_indicator: cbc.HazardousRiskIndicator = None):
+                 hazardous_risk_indicator: cbc.HazardousRiskIndicator = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.batch_quantity = batch_quantity
         self.consumer_unit_quantity = consumer_unit_quantity
         self.hazardous_risk_indicator = hazardous_risk_indicator
@@ -2637,16 +2700,17 @@ class __DependentPriceReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'dependent_line_reference',
     ]
 
-    def __init__(self, percent: cbc.Percent = None,
+    def __init__(self,		percent: cbc.Percent = None,
                  location_address: 'LocationAddress' = None,
-                 dependent_line_reference: 'DependentLineReference' = None):
+                 dependent_line_reference: 'DependentLineReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.percent = percent
         self.location_address = location_address
         self.dependent_line_reference = dependent_line_reference
 
 
 class __DespatchType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     requested_despatch_date = None
     requested_despatch_time = None
     estimated_despatch_date = None
@@ -2666,7 +2730,7 @@ class __DespatchType(PrefixCAC, ComplexXMLParseableObject):
     estimated_despatch_period = None
     requested_despatch_period = None
     order_list = [
-        'id',
+        'id_',
         'requested_despatch_date',
         'requested_despatch_time',
         'estimated_despatch_date',
@@ -2687,7 +2751,7 @@ class __DespatchType(PrefixCAC, ComplexXMLParseableObject):
         'requested_despatch_period',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  requested_despatch_date: cbc.RequestedDespatchDate = None,
                  requested_despatch_time: cbc.RequestedDespatchTime = None,
                  estimated_despatch_date: cbc.EstimatedDespatchDate = None,
@@ -2705,8 +2769,9 @@ class __DespatchType(PrefixCAC, ComplexXMLParseableObject):
                  notify_party: List['NotifyParty'] = None,
                  contact: 'Contact' = None,
                  estimated_despatch_period: 'EstimatedDespatchPeriod' = None,
-                 requested_despatch_period: 'RequestedDespatchPeriod' = None):
-        self.id = id_
+                 requested_despatch_period: 'RequestedDespatchPeriod' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.requested_despatch_date = requested_despatch_date
         self.requested_despatch_time = requested_despatch_time
         self.estimated_despatch_date = estimated_despatch_date
@@ -2728,7 +2793,7 @@ class __DespatchType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __DespatchLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     item = None
     uuid = None
     note = None
@@ -2743,7 +2808,7 @@ class __DespatchLineType(PrefixCAC, ComplexXMLParseableObject):
     document_reference = None
     shipment = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'note',
         'line_status_code',
@@ -2759,7 +2824,7 @@ class __DespatchLineType(PrefixCAC, ComplexXMLParseableObject):
         'shipment',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  item: 'Item',
                  uuid: cbc.UUID = None,
                  note: List[cbc.Note] = None,
@@ -2772,10 +2837,11 @@ class __DespatchLineType(PrefixCAC, ComplexXMLParseableObject):
                  oversupply_quantity: cbc.OversupplyQuantity = None,
                  order_line_reference: List['OrderLineReference'] = None,
                  document_reference: List['DocumentReference'] = None,
-                 shipment: List['Shipment'] = None):
+                 shipment: List['Shipment'] = None, xml_namespaces=None):
         if not order_line_reference:
             raise ListMustNotBeEmptyException('order_line_reference')
-        self.id = id_
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.item = item
         self.uuid = uuid
         self.note = note
@@ -2805,11 +2871,12 @@ class __DimensionType(PrefixCAC, ComplexXMLParseableObject):
         'maximum_measure',
     ]
 
-    def __init__(self, attribute_id: cbc.AttributeID,
+    def __init__(self,		attribute_id: cbc.AttributeID,
                  measure: cbc.Measure = None,
                  description: List[cbc.Description] = None,
                  minimum_measure: cbc.MinimumMeasure = None,
-                 maximum_measure: cbc.MaximumMeasure = None):
+                 maximum_measure: cbc.MaximumMeasure = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.attribute_id = attribute_id
         self.measure = measure
         self.description = description
@@ -2827,16 +2894,17 @@ class __DocumentDistributionType(PrefixCAC, ComplexXMLParseableObject):
         'party',
     ]
 
-    def __init__(self, print_qualifier: cbc.PrintQualifier,
+    def __init__(self,		print_qualifier: cbc.PrintQualifier,
                  maximum_copies_numeric: cbc.MaximumCopiesNumeric,
-                 party: 'Party'):
+                 party: 'Party', xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.print_qualifier = print_qualifier
         self.maximum_copies_numeric = maximum_copies_numeric
         self.party = party
 
 
 class __DocumentReferenceType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     copy_indicator = None
     uuid = None
     issue_date = None
@@ -2854,7 +2922,7 @@ class __DocumentReferenceType(PrefixCAC, ComplexXMLParseableObject):
     issuer_party = None
     result_of_verification = None
     order_list = [
-        'id',
+        'id_',
         'copy_indicator',
         'uuid',
         'issue_date',
@@ -2873,7 +2941,7 @@ class __DocumentReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'result_of_verification',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  copy_indicator: cbc.CopyIndicator = None,
                  uuid: cbc.UUID = None,
                  issue_date: cbc.IssueDate = None,
@@ -2889,8 +2957,9 @@ class __DocumentReferenceType(PrefixCAC, ComplexXMLParseableObject):
                  attachment: 'Attachment' = None,
                  validity_period: 'ValidityPeriod' = None,
                  issuer_party: 'IssuerParty' = None,
-                 result_of_verification: 'ResultOfVerification' = None):
-        self.id = id_
+                 result_of_verification: 'ResultOfVerification' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.copy_indicator = copy_indicator
         self.uuid = uuid
         self.issue_date = issue_date
@@ -2923,13 +2992,14 @@ class __DocumentResponseType(PrefixCAC, ComplexXMLParseableObject):
         'line_response',
     ]
 
-    def __init__(self, response: 'Response',
+    def __init__(self,		response: 'Response',
                  document_reference: List['DocumentReference'] = None,
                  issuer_party: 'IssuerParty' = None,
                  recipient_party: 'RecipientParty' = None,
-                 line_response: List['LineResponse'] = None):
+                 line_response: List['LineResponse'] = None, xml_namespaces=None):
         if not document_reference:
             raise ListMustNotBeEmptyException('document_reference')
+        super().__init__(xml_namespaces)
         self.response = response
         self.document_reference = document_reference
         self.issuer_party = issuer_party
@@ -2949,10 +3019,11 @@ class __DutyType(PrefixCAC, ComplexXMLParseableObject):
         'tax_category',
     ]
 
-    def __init__(self, amount: cbc.Amount,
+    def __init__(self,		amount: cbc.Amount,
                  duty: cbc.Duty = None,
                  duty_code: cbc.DutyCode = None,
-                 tax_category: 'TaxCategory' = None):
+                 tax_category: 'TaxCategory' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.amount = amount
         self.duty = duty
         self.duty_code = duty_code
@@ -2966,8 +3037,9 @@ class __EconomicOperatorRoleType(PrefixCAC, ComplexXMLParseableObject):
         'role_code',
         'role_description',
     ]
-    def __init__(self, role_code: cbc.RoleCode = None,
-                 role_description: List[cbc.RoleDescription] = None):
+    def __init__(self,		role_code: cbc.RoleCode = None,
+                 role_description: List[cbc.RoleDescription] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.role_code = role_code
         self.role_description = role_description
 
@@ -2986,11 +3058,12 @@ class __EconomicOperatorShortListType(PrefixCAC, ComplexXMLParseableObject):
         'pre_selected_party',
     ]
 
-    def __init__(self, limitation_description: List[cbc.LimitationDescription] = None,
+    def __init__(self,		limitation_description: List[cbc.LimitationDescription] = None,
                  expected_quantity: cbc.ExpectedQuantity = None,
                  maximum_quantity: cbc.MaximumQuantity = None,
                  minimum_quantity: cbc.MinimumQuantity = None,
-                 pre_selected_party: List['PreSelectedParty'] = None):
+                 pre_selected_party: List['PreSelectedParty'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.limitation_description = limitation_description
         self.expected_quantity = expected_quantity
         self.maximum_quantity = maximum_quantity
@@ -3010,10 +3083,11 @@ class __EmissionCalculationMethodType(PrefixCAC, ComplexXMLParseableObject):
         'measurement_to_location',
     ]
 
-    def __init__(self, calculation_method_code: cbc.CalculationMethodCode = None,
+    def __init__(self,		calculation_method_code: cbc.CalculationMethodCode = None,
                  fullness_indication_code: cbc.FullnessIndicationCode = None,
                  measurement_from_location: 'MeasurementFromLocation' = None,
-                 measurement_to_location: 'MeasurementToLocation' = None):
+                 measurement_to_location: 'MeasurementToLocation' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.calculation_method_code = calculation_method_code
         self.fullness_indication_code = fullness_indication_code
         self.measurement_from_location = measurement_from_location
@@ -3034,11 +3108,12 @@ class __EndorsementType(PrefixCAC, ComplexXMLParseableObject):
         'signature',
     ]
 
-    def __init__(self, document_id: cbc.DocumentID,
+    def __init__(self,		document_id: cbc.DocumentID,
                  approval_status: cbc.ApprovalStatus,
                  endorser_party: 'EndorserParty',
                  remarks: List[cbc.Remarks] = None,
-                 signature: List['Signature'] = None):
+                 signature: List['Signature'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.document_id = document_id
         self.approval_status = approval_status
         self.endorser_party = endorser_party
@@ -3058,10 +3133,11 @@ class __EndorserPartyType(PrefixCAC, ComplexXMLParseableObject):
         'signatory_contact',
     ]
 
-    def __init__(self, role_code: cbc.RoleCode,
+    def __init__(self,		role_code: cbc.RoleCode,
                  sequence_numeric: cbc.SequenceNumeric,
                  party: 'Party',
-                 signatory_contact: 'SignatoryContact'):
+                 signatory_contact: 'SignatoryContact', xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.role_code = role_code
         self.sequence_numeric = sequence_numeric
         self.party = party
@@ -3080,10 +3156,11 @@ class __EnergyTaxReportType(PrefixCAC, ComplexXMLParseableObject):
         'tax_scheme',
     ]
 
-    def __init__(self, tax_scheme: 'TaxScheme',
+    def __init__(self,		tax_scheme: 'TaxScheme',
                  tax_energy_amount: cbc.TaxEnergyAmount = None,
                  tax_energy_on_account_amount: cbc.TaxEnergyOnAccountAmount = None,
-                 tax_energy_balance_amount: cbc.TaxEnergyBalanceAmount = None):
+                 tax_energy_balance_amount: cbc.TaxEnergyBalanceAmount = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.tax_scheme = tax_scheme
         self.tax_energy_amount = tax_energy_amount
         self.tax_energy_on_account_amount = tax_energy_on_account_amount
@@ -3102,10 +3179,11 @@ class __EnergyWaterSupplyType(PrefixCAC, ComplexXMLParseableObject):
         'energy_water_consumption_correction',
     ]
 
-    def __init__(self, consumption_report: List['ConsumptionReport'] = None,
+    def __init__(self,		consumption_report: List['ConsumptionReport'] = None,
                  energy_tax_report: List['EnergyTaxReport'] = None,
                  consumption_average: List['ConsumptionAverage'] = None,
-                 energy_water_consumption_correction: List['EnergyWaterConsumptionCorrection'] = None):
+                 energy_water_consumption_correction: List['EnergyWaterConsumptionCorrection'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.consumption_report = consumption_report
         self.energy_tax_report = energy_tax_report
         self.consumption_average = consumption_average
@@ -3124,10 +3202,11 @@ class __EnvironmentalEmissionType(PrefixCAC, ComplexXMLParseableObject):
         'emission_calculation_method',
     ]
 
-    def __init__(self, environmental_emission_type_code: cbc.EnvironmentalEmissionTypeCode,
+    def __init__(self,		environmental_emission_type_code: cbc.EnvironmentalEmissionTypeCode,
                  value_measure: cbc.ValueMeasure,
                  description: List[cbc.Description] = None,
-                 emission_calculation_method: List['EmissionCalculationMethod'] = None):
+                 emission_calculation_method: List['EmissionCalculationMethod'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.environmental_emission_type_code = environmental_emission_type_code
         self.value_measure = value_measure
         self.description = description
@@ -3154,14 +3233,15 @@ class __EvaluationCriterionType(PrefixCAC, ComplexXMLParseableObject):
         'suggested_evidence',
     ]
 
-    def __init__(self, evaluation_criterion_type_code: cbc.EvaluationCriterionTypeCode = None,
+    def __init__(self,		evaluation_criterion_type_code: cbc.EvaluationCriterionTypeCode = None,
                  description: List[cbc.Description] = None,
                  threshold_amount: cbc.ThresholdAmount = None,
                  threshold_quantity: cbc.ThresholdQuantity = None,
                  expression_code: cbc.ExpressionCode = None,
                  expression: List[cbc.Expression] = None,
                  duration_period: 'DurationPeriod' = None,
-                 suggested_evidence: List['SuggestedEvidence'] = None):
+                 suggested_evidence: List['SuggestedEvidence'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.evaluation_criterion_type_code = evaluation_criterion_type_code
         self.description = description
         self.threshold_amount = threshold_amount
@@ -3194,7 +3274,7 @@ class __EventType(PrefixCAC, ComplexXMLParseableObject):
         'occurence_location',
     ]
 
-    def __init__(self, identification_id: cbc.IdentificationID = None,
+    def __init__(self,		identification_id: cbc.IdentificationID = None,
                  occurrence_date: cbc.OccurrenceDate = None,
                  occurrence_time: cbc.OccurrenceTime = None,
                  type_code: cbc.TypeCode = None,
@@ -3202,7 +3282,8 @@ class __EventType(PrefixCAC, ComplexXMLParseableObject):
                  completion_indicator: cbc.CompletionIndicator = None,
                  current_status: List['CurrentStatus'] = None,
                  contact: List['Contact'] = None,
-                 occurence_location: 'OccurenceLocation' = None):
+                 occurence_location: 'OccurenceLocation' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.identification_id = identification_id
         self.occurrence_date = occurrence_date
         self.occurrence_time = occurrence_time
@@ -3224,9 +3305,10 @@ class __EventCommentType(PrefixCAC, ComplexXMLParseableObject):
         'issue_time',
     ]
 
-    def __init__(self, comment: cbc.Comment,
+    def __init__(self,		comment: cbc.Comment,
                  issue_date: cbc.IssueDate = None,
-                 issue_time: cbc.IssueTime = None):
+                 issue_time: cbc.IssueTime = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.comment = comment
         self.issue_date = issue_date
         self.issue_time = issue_time
@@ -3244,10 +3326,11 @@ class __EventLineItemType(PrefixCAC, ComplexXMLParseableObject):
         'supply_item',
     ]
 
-    def __init__(self, supply_item: 'SupplyItem',
+    def __init__(self,		supply_item: 'SupplyItem',
                  line_number_numeric: cbc.LineNumberNumeric = None,
                  participating_locations_location: 'ParticipatingLocationsLocation' = None,
-                 retail_planned_impact: List['RetailPlannedImpact'] = None):
+                 retail_planned_impact: List['RetailPlannedImpact'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.supply_item = supply_item
         self.line_number_numeric = line_number_numeric
         self.participating_locations_location = participating_locations_location
@@ -3266,10 +3349,11 @@ class __EventTacticType(PrefixCAC, ComplexXMLParseableObject):
         'period',
     ]
 
-    def __init__(self, event_tactic_enumeration: 'EventTacticEnumeration',
+    def __init__(self,		event_tactic_enumeration: 'EventTacticEnumeration',
                  comment: cbc.Comment = None,
                  quantity: cbc.Quantity = None,
-                 period: 'Period' = None):
+                 period: 'Period' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.event_tactic_enumeration = event_tactic_enumeration
         self.comment = comment
         self.quantity = quantity
@@ -3288,10 +3372,11 @@ class __EventTacticEnumerationType(PrefixCAC, ComplexXMLParseableObject):
         'trade_item_packing_labeling_type_code',
     ]
 
-    def __init__(self, consumer_incentive_tactic_type_code: cbc.ConsumerIncentiveTacticTypeCode = None,
+    def __init__(self,		consumer_incentive_tactic_type_code: cbc.ConsumerIncentiveTacticTypeCode = None,
                  display_tactic_type_code: cbc.DisplayTacticTypeCode = None,
                  feature_tactic_type_code: cbc.FeatureTacticTypeCode = None,
-                 trade_item_packing_labeling_type_code: cbc.TradeItemPackingLabelingTypeCode = None):
+                 trade_item_packing_labeling_type_code: cbc.TradeItemPackingLabelingTypeCode = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.consumer_incentive_tactic_type_code = consumer_incentive_tactic_type_code
         self.display_tactic_type_code = display_tactic_type_code
         self.feature_tactic_type_code = feature_tactic_type_code
@@ -3299,7 +3384,7 @@ class __EventTacticEnumerationType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __EvidenceType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     evidence_type_code = None
     description = None
     candidate_statement = None
@@ -3307,7 +3392,7 @@ class __EvidenceType(PrefixCAC, ComplexXMLParseableObject):
     document_reference = None
     language = None
     order_list = [
-        'id',
+        'id_',
         'evidence_type_code',
         'description',
         'candidate_statement',
@@ -3316,14 +3401,15 @@ class __EvidenceType(PrefixCAC, ComplexXMLParseableObject):
         'language',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  evidence_type_code: cbc.EvidenceTypeCode = None,
                  description: List[cbc.Description] = None,
                  candidate_statement: List[cbc.CandidateStatement] = None,
                  evidence_issuing_party: 'EvidenceIssuingParty' = None,
                  document_reference: 'DocumentReference' = None,
-                 language: 'Language' = None):
-        self.id = id_
+                 language: 'Language' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.evidence_type_code = evidence_type_code
         self.description = description
         self.candidate_statement = candidate_statement
@@ -3333,17 +3419,18 @@ class __EvidenceType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __EvidenceSuppliedType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     order_list = [
-        'id',
+        'id_',
     ]
 
-    def __init__(self, id_: cbc.ID):
-        self.id = id_
+    def __init__(self,		id_: cbc.ID, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
 
 
 class __ExceptionCriteriaLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     threshold_value_comparison_code = None
     threshold_quantity = None
     note = None
@@ -3356,7 +3443,7 @@ class __ExceptionCriteriaLineType(PrefixCAC, ComplexXMLParseableObject):
     supply_item = None
     forecast_exception_criterion_line = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'threshold_value_comparison_code',
         'threshold_quantity',
@@ -3370,7 +3457,7 @@ class __ExceptionCriteriaLineType(PrefixCAC, ComplexXMLParseableObject):
         'forecast_exception_criterion_line',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  threshold_value_comparison_code: cbc.ThresholdValueComparisonCode,
                  threshold_quantity: cbc.ThresholdQuantity,
                  note: List[cbc.Note] = None,
@@ -3381,10 +3468,11 @@ class __ExceptionCriteriaLineType(PrefixCAC, ComplexXMLParseableObject):
                  performance_metric_type_code: cbc.PerformanceMetricTypeCode = None,
                  effective_period: 'EffectivePeriod' = None,
                  supply_item: List['SupplyItem'] = None,
-                 forecast_exception_criterion_line: 'ForecastExceptionCriterionLine' = None):
+                 forecast_exception_criterion_line: 'ForecastExceptionCriterionLine' = None, xml_namespaces=None):
         if not supply_item:
             raise ListMustNotBeEmptyException('supply_item')
-        self.id = id_
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.threshold_value_comparison_code = threshold_value_comparison_code
         self.threshold_quantity = threshold_quantity
         self.note = note
@@ -3399,7 +3487,7 @@ class __ExceptionCriteriaLineType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ExceptionNotificationLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     compared_value_measure = None
     source_value_measure = None
     supply_item = None
@@ -3415,7 +3503,7 @@ class __ExceptionNotificationLineType(PrefixCAC, ComplexXMLParseableObject):
     document_reference = None
     forecast_exception = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'description',
         'exception_status_code',
@@ -3432,7 +3520,7 @@ class __ExceptionNotificationLineType(PrefixCAC, ComplexXMLParseableObject):
         'supply_item',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  compared_value_measure: cbc.ComparedValueMeasure,
                  source_value_measure: cbc.SourceValueMeasure,
                  supply_item: 'SupplyItem',
@@ -3446,8 +3534,9 @@ class __ExceptionNotificationLineType(PrefixCAC, ComplexXMLParseableObject):
                  performance_metric_type_code: cbc.PerformanceMetricTypeCode = None,
                  exception_observation_period: 'ExceptionObservationPeriod' = None,
                  document_reference: List['DocumentReference'] = None,
-                 forecast_exception: 'ForecastException' = None):
-        self.id = id_
+                 forecast_exception: 'ForecastException' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.compared_value_measure = compared_value_measure
         self.source_value_measure = source_value_measure
         self.supply_item = supply_item
@@ -3486,7 +3575,7 @@ class __ExchangeRateType(PrefixCAC, ComplexXMLParseableObject):
         'foreign_exchange_contract',
     ]
 
-    def __init__(self, source_currency_code: cbc.SourceCurrencyCode,
+    def __init__(self,		source_currency_code: cbc.SourceCurrencyCode,
                  target_currency_code: cbc.TargetCurrencyCode,
                  source_currency_base_rate: cbc.SourceCurrencyBaseRate = None,
                  target_currency_base_rate: cbc.TargetCurrencyBaseRate = None,
@@ -3494,7 +3583,8 @@ class __ExchangeRateType(PrefixCAC, ComplexXMLParseableObject):
                  calculation_rate: cbc.CalculationRate = None,
                  mathematic_operator_code: cbc.MathematicOperatorCode = None,
                  date: cbc.Date = None,
-                 foreign_exchange_contract: 'ForeignExchangeContract' = None):
+                 foreign_exchange_contract: 'ForeignExchangeContract' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.source_currency_code = source_currency_code
         self.target_currency_code = target_currency_code
         self.source_currency_base_rate = source_currency_base_rate
@@ -3532,7 +3622,7 @@ class __ExternalReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'description',
     ]
 
-    def __init__(self, uri: cbc.URI = None,
+    def __init__(self,		uri: cbc.URI = None,
                  document_hash: cbc.DocumentHash = None,
                  hash_algorithm_method: cbc.HashAlgorithmMethod = None,
                  expiry_date: cbc.ExpiryDate = None,
@@ -3542,7 +3632,8 @@ class __ExternalReferenceType(PrefixCAC, ComplexXMLParseableObject):
                  encoding_code: cbc.EncodingCode = None,
                  character_set_code: cbc.CharacterSetCode = None,
                  file_name: cbc.FileName = None,
-                 description: List[cbc.Description] = None):
+                 description: List[cbc.Description] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.uri = uri
         self.document_hash = document_hash
         self.hash_algorithm_method = hash_algorithm_method
@@ -3557,7 +3648,7 @@ class __ExternalReferenceType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __FinancialAccountType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     name = None
     alias_name = None
     account_type_code = None
@@ -3567,7 +3658,7 @@ class __FinancialAccountType(PrefixCAC, ComplexXMLParseableObject):
     financial_institution_branch = None
     country = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'alias_name',
         'account_type_code',
@@ -3578,7 +3669,7 @@ class __FinancialAccountType(PrefixCAC, ComplexXMLParseableObject):
         'country',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  name: cbc.Name = None,
                  alias_name: cbc.AliasName = None,
                  account_type_code: cbc.AccountTypeCode = None,
@@ -3586,8 +3677,9 @@ class __FinancialAccountType(PrefixCAC, ComplexXMLParseableObject):
                  currency_code: cbc.CurrencyCode = None,
                  payment_note: List[cbc.PaymentNote] = None,
                  financial_institution_branch: 'FinancialInstitutionBranch' = None,
-                 country: 'Country' = None):
-        self.id = id_
+                 country: 'Country' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.name = name
         self.alias_name = alias_name
         self.account_type_code = account_type_code
@@ -3612,11 +3704,12 @@ class __FinancialGuaranteeType(PrefixCAC, ComplexXMLParseableObject):
         'constitution_period',
     ]
 
-    def __init__(self, guarantee_type_code: cbc.GuaranteeTypeCode,
+    def __init__(self,		guarantee_type_code: cbc.GuaranteeTypeCode,
                  description: List[cbc.Description] = None,
                  liability_amount: cbc.LiabilityAmount = None,
                  amount_rate: cbc.AmountRate = None,
-                 constitution_period: 'ConstitutionPeriod' = None):
+                 constitution_period: 'ConstitutionPeriod' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.guarantee_type_code = guarantee_type_code
         self.description = description
         self.liability_amount = liability_amount
@@ -3625,19 +3718,20 @@ class __FinancialGuaranteeType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __FinancialInstitutionType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     name = None
     address = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'address',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  name: cbc.Name = None,
-                 address: 'Address' = None):
-        self.id = id_
+                 address: 'Address' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.name = name
         self.address = address
 
@@ -3662,14 +3756,15 @@ class __ForecastExceptionType(PrefixCAC, ComplexXMLParseableObject):
         'comparison_forecast_issue_date',
     ]
 
-    def __init__(self, forecast_purpose_code: cbc.ForecastPurposeCode,
+    def __init__(self,		forecast_purpose_code: cbc.ForecastPurposeCode,
                  forecast_type_code: cbc.ForecastTypeCode,
                  issue_date: cbc.IssueDate,
                  data_source_code: cbc.DataSourceCode,
                  issue_time: cbc.IssueTime = None,
                  comparison_data_code: cbc.ComparisonDataCode = None,
                  comparison_forecast_issue_time: cbc.ComparisonForecastIssueTime = None,
-                 comparison_forecast_issue_date: cbc.ComparisonForecastIssueDate = None):
+                 comparison_forecast_issue_date: cbc.ComparisonForecastIssueDate = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.forecast_purpose_code = forecast_purpose_code
         self.forecast_type_code = forecast_type_code
         self.issue_date = issue_date
@@ -3694,11 +3789,12 @@ class __ForecastExceptionCriterionLineType(PrefixCAC, ComplexXMLParseableObject)
         'time_delta_days_quantity',
     ]
 
-    def __init__(self, forecast_purpose_code: cbc.ForecastPurposeCode,
+    def __init__(self,		forecast_purpose_code: cbc.ForecastPurposeCode,
                  forecast_type_code: cbc.ForecastTypeCode,
                  data_source_code: cbc.DataSourceCode,
                  comparison_data_source_code: cbc.ComparisonDataSourceCode = None,
-                 time_delta_days_quantity: cbc.TimeDeltaDaysQuantity = None):
+                 time_delta_days_quantity: cbc.TimeDeltaDaysQuantity = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.forecast_purpose_code = forecast_purpose_code
         self.forecast_type_code = forecast_type_code
         self.data_source_code = data_source_code
@@ -3707,14 +3803,14 @@ class __ForecastExceptionCriterionLineType(PrefixCAC, ComplexXMLParseableObject)
 
 
 class __ForecastLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     forecast_type_code = None
     note = None
     frozen_document_indicator = None
     forecast_period = None
     sales_item = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'frozen_document_indicator',
         'forecast_type_code',
@@ -3722,13 +3818,14 @@ class __ForecastLineType(PrefixCAC, ComplexXMLParseableObject):
         'sales_item',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  forecast_type_code: cbc.ForecastTypeCode,
                  note: List[cbc.Note] = None,
                  frozen_document_indicator: cbc.FrozenDocumentIndicator = None,
                  forecast_period: 'ForecastPeriod' = None,
-                 sales_item: 'SalesItem' = None):
-        self.id = id_
+                 sales_item: 'SalesItem' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.forecast_type_code = forecast_type_code
         self.note = note
         self.frozen_document_indicator = frozen_document_indicator
@@ -3737,7 +3834,7 @@ class __ForecastLineType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ForecastRevisionLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     revised_forecast_line_id = None
     source_forecast_issue_date = None
     source_forecast_issue_time = None
@@ -3747,7 +3844,7 @@ class __ForecastRevisionLineType(PrefixCAC, ComplexXMLParseableObject):
     forecast_period = None
     sales_item = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'description',
         'revised_forecast_line_id',
@@ -3758,7 +3855,7 @@ class __ForecastRevisionLineType(PrefixCAC, ComplexXMLParseableObject):
         'sales_item',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  revised_forecast_line_id: cbc.RevisedForecastLineID,
                  source_forecast_issue_date: cbc.SourceForecastIssueDate,
                  source_forecast_issue_time: cbc.SourceForecastIssueTime,
@@ -3766,8 +3863,9 @@ class __ForecastRevisionLineType(PrefixCAC, ComplexXMLParseableObject):
                  description: List[cbc.Description] = None,
                  adjustment_reason_code: cbc.AdjustmentReasonCode = None,
                  forecast_period: 'ForecastPeriod' = None,
-                 sales_item: 'SalesItem' = None):
-        self.id = id_
+                 sales_item: 'SalesItem' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.revised_forecast_line_id = revised_forecast_line_id
         self.source_forecast_issue_date = source_forecast_issue_date
         self.source_forecast_issue_time = source_forecast_issue_time
@@ -3794,12 +3892,13 @@ class __FrameworkAgreementType(PrefixCAC, ComplexXMLParseableObject):
         'subsequent_process_tender_requirement',
     ]
 
-    def __init__(self, expected_operator_quantity: cbc.ExpectedOperatorQuantity = None,
+    def __init__(self,		expected_operator_quantity: cbc.ExpectedOperatorQuantity = None,
                  maximum_operator_quantity: cbc.MaximumOperatorQuantity = None,
                  justification: List[cbc.Justification] = None,
                  frequency: List[cbc.Frequency] = None,
                  duration_period: 'DurationPeriod' = None,
-                 subsequent_process_tender_requirement: List['SubsequentProcessTenderRequirement'] = None):
+                 subsequent_process_tender_requirement: List['SubsequentProcessTenderRequirement'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.expected_operator_quantity = expected_operator_quantity
         self.maximum_operator_quantity = maximum_operator_quantity
         self.justification = justification
@@ -3809,7 +3908,7 @@ class __FrameworkAgreementType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __GoodsItemType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     sequence_number_id = None
     description = None
     hazardous_risk_indicator = None
@@ -3850,7 +3949,7 @@ class __GoodsItemType(PrefixCAC, ComplexXMLParseableObject):
     minimum_temperature = None
     maximum_temperature = None
     order_list = [
-        'id',
+        'id_',
         'sequence_number_id',
         'description',
         'hazardous_risk_indicator',
@@ -3892,7 +3991,7 @@ class __GoodsItemType(PrefixCAC, ComplexXMLParseableObject):
         'maximum_temperature',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  sequence_number_id: cbc.SequenceNumberID = None,
                  description: List[cbc.Description] = None,
                  hazardous_risk_indicator: cbc.HazardousRiskIndicator = None,
@@ -3931,8 +4030,9 @@ class __GoodsItemType(PrefixCAC, ComplexXMLParseableObject):
                  containing_package: List['ContainingPackage'] = None,
                  shipment_document_reference: 'ShipmentDocumentReference' = None,
                  minimum_temperature: 'MinimumTemperature' = None,
-                 maximum_temperature: 'MaximumTemperature' = None):
-        self.id = id_
+                 maximum_temperature: 'MaximumTemperature' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.sequence_number_id = sequence_number_id
         self.description = description
         self.hazardous_risk_indicator = hazardous_risk_indicator
@@ -3975,19 +4075,20 @@ class __GoodsItemType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __GoodsItemContainerType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     quantity = None
     transport_equipment = None
     order_list = [
-        'id',
+        'id_',
         'quantity',
         'transport_equipment',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  quantity: cbc.Quantity = None,
-                 transport_equipment: List['TransportEquipment'] = None):
-        self.id = id_
+                 transport_equipment: List['TransportEquipment'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.quantity = quantity
         self.transport_equipment = transport_equipment
 
@@ -4010,13 +4111,14 @@ class __HazardousGoodsTransitType(PrefixCAC, ComplexXMLParseableObject):
         'minimum_temperature',
     ]
 
-    def __init__(self, transport_emergency_card_code: cbc.TransportEmergencyCardCode = None,
+    def __init__(self,		transport_emergency_card_code: cbc.TransportEmergencyCardCode = None,
                  packing_criteria_code: cbc.PackingCriteriaCode = None,
                  hazardous_regulation_code: cbc.HazardousRegulationCode = None,
                  inhalation_toxicity_zone_code: cbc.InhalationToxicityZoneCode = None,
                  transport_authorization_code: cbc.TransportAuthorizationCode = None,
                  maximum_temperature: 'MaximumTemperature' = None,
-                 minimum_temperature: 'MinimumTemperature' = None):
+                 minimum_temperature: 'MinimumTemperature' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.transport_emergency_card_code = transport_emergency_card_code
         self.packing_criteria_code = packing_criteria_code
         self.hazardous_regulation_code = hazardous_regulation_code
@@ -4027,7 +4129,7 @@ class __HazardousGoodsTransitType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __HazardousItemType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     placard_notation = None
     placard_endorsement = None
     additional_information = None
@@ -4051,7 +4153,7 @@ class __HazardousItemType(PrefixCAC, ComplexXMLParseableObject):
     flashpoint_temperature = None
     additional_temperature = None
     order_list = [
-        'id',
+        'id_',
         'placard_notation',
         'placard_endorsement',
         'additional_information',
@@ -4076,7 +4178,7 @@ class __HazardousItemType(PrefixCAC, ComplexXMLParseableObject):
         'additional_temperature',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  placard_notation: cbc.PlacardNotation = None,
                  placard_endorsement: cbc.PlacardEndorsement = None,
                  additional_information: List[cbc.AdditionalInformation] = None,
@@ -4098,8 +4200,9 @@ class __HazardousItemType(PrefixCAC, ComplexXMLParseableObject):
                  hazardous_goods_transit: List['HazardousGoodsTransit'] = None,
                  emergency_temperature: 'EmergencyTemperature' = None,
                  flashpoint_temperature: 'FlashpointTemperature' = None,
-                 additional_temperature: List['AdditionalTemperature'] = None):
-        self.id = id_
+                 additional_temperature: List['AdditionalTemperature'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.placard_notation = placard_notation
         self.placard_endorsement = placard_endorsement
         self.additional_information = additional_information
@@ -4142,13 +4245,14 @@ class __ImmobilizedSecurityType(PrefixCAC, ComplexXMLParseableObject):
         'issuer_party',
     ]
 
-    def __init__(self, immobilization_certificate_id: cbc.ImmobilizationCertificateID = None,
+    def __init__(self,		immobilization_certificate_id: cbc.ImmobilizationCertificateID = None,
                  security_id: cbc.SecurityID = None,
                  issue_date: cbc.IssueDate = None,
                  face_value_amount: cbc.FaceValueAmount = None,
                  market_value_amount: cbc.MarketValueAmount = None,
                  shares_number_quantity: cbc.SharesNumberQuantity = None,
-                 issuer_party: 'IssuerParty' = None):
+                 issuer_party: 'IssuerParty' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.immobilization_certificate_id = immobilization_certificate_id
         self.security_id = security_id
         self.issue_date = issue_date
@@ -4159,25 +4263,26 @@ class __ImmobilizedSecurityType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __InstructionForReturnsLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     quantity = None
     item = None
     note = None
     manufacturer_party = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'quantity',
         'manufacturer_party',
         'item',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  quantity: cbc.Quantity,
                  item: 'Item',
                  note: List[cbc.Note] = None,
-                 manufacturer_party: 'ManufacturerParty' = None):
-        self.id = id_
+                 manufacturer_party: 'ManufacturerParty' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.quantity = quantity
         self.item = item
         self.note = note
@@ -4185,7 +4290,7 @@ class __InstructionForReturnsLineType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __InventoryReportLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     quantity = None
     item = None
     note = None
@@ -4194,7 +4299,7 @@ class __InventoryReportLineType(PrefixCAC, ComplexXMLParseableObject):
     availability_status_code = None
     inventory_location = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'quantity',
         'inventory_value_amount',
@@ -4204,15 +4309,16 @@ class __InventoryReportLineType(PrefixCAC, ComplexXMLParseableObject):
         'inventory_location',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  quantity: cbc.Quantity,
                  item: 'Item',
                  note: List[cbc.Note] = None,
                  inventory_value_amount: cbc.InventoryValueAmount = None,
                  availability_date: cbc.AvailabilityDate = None,
                  availability_status_code: cbc.AvailabilityStatusCode = None,
-                 inventory_location: 'InventoryLocation' = None):
-        self.id = id_
+                 inventory_location: 'InventoryLocation' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.quantity = quantity
         self.item = item
         self.note = note
@@ -4223,7 +4329,7 @@ class __InventoryReportLineType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __InvoiceLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     line_extension_amount = None
     item = None
     uuid = None
@@ -4252,7 +4358,7 @@ class __InvoiceLineType(PrefixCAC, ComplexXMLParseableObject):
     sub_invoice_line = None
     item_price_extension = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'note',
         'invoiced_quantity',
@@ -4282,7 +4388,7 @@ class __InvoiceLineType(PrefixCAC, ComplexXMLParseableObject):
         'item_price_extension',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  line_extension_amount: cbc.LineExtensionAmount,
                  item: 'Item',
                  uuid: cbc.UUID = None,
@@ -4309,8 +4415,9 @@ class __InvoiceLineType(PrefixCAC, ComplexXMLParseableObject):
                  price: 'Price' = None,
                  delivery_terms: 'DeliveryTerms' = None,
                  sub_invoice_line: List['SubInvoiceLine'] = None,
-                 item_price_extension: 'ItemPriceExtension' = None):
-        self.id = id_
+                 item_price_extension: 'ItemPriceExtension' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.line_extension_amount = line_extension_amount
         self.item = item
         self.uuid = uuid
@@ -4404,7 +4511,7 @@ class __ItemType(PrefixCAC, ComplexXMLParseableObject):
         'dimension',
     ]
 
-    def __init__(self, description: List[cbc.Description] = None,
+    def __init__(self,		description: List[cbc.Description] = None,
                  pack_quantity: cbc.PackQuantity = None,
                  pack_size_numeric: cbc.PackSizeNumeric = None,
                  catalogue_indicator: cbc.CatalogueIndicator = None,
@@ -4433,7 +4540,8 @@ class __ItemType(PrefixCAC, ComplexXMLParseableObject):
                  origin_address: List['OriginAddress'] = None,
                  item_instance: List['ItemInstance'] = None,
                  certificate: List['Certificate'] = None,
-                 dimension: List['Dimension'] = None):
+                 dimension: List['Dimension'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.description = description
         self.pack_quantity = pack_quantity
         self.pack_size_numeric = pack_size_numeric
@@ -4473,21 +4581,22 @@ class __ItemComparisonType(PrefixCAC, ComplexXMLParseableObject):
         'price_amount',
         'quantity',
     ]
-    def __init__(self, price_amount: cbc.PriceAmount = None,
-                 quantity: cbc.Quantity = None):
+    def __init__(self,		price_amount: cbc.PriceAmount = None,
+                 quantity: cbc.Quantity = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.price_amount = price_amount
         self.quantity = quantity
 
 
 class __ItemIdentificationType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     extended_id = None
     barcode_symbology_id = None
     physical_attribute = None
     measurement_dimension = None
     issuer_party = None
     order_list = [
-        'id',
+        'id_',
         'extended_id',
         'barcode_symbology_id',
         'physical_attribute',
@@ -4495,13 +4604,14 @@ class __ItemIdentificationType(PrefixCAC, ComplexXMLParseableObject):
         'issuer_party',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  extended_id: cbc.ExtendedID = None,
                  barcode_symbology_id: cbc.BarcodeSymbologyID = None,
                  physical_attribute: List['PhysicalAttribute'] = None,
                  measurement_dimension: List['MeasurementDimension'] = None,
-                 issuer_party: 'IssuerParty' = None):
-        self.id = id_
+                 issuer_party: 'IssuerParty' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.extended_id = extended_id
         self.barcode_symbology_id = barcode_symbology_id
         self.physical_attribute = physical_attribute
@@ -4525,16 +4635,17 @@ class __ItemInformationRequestLineType(PrefixCAC, ComplexXMLParseableObject):
         'sales_item',
     ]
 
-    def __init__(self, time_frequency_code: cbc.TimeFrequencyCode = None,
+    def __init__(self,		time_frequency_code: cbc.TimeFrequencyCode = None,
                  supply_chain_activity_type_code: cbc.SupplyChainActivityTypeCode = None,
                  forecast_type_code: cbc.ForecastTypeCode = None,
                  performance_metric_type_code: cbc.PerformanceMetricTypeCode = None,
                  period: List['Period'] = None,
-                 sales_item: List['SalesItem'] = None):
+                 sales_item: List['SalesItem'] = None, xml_namespaces=None):
         if not period:
             raise ListMustNotBeEmptyException('period')
         if not sales_item:
             raise ListMustNotBeEmptyException('sales_item')
+        super().__init__(xml_namespaces)
         self.time_frequency_code = time_frequency_code
         self.supply_chain_activity_type_code = supply_chain_activity_type_code
         self.forecast_type_code = forecast_type_code
@@ -4563,14 +4674,15 @@ class __ItemInstanceType(PrefixCAC, ComplexXMLParseableObject):
         'lot_identification',
     ]
 
-    def __init__(self, product_trace_id: cbc.ProductTraceID = None,
+    def __init__(self,		product_trace_id: cbc.ProductTraceID = None,
                  manufacture_date: cbc.ManufactureDate = None,
                  manufacture_time: cbc.ManufactureTime = None,
                  best_before_date: cbc.BestBeforeDate = None,
                  registration_id: cbc.RegistrationID = None,
                  serial_id: cbc.SerialID = None,
                  additional_item_property: List['AdditionalItemProperty'] = None,
-                 lot_identification: 'LotIdentification' = None):
+                 lot_identification: 'LotIdentification' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.product_trace_id = product_trace_id
         self.manufacture_date = manufacture_date
         self.manufacture_time = manufacture_time
@@ -4609,7 +4721,7 @@ class __ItemLocationQuantityType(PrefixCAC, ComplexXMLParseableObject):
         'dependent_price_reference',
     ]
 
-    def __init__(self, lead_time_measure: cbc.LeadTimeMeasure = None,
+    def __init__(self,		lead_time_measure: cbc.LeadTimeMeasure = None,
                  minimum_quantity: cbc.MinimumQuantity = None,
                  maximum_quantity: cbc.MaximumQuantity = None,
                  hazardous_risk_indicator: cbc.HazardousRiskIndicator = None,
@@ -4620,7 +4732,8 @@ class __ItemLocationQuantityType(PrefixCAC, ComplexXMLParseableObject):
                  applicable_tax_category: List['ApplicableTaxCategory'] = None,
                  package: 'Package' = None,
                  allowance_charge: List['AllowanceCharge'] = None,
-                 dependent_price_reference: 'DependentPriceReference' = None):
+                 dependent_price_reference: 'DependentPriceReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.lead_time_measure = lead_time_measure
         self.minimum_quantity = minimum_quantity
         self.maximum_quantity = maximum_quantity
@@ -4659,7 +4772,7 @@ class __ItemManagementProfileType(PrefixCAC, ComplexXMLParseableObject):
         'item_location_quantity',
     ]
 
-    def __init__(self, effective_period: 'EffectivePeriod',
+    def __init__(self,		effective_period: 'EffectivePeriod',
                  item: 'Item',
                  frozen_period_days_numeric: cbc.FrozenPeriodDaysNumeric = None,
                  minimum_inventory_quantity: cbc.MinimumInventoryQuantity = None,
@@ -4668,7 +4781,8 @@ class __ItemManagementProfileType(PrefixCAC, ComplexXMLParseableObject):
                  replenishment_owner_description: List[cbc.ReplenishmentOwnerDescription] = None,
                  target_service_percent: cbc.TargetServicePercent = None,
                  target_inventory_quantity: cbc.TargetInventoryQuantity = None,
-                 item_location_quantity: 'ItemLocationQuantity' = None):
+                 item_location_quantity: 'ItemLocationQuantity' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.effective_period = effective_period
         self.item = item
         self.frozen_period_days_numeric = frozen_period_days_numeric
@@ -4683,7 +4797,7 @@ class __ItemManagementProfileType(PrefixCAC, ComplexXMLParseableObject):
 
 class __ItemPropertyType(PrefixCAC, ComplexXMLParseableObject):
     name = None
-    id = None
+    id_ = None
     name_code = None
     test_method = None
     value = None
@@ -4696,7 +4810,7 @@ class __ItemPropertyType(PrefixCAC, ComplexXMLParseableObject):
     range_dimension = None
     item_property_range = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'name_code',
         'test_method',
@@ -4711,7 +4825,7 @@ class __ItemPropertyType(PrefixCAC, ComplexXMLParseableObject):
         'item_property_range',
     ]
 
-    def __init__(self, name: cbc.Name,
+    def __init__(self,		name: cbc.Name,
                  id_: cbc.ID = None,
                  name_code: cbc.NameCode = None,
                  test_method: cbc.TestMethod = None,
@@ -4723,9 +4837,10 @@ class __ItemPropertyType(PrefixCAC, ComplexXMLParseableObject):
                  usability_period: 'UsabilityPeriod' = None,
                  item_property_group: List['ItemPropertyGroup'] = None,
                  range_dimension: 'RangeDimension' = None,
-                 item_property_range: 'ItemPropertyRange' = None):
+                 item_property_range: 'ItemPropertyRange' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
-        self.id = id_
+        self.id_ = id_
         self.name_code = name_code
         self.test_method = test_method
         self.value = value
@@ -4740,19 +4855,20 @@ class __ItemPropertyType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ItemPropertyGroupType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     name = None
     importance_code = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'importance_code',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  name: cbc.Name = None,
-                 importance_code: cbc.ImportanceCode = None):
-        self.id = id_
+                 importance_code: cbc.ImportanceCode = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.name = name
         self.importance_code = importance_code
 
@@ -4764,32 +4880,34 @@ class __ItemPropertyRangeType(PrefixCAC, ComplexXMLParseableObject):
         'minimum_value',
         'maximum_value',
     ]
-    def __init__(self, minimum_value: cbc.MinimumValue = None,
-                 maximum_value: cbc.MaximumValue = None):
+    def __init__(self,		minimum_value: cbc.MinimumValue = None,
+                 maximum_value: cbc.MaximumValue = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.minimum_value = minimum_value
         self.maximum_value = maximum_value
 
 
 class __LanguageType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     name = None
     locale_code = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'locale_code',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  name: cbc.Name = None,
-                 locale_code: cbc.LocaleCode = None):
-        self.id = id_
+                 locale_code: cbc.LocaleCode = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.name = name
         self.locale_code = locale_code
 
 
 class __LineItemType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     item = None
     sales_order_id = None
     uuid = None
@@ -4822,7 +4940,7 @@ class __LineItemType(PrefixCAC, ComplexXMLParseableObject):
     item_price_extension = None
     line_reference = None
     order_list = [
-        'id',
+        'id_',
         'sales_order_id',
         'uuid',
         'note',
@@ -4856,7 +4974,7 @@ class __LineItemType(PrefixCAC, ComplexXMLParseableObject):
         'line_reference',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  item: 'Item',
                  sales_order_id: cbc.SalesOrderID = None,
                  uuid: cbc.UUID = None,
@@ -4887,8 +5005,9 @@ class __LineItemType(PrefixCAC, ComplexXMLParseableObject):
                  warranty_party: 'WarrantyParty' = None,
                  tax_total: List['TaxTotal'] = None,
                  item_price_extension: 'ItemPriceExtension' = None,
-                 line_reference: List['LineReference'] = None):
-        self.id = id_
+                 line_reference: List['LineReference'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.item = item
         self.sales_order_id = sales_order_id
         self.uuid = uuid
@@ -4934,10 +5053,11 @@ class __LineReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'document_reference',
     ]
 
-    def __init__(self, line_id: cbc.LineID,
+    def __init__(self,		line_id: cbc.LineID,
                  uuid: cbc.UUID = None,
                  line_status_code: cbc.LineStatusCode = None,
-                 document_reference: 'DocumentReference' = None):
+                 document_reference: 'DocumentReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.line_id = line_id
         self.uuid = uuid
         self.line_status_code = line_status_code
@@ -4951,16 +5071,17 @@ class __LineResponseType(PrefixCAC, ComplexXMLParseableObject):
         'line_reference',
         'response',
     ]
-    def __init__(self, line_reference: 'LineReference',
-                 response: List['Response'] = None):
+    def __init__(self,		line_reference: 'LineReference',
+                 response: List['Response'] = None, xml_namespaces=None):
         if not response:
             raise ListMustNotBeEmptyException('response')
+        super().__init__(xml_namespaces)
         self.line_reference = line_reference
         self.response = response
 
 
 class __LocationType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     description = None
     conditions = None
     country_subentity = None
@@ -4973,7 +5094,7 @@ class __LocationType(PrefixCAC, ComplexXMLParseableObject):
     subsidiary_location = None
     location_coordinate = None
     order_list = [
-        'id',
+        'id_',
         'description',
         'conditions',
         'country_subentity',
@@ -4987,7 +5108,7 @@ class __LocationType(PrefixCAC, ComplexXMLParseableObject):
         'location_coordinate',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  description: List[cbc.Description] = None,
                  conditions: List[cbc.Conditions] = None,
                  country_subentity: cbc.CountrySubentity = None,
@@ -4998,8 +5119,9 @@ class __LocationType(PrefixCAC, ComplexXMLParseableObject):
                  validity_period: List['ValidityPeriod'] = None,
                  address: 'Address' = None,
                  subsidiary_location: List['SubsidiaryLocation'] = None,
-                 location_coordinate: List['LocationCoordinate'] = None):
-        self.id = id_
+                 location_coordinate: List['LocationCoordinate'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.description = description
         self.conditions = conditions
         self.country_subentity = country_subentity
@@ -5033,14 +5155,15 @@ class __LocationCoordinateType(PrefixCAC, ComplexXMLParseableObject):
         'altitude_measure',
     ]
 
-    def __init__(self, coordinate_system_code: cbc.CoordinateSystemCode = None,
+    def __init__(self,		coordinate_system_code: cbc.CoordinateSystemCode = None,
                  latitude_degrees_measure: cbc.LatitudeDegreesMeasure = None,
                  latitude_minutes_measure: cbc.LatitudeMinutesMeasure = None,
                  latitude_direction_code: cbc.LatitudeDirectionCode = None,
                  longitude_degrees_measure: cbc.LongitudeDegreesMeasure = None,
                  longitude_minutes_measure: cbc.LongitudeMinutesMeasure = None,
                  longitude_direction_code: cbc.LongitudeDirectionCode = None,
-                 altitude_measure: cbc.AltitudeMeasure = None):
+                 altitude_measure: cbc.AltitudeMeasure = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.coordinate_system_code = coordinate_system_code
         self.latitude_degrees_measure = latitude_degrees_measure
         self.latitude_minutes_measure = latitude_minutes_measure
@@ -5061,9 +5184,10 @@ class __LotIdentificationType(PrefixCAC, ComplexXMLParseableObject):
         'additional_item_property',
     ]
 
-    def __init__(self, lot_number_id: cbc.LotNumberID = None,
+    def __init__(self,		lot_number_id: cbc.LotNumberID = None,
                  expiry_date: cbc.ExpiryDate = None,
-                 additional_item_property: List['AdditionalItemProperty'] = None):
+                 additional_item_property: List['AdditionalItemProperty'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.lot_number_id = lot_number_id
         self.expiry_date = expiry_date
         self.additional_item_property = additional_item_property
@@ -5089,14 +5213,15 @@ class __MaritimeTransportType(PrefixCAC, ComplexXMLParseableObject):
         'registry_port_location',
     ]
 
-    def __init__(self, vessel_id: cbc.VesselID = None,
+    def __init__(self,		vessel_id: cbc.VesselID = None,
                  vessel_name: cbc.VesselName = None,
                  radio_call_sign_id: cbc.RadioCallSignID = None,
                  ships_requirements: List[cbc.ShipsRequirements] = None,
                  gross_tonnage_measure: cbc.GrossTonnageMeasure = None,
                  net_tonnage_measure: cbc.NetTonnageMeasure = None,
                  registry_certificate_document_reference: 'RegistryCertificateDocumentReference' = None,
-                 registry_port_location: 'RegistryPortLocation' = None):
+                 registry_port_location: 'RegistryPortLocation' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.vessel_id = vessel_id
         self.vessel_name = vessel_name
         self.radio_call_sign_id = radio_call_sign_id
@@ -5125,13 +5250,14 @@ class __MeterType(PrefixCAC, ComplexXMLParseableObject):
         'meter_property',
     ]
 
-    def __init__(self, meter_number: cbc.MeterNumber = None,
+    def __init__(self,		meter_number: cbc.MeterNumber = None,
                  meter_name: cbc.MeterName = None,
                  meter_constant: cbc.MeterConstant = None,
                  meter_constant_code: cbc.MeterConstantCode = None,
                  total_delivered_quantity: cbc.TotalDeliveredQuantity = None,
                  meter_reading: List['MeterReading'] = None,
-                 meter_property: List['MeterProperty'] = None):
+                 meter_property: List['MeterProperty'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.meter_number = meter_number
         self.meter_name = meter_name
         self.meter_constant = meter_constant
@@ -5155,11 +5281,12 @@ class __MeterPropertyType(PrefixCAC, ComplexXMLParseableObject):
         'value_qualifier',
     ]
 
-    def __init__(self, name: cbc.Name = None,
+    def __init__(self,		name: cbc.Name = None,
                  name_code: cbc.NameCode = None,
                  value: cbc.Value = None,
                  value_quantity: cbc.ValueQuantity = None,
-                 value_qualifier: List[cbc.ValueQualifier] = None):
+                 value_qualifier: List[cbc.ValueQualifier] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
         self.name_code = name_code
         self.value = value
@@ -5173,7 +5300,7 @@ class __MeterReadingType(PrefixCAC, ComplexXMLParseableObject):
     latest_meter_reading_date = None
     latest_meter_quantity = None
     delivered_quantity = None
-    id = None
+    id_ = None
     meter_reading_type = None
     meter_reading_type_code = None
     previous_meter_reading_method = None
@@ -5182,7 +5309,7 @@ class __MeterReadingType(PrefixCAC, ComplexXMLParseableObject):
     latest_meter_reading_method_code = None
     meter_reading_comments = None
     order_list = [
-        'id',
+        'id_',
         'meter_reading_type',
         'meter_reading_type_code',
         'previous_meter_reading_date',
@@ -5197,7 +5324,7 @@ class __MeterReadingType(PrefixCAC, ComplexXMLParseableObject):
         'delivered_quantity',
     ]
 
-    def __init__(self, previous_meter_reading_date: cbc.PreviousMeterReadingDate,
+    def __init__(self,		previous_meter_reading_date: cbc.PreviousMeterReadingDate,
                  previous_meter_quantity: cbc.PreviousMeterQuantity,
                  latest_meter_reading_date: cbc.LatestMeterReadingDate,
                  latest_meter_quantity: cbc.LatestMeterQuantity,
@@ -5209,13 +5336,14 @@ class __MeterReadingType(PrefixCAC, ComplexXMLParseableObject):
                  previous_meter_reading_method_code: cbc.PreviousMeterReadingMethodCode = None,
                  latest_meter_reading_method: cbc.LatestMeterReadingMethod = None,
                  latest_meter_reading_method_code: cbc.LatestMeterReadingMethodCode = None,
-                 meter_reading_comments: List[cbc.MeterReadingComments] = None):
+                 meter_reading_comments: List[cbc.MeterReadingComments] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.previous_meter_reading_date = previous_meter_reading_date
         self.previous_meter_quantity = previous_meter_quantity
         self.latest_meter_reading_date = latest_meter_reading_date
         self.latest_meter_quantity = latest_meter_quantity
         self.delivered_quantity = delivered_quantity
-        self.id = id_
+        self.id_ = id_
         self.meter_reading_type = meter_reading_type
         self.meter_reading_type_code = meter_reading_type_code
         self.previous_meter_reading_method = previous_meter_reading_method
@@ -5232,10 +5360,11 @@ class __MiscellaneousEventType(PrefixCAC, ComplexXMLParseableObject):
         'miscellaneous_event_type_code',
         'event_line_item',
     ]
-    def __init__(self, miscellaneous_event_type_code: cbc.MiscellaneousEventTypeCode,
-                 event_line_item: List['EventLineItem'] = None):
+    def __init__(self,		miscellaneous_event_type_code: cbc.MiscellaneousEventTypeCode,
+                 event_line_item: List['EventLineItem'] = None, xml_namespaces=None):
         if not event_line_item:
             raise ListMustNotBeEmptyException('event_line_item')
+        super().__init__(xml_namespaces)
         self.miscellaneous_event_type_code = miscellaneous_event_type_code
         self.event_line_item = event_line_item
 
@@ -5262,7 +5391,7 @@ class __MonetaryTotalType(PrefixCAC, ComplexXMLParseableObject):
         'payable_alternative_amount',
     ]
 
-    def __init__(self, payable_amount: cbc.PayableAmount,
+    def __init__(self,		payable_amount: cbc.PayableAmount,
                  line_extension_amount: cbc.LineExtensionAmount = None,
                  tax_exclusive_amount: cbc.TaxExclusiveAmount = None,
                  tax_inclusive_amount: cbc.TaxInclusiveAmount = None,
@@ -5270,7 +5399,8 @@ class __MonetaryTotalType(PrefixCAC, ComplexXMLParseableObject):
                  charge_total_amount: cbc.ChargeTotalAmount = None,
                  prepaid_amount: cbc.PrepaidAmount = None,
                  payable_rounding_amount: cbc.PayableRoundingAmount = None,
-                 payable_alternative_amount: cbc.PayableAlternativeAmount = None):
+                 payable_alternative_amount: cbc.PayableAlternativeAmount = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.payable_amount = payable_amount
         self.line_extension_amount = line_extension_amount
         self.tax_exclusive_amount = tax_exclusive_amount
@@ -5298,12 +5428,13 @@ class __NotificationRequirementType(PrefixCAC, ComplexXMLParseableObject):
         'notification_location',
     ]
 
-    def __init__(self, notification_type_code: cbc.NotificationTypeCode,
+    def __init__(self,		notification_type_code: cbc.NotificationTypeCode,
                  post_event_notification_duration_measure: cbc.PostEventNotificationDurationMeasure = None,
                  pre_event_notification_duration_measure: cbc.PreEventNotificationDurationMeasure = None,
                  notify_party: List['NotifyParty'] = None,
                  notification_period: List['NotificationPeriod'] = None,
-                 notification_location: List['NotificationLocation'] = None):
+                 notification_location: List['NotificationLocation'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.notification_type_code = notification_type_code
         self.post_event_notification_duration_measure = post_event_notification_duration_measure
         self.pre_event_notification_duration_measure = pre_event_notification_duration_measure
@@ -5322,11 +5453,12 @@ class __OnAccountPaymentType(PrefixCAC, ComplexXMLParseableObject):
         'payment_terms',
     ]
 
-    def __init__(self, estimated_consumed_quantity: cbc.EstimatedConsumedQuantity,
+    def __init__(self,		estimated_consumed_quantity: cbc.EstimatedConsumedQuantity,
                  note: List[cbc.Note] = None,
-                 payment_terms: List['PaymentTerms'] = None):
+                 payment_terms: List['PaymentTerms'] = None, xml_namespaces=None):
         if not payment_terms:
             raise ListMustNotBeEmptyException('payment_terms')
+        super().__init__(xml_namespaces)
         self.estimated_consumed_quantity = estimated_consumed_quantity
         self.note = note
         self.payment_terms = payment_terms
@@ -5356,7 +5488,7 @@ class __OrderLineType(PrefixCAC, ComplexXMLParseableObject):
         'document_reference',
     ]
 
-    def __init__(self, line_item: 'LineItem',
+    def __init__(self,		line_item: 'LineItem',
                  substitution_status_code: cbc.SubstitutionStatusCode = None,
                  note: List[cbc.Note] = None,
                  seller_proposed_substitute_line_item: List['SellerProposedSubstituteLineItem'] = None,
@@ -5365,7 +5497,8 @@ class __OrderLineType(PrefixCAC, ComplexXMLParseableObject):
                  catalogue_line_reference: 'CatalogueLineReference' = None,
                  quotation_line_reference: 'QuotationLineReference' = None,
                  order_line_reference: List['OrderLineReference'] = None,
-                 document_reference: List['DocumentReference'] = None):
+                 document_reference: List['DocumentReference'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.line_item = line_item
         self.substitution_status_code = substitution_status_code
         self.note = note
@@ -5392,11 +5525,12 @@ class __OrderLineReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'order_reference',
     ]
 
-    def __init__(self, line_id: cbc.LineID,
+    def __init__(self,		line_id: cbc.LineID,
                  sales_order_line_id: cbc.SalesOrderLineID = None,
                  uuid: cbc.UUID = None,
                  line_status_code: cbc.LineStatusCode = None,
-                 order_reference: 'OrderReference' = None):
+                 order_reference: 'OrderReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.line_id = line_id
         self.sales_order_line_id = sales_order_line_id
         self.uuid = uuid
@@ -5405,7 +5539,7 @@ class __OrderLineReferenceType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __OrderReferenceType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     sales_order_id = None
     copy_indicator = None
     uuid = None
@@ -5415,7 +5549,7 @@ class __OrderReferenceType(PrefixCAC, ComplexXMLParseableObject):
     order_type_code = None
     document_reference = None
     order_list = [
-        'id',
+        'id_',
         'sales_order_id',
         'copy_indicator',
         'uuid',
@@ -5426,7 +5560,7 @@ class __OrderReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'document_reference',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  sales_order_id: cbc.SalesOrderID = None,
                  copy_indicator: cbc.CopyIndicator = None,
                  uuid: cbc.UUID = None,
@@ -5434,8 +5568,9 @@ class __OrderReferenceType(PrefixCAC, ComplexXMLParseableObject):
                  issue_time: cbc.IssueTime = None,
                  customer_reference: cbc.CustomerReference = None,
                  order_type_code: cbc.OrderTypeCode = None,
-                 document_reference: 'DocumentReference' = None):
-        self.id = id_
+                 document_reference: 'DocumentReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.sales_order_id = sales_order_id
         self.copy_indicator = copy_indicator
         self.uuid = uuid
@@ -5453,14 +5588,15 @@ class __OrderedShipmentType(PrefixCAC, ComplexXMLParseableObject):
         'shipment',
         'package',
     ]
-    def __init__(self, shipment: 'Shipment',
-                 package: List['Package'] = None):
+    def __init__(self,		shipment: 'Shipment',
+                 package: List['Package'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.shipment = shipment
         self.package = package
 
 
 class __PackageType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     quantity = None
     returnable_material_indicator = None
     package_level_code = None
@@ -5476,7 +5612,7 @@ class __PackageType(PrefixCAC, ComplexXMLParseableObject):
     pickup = None
     despatch = None
     order_list = [
-        'id',
+        'id_',
         'quantity',
         'returnable_material_indicator',
         'package_level_code',
@@ -5493,7 +5629,7 @@ class __PackageType(PrefixCAC, ComplexXMLParseableObject):
         'despatch',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  quantity: cbc.Quantity = None,
                  returnable_material_indicator: cbc.ReturnableMaterialIndicator = None,
                  package_level_code: cbc.PackageLevelCode = None,
@@ -5507,8 +5643,9 @@ class __PackageType(PrefixCAC, ComplexXMLParseableObject):
                  delivery_unit: List['DeliveryUnit'] = None,
                  delivery: 'Delivery' = None,
                  pickup: 'Pickup' = None,
-                 despatch: 'Despatch' = None):
-        self.id = id_
+                 despatch: 'Despatch' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.quantity = quantity
         self.returnable_material_indicator = returnable_material_indicator
         self.package_level_code = package_level_code
@@ -5567,7 +5704,7 @@ class __PartyType(PrefixCAC, ComplexXMLParseableObject):
         'financial_account',
     ]
 
-    def __init__(self, mark_care_indicator: cbc.MarkCareIndicator = None,
+    def __init__(self,		mark_care_indicator: cbc.MarkCareIndicator = None,
                  mark_attention_indicator: cbc.MarkAttentionIndicator = None,
                  website_uri: cbc.WebsiteURI = None,
                  logo_reference_id: cbc.LogoReferenceID = None,
@@ -5585,7 +5722,8 @@ class __PartyType(PrefixCAC, ComplexXMLParseableObject):
                  agent_party: 'AgentParty' = None,
                  service_provider_party: List['ServiceProviderParty'] = None,
                  power_of_attorney: List['PowerOfAttorney'] = None,
-                 financial_account: 'FinancialAccount' = None):
+                 financial_account: 'FinancialAccount' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.mark_care_indicator = mark_care_indicator
         self.mark_attention_indicator = mark_attention_indicator
         self.website_uri = website_uri
@@ -5608,13 +5746,14 @@ class __PartyType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __PartyIdentificationType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     order_list = [
-        'id',
+        'id_',
     ]
 
-    def __init__(self, id_: cbc.ID):
-        self.id = id_
+    def __init__(self,		id_: cbc.ID, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
 
 
 class __PartyLegalEntityType(PrefixCAC, ComplexXMLParseableObject):
@@ -5649,7 +5788,7 @@ class __PartyLegalEntityType(PrefixCAC, ComplexXMLParseableObject):
         'shareholder_party',
     ]
 
-    def __init__(self, registration_name: cbc.RegistrationName = None,
+    def __init__(self,		registration_name: cbc.RegistrationName = None,
                  company_id: cbc.CompanyID = None,
                  registration_date: cbc.RegistrationDate = None,
                  registration_expiration_date: cbc.RegistrationExpirationDate = None,
@@ -5662,7 +5801,8 @@ class __PartyLegalEntityType(PrefixCAC, ComplexXMLParseableObject):
                  registration_address: 'RegistrationAddress' = None,
                  corporate_registration_scheme: 'CorporateRegistrationScheme' = None,
                  head_office_party: 'HeadOfficeParty' = None,
-                 shareholder_party: List['ShareholderParty'] = None):
+                 shareholder_party: List['ShareholderParty'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.registration_name = registration_name
         self.company_id = company_id
         self.registration_date = registration_date
@@ -5685,7 +5825,8 @@ class __PartyNameType(PrefixCAC, ComplexXMLParseableObject):
         'name',
     ]
 
-    def __init__(self, name: cbc.Name):
+    def __init__(self,		name: cbc.Name, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
 
 
@@ -5707,13 +5848,14 @@ class __PartyTaxSchemeType(PrefixCAC, ComplexXMLParseableObject):
         'tax_scheme',
     ]
 
-    def __init__(self, tax_scheme: 'TaxScheme',
+    def __init__(self,		tax_scheme: 'TaxScheme',
                  registration_name: cbc.RegistrationName = None,
                  company_id: cbc.CompanyID = None,
                  tax_level_code: cbc.TaxLevelCode = None,
                  exemption_reason_code: cbc.ExemptionReasonCode = None,
                  exemption_reason: List[cbc.ExemptionReason] = None,
-                 registration_address: 'RegistrationAddress' = None):
+                 registration_address: 'RegistrationAddress' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.tax_scheme = tax_scheme
         self.registration_name = registration_name
         self.company_id = company_id
@@ -5724,14 +5866,14 @@ class __PartyTaxSchemeType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __PaymentType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     paid_amount = None
     received_date = None
     paid_date = None
     paid_time = None
     instruction_id = None
     order_list = [
-        'id',
+        'id_',
         'paid_amount',
         'received_date',
         'paid_date',
@@ -5739,13 +5881,14 @@ class __PaymentType(PrefixCAC, ComplexXMLParseableObject):
         'instruction_id',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  paid_amount: cbc.PaidAmount = None,
                  received_date: cbc.ReceivedDate = None,
                  paid_date: cbc.PaidDate = None,
                  paid_time: cbc.PaidTime = None,
-                 instruction_id: cbc.InstructionID = None):
-        self.id = id_
+                 instruction_id: cbc.InstructionID = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.paid_amount = paid_amount
         self.received_date = received_date
         self.paid_date = paid_date
@@ -5754,7 +5897,7 @@ class __PaymentType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __PaymentMandateType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     mandate_type_code = None
     maximum_payment_instructions_numeric = None
     maximum_paid_amount = None
@@ -5765,7 +5908,7 @@ class __PaymentMandateType(PrefixCAC, ComplexXMLParseableObject):
     payment_reversal_period = None
     clause = None
     order_list = [
-        'id',
+        'id_',
         'mandate_type_code',
         'maximum_payment_instructions_numeric',
         'maximum_paid_amount',
@@ -5777,7 +5920,7 @@ class __PaymentMandateType(PrefixCAC, ComplexXMLParseableObject):
         'clause',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  mandate_type_code: cbc.MandateTypeCode = None,
                  maximum_payment_instructions_numeric: cbc.MaximumPaymentInstructionsNumeric = None,
                  maximum_paid_amount: cbc.MaximumPaidAmount = None,
@@ -5786,8 +5929,9 @@ class __PaymentMandateType(PrefixCAC, ComplexXMLParseableObject):
                  payer_financial_account: 'PayerFinancialAccount' = None,
                  validity_period: 'ValidityPeriod' = None,
                  payment_reversal_period: 'PaymentReversalPeriod' = None,
-                 clause: List['Clause'] = None):
-        self.id = id_
+                 clause: List['Clause'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.mandate_type_code = mandate_type_code
         self.maximum_payment_instructions_numeric = maximum_payment_instructions_numeric
         self.maximum_paid_amount = maximum_paid_amount
@@ -5801,7 +5945,7 @@ class __PaymentMandateType(PrefixCAC, ComplexXMLParseableObject):
 
 class __PaymentMeansType(PrefixCAC, ComplexXMLParseableObject):
     payment_means_code = None
-    id = None
+    id_ = None
     payment_due_date = None
     payment_channel_code = None
     instruction_id = None
@@ -5814,7 +5958,7 @@ class __PaymentMeansType(PrefixCAC, ComplexXMLParseableObject):
     payment_mandate = None
     trade_financing = None
     order_list = [
-        'id',
+        'id_',
         'payment_means_code',
         'payment_due_date',
         'payment_channel_code',
@@ -5829,7 +5973,7 @@ class __PaymentMeansType(PrefixCAC, ComplexXMLParseableObject):
         'trade_financing',
     ]
 
-    def __init__(self, payment_means_code: cbc.PaymentMeansCode,
+    def __init__(self,		payment_means_code: cbc.PaymentMeansCode,
                  id_: cbc.ID = None,
                  payment_due_date: cbc.PaymentDueDate = None,
                  payment_channel_code: cbc.PaymentChannelCode = None,
@@ -5841,9 +5985,10 @@ class __PaymentMeansType(PrefixCAC, ComplexXMLParseableObject):
                  payee_financial_account: 'PayeeFinancialAccount' = None,
                  credit_account: 'CreditAccount' = None,
                  payment_mandate: 'PaymentMandate' = None,
-                 trade_financing: 'TradeFinancing' = None):
+                 trade_financing: 'TradeFinancing' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.payment_means_code = payment_means_code
-        self.id = id_
+        self.id_ = id_
         self.payment_due_date = payment_due_date
         self.payment_channel_code = payment_channel_code
         self.instruction_id = instruction_id
@@ -5858,7 +6003,7 @@ class __PaymentMeansType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __PaymentTermsType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     payment_means_id = None
     prepaid_payment_reference_id = None
     note = None
@@ -5878,7 +6023,7 @@ class __PaymentTermsType(PrefixCAC, ComplexXMLParseableObject):
     exchange_rate = None
     validity_period = None
     order_list = [
-        'id',
+        'id_',
         'payment_means_id',
         'prepaid_payment_reference_id',
         'note',
@@ -5899,7 +6044,7 @@ class __PaymentTermsType(PrefixCAC, ComplexXMLParseableObject):
         'validity_period',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  payment_means_id: List[cbc.PaymentMeansID] = None,
                  prepaid_payment_reference_id: cbc.PrepaidPaymentReferenceID = None,
                  note: List[cbc.Note] = None,
@@ -5917,8 +6062,9 @@ class __PaymentTermsType(PrefixCAC, ComplexXMLParseableObject):
                  settlement_period: 'SettlementPeriod' = None,
                  penalty_period: 'PenaltyPeriod' = None,
                  exchange_rate: 'ExchangeRate' = None,
-                 validity_period: 'ValidityPeriod' = None):
-        self.id = id_
+                 validity_period: 'ValidityPeriod' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.payment_means_id = payment_means_id
         self.prepaid_payment_reference_id = prepaid_payment_reference_id
         self.note = note
@@ -5940,14 +6086,14 @@ class __PaymentTermsType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __PerformanceDataLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     performance_value_quantity = None
     performance_metric_type_code = None
     note = None
     period = None
     item = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'performance_value_quantity',
         'performance_metric_type_code',
@@ -5955,13 +6101,14 @@ class __PerformanceDataLineType(PrefixCAC, ComplexXMLParseableObject):
         'item',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  performance_value_quantity: cbc.PerformanceValueQuantity,
                  performance_metric_type_code: cbc.PerformanceMetricTypeCode,
                  note: List[cbc.Note] = None,
                  period: 'Period' = None,
-                 item: 'Item' = None):
-        self.id = id_
+                 item: 'Item' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.performance_value_quantity = performance_value_quantity
         self.performance_metric_type_code = performance_metric_type_code
         self.note = note
@@ -5987,13 +6134,14 @@ class __PeriodType(PrefixCAC, ComplexXMLParseableObject):
         'description',
     ]
 
-    def __init__(self, start_date: cbc.StartDate = None,
+    def __init__(self,		start_date: cbc.StartDate = None,
                  start_time: cbc.StartTime = None,
                  end_date: cbc.EndDate = None,
                  end_time: cbc.EndTime = None,
                  duration_measure: cbc.DurationMeasure = None,
                  description_code: List[cbc.DescriptionCode] = None,
-                 description: List[cbc.Description] = None):
+                 description: List[cbc.Description] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.start_date = start_date
         self.start_time = start_time
         self.end_date = end_date
@@ -6004,7 +6152,7 @@ class __PeriodType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __PersonType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     first_name = None
     family_name = None
     title = None
@@ -6022,7 +6170,7 @@ class __PersonType(PrefixCAC, ComplexXMLParseableObject):
     identity_document_reference = None
     residence_address = None
     order_list = [
-        'id',
+        'id_',
         'first_name',
         'family_name',
         'title',
@@ -6041,7 +6189,7 @@ class __PersonType(PrefixCAC, ComplexXMLParseableObject):
         'residence_address',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  first_name: cbc.FirstName = None,
                  family_name: cbc.FamilyName = None,
                  title: cbc.Title = None,
@@ -6057,8 +6205,9 @@ class __PersonType(PrefixCAC, ComplexXMLParseableObject):
                  contact: 'Contact' = None,
                  financial_account: 'FinancialAccount' = None,
                  identity_document_reference: List['IdentityDocumentReference'] = None,
-                 residence_address: 'ResidenceAddress' = None):
-        self.id = id_
+                 residence_address: 'ResidenceAddress' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.first_name = first_name
         self.family_name = family_name
         self.title = title
@@ -6089,10 +6238,11 @@ class __PhysicalAttributeType(PrefixCAC, ComplexXMLParseableObject):
         'description',
     ]
 
-    def __init__(self, attribute_id: cbc.AttributeID,
+    def __init__(self,		attribute_id: cbc.AttributeID,
                  position_code: cbc.PositionCode = None,
                  description_code: cbc.DescriptionCode = None,
-                 description: List[cbc.Description] = None):
+                 description: List[cbc.Description] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.attribute_id = attribute_id
         self.position_code = position_code
         self.description_code = description_code
@@ -6100,7 +6250,7 @@ class __PhysicalAttributeType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __PickupType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     actual_pickup_date = None
     actual_pickup_time = None
     earliest_pickup_date = None
@@ -6110,7 +6260,7 @@ class __PickupType(PrefixCAC, ComplexXMLParseableObject):
     pickup_location = None
     pickup_party = None
     order_list = [
-        'id',
+        'id_',
         'actual_pickup_date',
         'actual_pickup_time',
         'earliest_pickup_date',
@@ -6121,7 +6271,7 @@ class __PickupType(PrefixCAC, ComplexXMLParseableObject):
         'pickup_party',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  actual_pickup_date: cbc.ActualPickupDate = None,
                  actual_pickup_time: cbc.ActualPickupTime = None,
                  earliest_pickup_date: cbc.EarliestPickupDate = None,
@@ -6129,8 +6279,9 @@ class __PickupType(PrefixCAC, ComplexXMLParseableObject):
                  latest_pickup_date: cbc.LatestPickupDate = None,
                  latest_pickup_time: cbc.LatestPickupTime = None,
                  pickup_location: 'PickupLocation' = None,
-                 pickup_party: 'PickupParty' = None):
-        self.id = id_
+                 pickup_party: 'PickupParty' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.actual_pickup_date = actual_pickup_date
         self.actual_pickup_time = actual_pickup_time
         self.earliest_pickup_date = earliest_pickup_date
@@ -6143,7 +6294,7 @@ class __PickupType(PrefixCAC, ComplexXMLParseableObject):
 
 class __PowerOfAttorneyType(PrefixCAC, ComplexXMLParseableObject):
     agent_party = None
-    id = None
+    id_ = None
     issue_date = None
     issue_time = None
     description = None
@@ -6151,7 +6302,7 @@ class __PowerOfAttorneyType(PrefixCAC, ComplexXMLParseableObject):
     witness_party = None
     mandate_document_reference = None
     order_list = [
-        'id',
+        'id_',
         'issue_date',
         'issue_time',
         'description',
@@ -6161,16 +6312,17 @@ class __PowerOfAttorneyType(PrefixCAC, ComplexXMLParseableObject):
         'mandate_document_reference',
     ]
 
-    def __init__(self, agent_party: 'AgentParty',
+    def __init__(self,		agent_party: 'AgentParty',
                  id_: cbc.ID = None,
                  issue_date: cbc.IssueDate = None,
                  issue_time: cbc.IssueTime = None,
                  description: List[cbc.Description] = None,
                  notary_party: 'NotaryParty' = None,
                  witness_party: List['WitnessParty'] = None,
-                 mandate_document_reference: List['MandateDocumentReference'] = None):
+                 mandate_document_reference: List['MandateDocumentReference'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.agent_party = agent_party
-        self.id = id_
+        self.id_ = id_
         self.issue_date = issue_date
         self.issue_time = issue_time
         self.description = description
@@ -6203,7 +6355,7 @@ class __PriceType(PrefixCAC, ComplexXMLParseableObject):
         'pricing_exchange_rate',
     ]
 
-    def __init__(self, price_amount: cbc.PriceAmount,
+    def __init__(self,		price_amount: cbc.PriceAmount,
                  base_quantity: cbc.BaseQuantity = None,
                  price_change_reason: List[cbc.PriceChangeReason] = None,
                  price_type_code: cbc.PriceTypeCode = None,
@@ -6212,7 +6364,8 @@ class __PriceType(PrefixCAC, ComplexXMLParseableObject):
                  validity_period: List['ValidityPeriod'] = None,
                  price_list: 'PriceList' = None,
                  allowance_charge: List['AllowanceCharge'] = None,
-                 pricing_exchange_rate: 'PricingExchangeRate' = None):
+                 pricing_exchange_rate: 'PricingExchangeRate' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.price_amount = price_amount
         self.base_quantity = base_quantity
         self.price_change_reason = price_change_reason
@@ -6232,29 +6385,31 @@ class __PriceExtensionType(PrefixCAC, ComplexXMLParseableObject):
         'amount',
         'tax_total',
     ]
-    def __init__(self, amount: cbc.Amount,
-                 tax_total: List['TaxTotal'] = None):
+    def __init__(self,		amount: cbc.Amount,
+                 tax_total: List['TaxTotal'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.amount = amount
         self.tax_total = tax_total
 
 
 class __PriceListType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     status_code = None
     validity_period = None
     previous_price_list = None
     order_list = [
-        'id',
+        'id_',
         'status_code',
         'validity_period',
         'previous_price_list',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  status_code: cbc.StatusCode = None,
                  validity_period: List['ValidityPeriod'] = None,
-                 previous_price_list: 'PreviousPriceList' = None):
-        self.id = id_
+                 previous_price_list: 'PreviousPriceList' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.status_code = status_code
         self.validity_period = validity_period
         self.previous_price_list = previous_price_list
@@ -6267,8 +6422,9 @@ class __PricingReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'original_item_location_quantity',
         'alternative_condition_price',
     ]
-    def __init__(self, original_item_location_quantity: 'OriginalItemLocationQuantity' = None,
-                 alternative_condition_price: List['AlternativeConditionPrice'] = None):
+    def __init__(self,		original_item_location_quantity: 'OriginalItemLocationQuantity' = None,
+                 alternative_condition_price: List['AlternativeConditionPrice'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.original_item_location_quantity = original_item_location_quantity
         self.alternative_condition_price = alternative_condition_price
 
@@ -6285,10 +6441,11 @@ class __ProcessJustificationType(PrefixCAC, ComplexXMLParseableObject):
         'description',
     ]
 
-    def __init__(self, previous_cancellation_reason_code: cbc.PreviousCancellationReasonCode = None,
+    def __init__(self,		previous_cancellation_reason_code: cbc.PreviousCancellationReasonCode = None,
                  process_reason_code: cbc.ProcessReasonCode = None,
                  process_reason: List[cbc.ProcessReason] = None,
-                 description: List[cbc.Description] = None):
+                 description: List[cbc.Description] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.previous_cancellation_reason_code = previous_cancellation_reason_code
         self.process_reason_code = process_reason_code
         self.process_reason = process_reason
@@ -6296,7 +6453,7 @@ class __ProcessJustificationType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ProcurementProjectType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     name = None
     description = None
     procurement_type_code = None
@@ -6315,7 +6472,7 @@ class __ProcurementProjectType(PrefixCAC, ComplexXMLParseableObject):
     contract_extension = None
     request_for_tender_line = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'description',
         'procurement_type_code',
@@ -6335,7 +6492,7 @@ class __ProcurementProjectType(PrefixCAC, ComplexXMLParseableObject):
         'request_for_tender_line',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  name: List[cbc.Name] = None,
                  description: List[cbc.Description] = None,
                  procurement_type_code: cbc.ProcurementTypeCode = None,
@@ -6352,10 +6509,11 @@ class __ProcurementProjectType(PrefixCAC, ComplexXMLParseableObject):
                  realized_location: List['RealizedLocation'] = None,
                  planned_period: 'PlannedPeriod' = None,
                  contract_extension: 'ContractExtension' = None,
-                 request_for_tender_line: List['RequestForTenderLine'] = None):
+                 request_for_tender_line: List['RequestForTenderLine'] = None, xml_namespaces=None):
         if not name:
             raise ListMustNotBeEmptyException('name')
-        self.id = id_
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.name = name
         self.description = description
         self.procurement_type_code = procurement_type_code
@@ -6376,40 +6534,42 @@ class __ProcurementProjectType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ProcurementProjectLotType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     tendering_terms = None
     procurement_project = None
     order_list = [
-        'id',
+        'id_',
         'tendering_terms',
         'procurement_project',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  tendering_terms: 'TenderingTerms' = None,
-                 procurement_project: 'ProcurementProject' = None):
-        self.id = id_
+                 procurement_project: 'ProcurementProject' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.tendering_terms = tendering_terms
         self.procurement_project = procurement_project
 
 
 class __ProjectReferenceType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     uuid = None
     issue_date = None
     work_phase_reference = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'issue_date',
         'work_phase_reference',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  uuid: cbc.UUID = None,
                  issue_date: cbc.IssueDate = None,
-                 work_phase_reference: List['WorkPhaseReference'] = None):
-        self.id = id_
+                 work_phase_reference: List['WorkPhaseReference'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.uuid = uuid
         self.issue_date = issue_date
         self.work_phase_reference = work_phase_reference
@@ -6429,13 +6589,14 @@ class __PromotionalEventType(PrefixCAC, ComplexXMLParseableObject):
         'promotional_specification',
     ]
 
-    def __init__(self, promotional_event_type_code: cbc.PromotionalEventTypeCode,
+    def __init__(self,		promotional_event_type_code: cbc.PromotionalEventTypeCode,
                  submission_date: cbc.SubmissionDate = None,
                  first_shipment_availibility_date: cbc.FirstShipmentAvailibilityDate = None,
                  latest_proposal_acceptance_date: cbc.LatestProposalAcceptanceDate = None,
-                 promotional_specification: List['PromotionalSpecification'] = None):
+                 promotional_specification: List['PromotionalSpecification'] = None, xml_namespaces=None):
         if not promotional_specification:
             raise ListMustNotBeEmptyException('promotional_specification')
+        super().__init__(xml_namespaces)
         self.promotional_event_type_code = promotional_event_type_code
         self.submission_date = submission_date
         self.first_shipment_availibility_date = first_shipment_availibility_date
@@ -6450,8 +6611,9 @@ class __PromotionalEventLineItemType(PrefixCAC, ComplexXMLParseableObject):
         'amount',
         'event_line_item',
     ]
-    def __init__(self, amount: cbc.Amount,
-                 event_line_item: 'EventLineItem'):
+    def __init__(self,		amount: cbc.Amount,
+                 event_line_item: 'EventLineItem', xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.amount = amount
         self.event_line_item = event_line_item
 
@@ -6466,11 +6628,12 @@ class __PromotionalSpecificationType(PrefixCAC, ComplexXMLParseableObject):
         'event_tactic',
     ]
 
-    def __init__(self, specification_id: cbc.SpecificationID = None,
+    def __init__(self,		specification_id: cbc.SpecificationID = None,
                  promotional_event_line_item: List['PromotionalEventLineItem'] = None,
-                 event_tactic: List['EventTactic'] = None):
+                 event_tactic: List['EventTactic'] = None, xml_namespaces=None):
         if not promotional_event_line_item:
             raise ListMustNotBeEmptyException('promotional_event_line_item')
+        super().__init__(xml_namespaces)
         self.specification_id = specification_id
         self.promotional_event_line_item = promotional_event_line_item
         self.event_tactic = event_tactic
@@ -6492,12 +6655,13 @@ class __QualificationResolutionType(PrefixCAC, ComplexXMLParseableObject):
         'procurement_project_lot',
     ]
 
-    def __init__(self, admission_code: cbc.AdmissionCode,
+    def __init__(self,		admission_code: cbc.AdmissionCode,
                  resolution_date: cbc.ResolutionDate,
                  exclusion_reason: List[cbc.ExclusionReason] = None,
                  resolution: List[cbc.Resolution] = None,
                  resolution_time: cbc.ResolutionTime = None,
-                 procurement_project_lot: 'ProcurementProjectLot' = None):
+                 procurement_project_lot: 'ProcurementProjectLot' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.admission_code = admission_code
         self.resolution_date = resolution_date
         self.exclusion_reason = exclusion_reason
@@ -6538,7 +6702,7 @@ class __QualifyingPartyType(PrefixCAC, ComplexXMLParseableObject):
         'economic_operator_role',
     ]
 
-    def __init__(self, participation_percent: cbc.ParticipationPercent = None,
+    def __init__(self,		participation_percent: cbc.ParticipationPercent = None,
                  personal_situation: List[cbc.PersonalSituation] = None,
                  operating_years_quantity: cbc.OperatingYearsQuantity = None,
                  employee_quantity: cbc.EmployeeQuantity = None,
@@ -6551,7 +6715,8 @@ class __QualifyingPartyType(PrefixCAC, ComplexXMLParseableObject):
                  completed_task: List['CompletedTask'] = None,
                  declaration: List['Declaration'] = None,
                  party: 'Party' = None,
-                 economic_operator_role: 'EconomicOperatorRole' = None):
+                 economic_operator_role: 'EconomicOperatorRole' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.participation_percent = participation_percent
         self.personal_situation = personal_situation
         self.operating_years_quantity = operating_years_quantity
@@ -6570,7 +6735,7 @@ class __QualifyingPartyType(PrefixCAC, ComplexXMLParseableObject):
 
 class __QuotationLineType(PrefixCAC, ComplexXMLParseableObject):
     line_item = None
-    id = None
+    id_ = None
     note = None
     quantity = None
     line_extension_amount = None
@@ -6581,7 +6746,7 @@ class __QuotationLineType(PrefixCAC, ComplexXMLParseableObject):
     alternative_line_item = None
     request_line_reference = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'quantity',
         'line_extension_amount',
@@ -6594,7 +6759,7 @@ class __QuotationLineType(PrefixCAC, ComplexXMLParseableObject):
         'request_line_reference',
     ]
 
-    def __init__(self, line_item: 'LineItem',
+    def __init__(self,		line_item: 'LineItem',
                  id_: cbc.ID = None,
                  note: List[cbc.Note] = None,
                  quantity: cbc.Quantity = None,
@@ -6604,9 +6769,10 @@ class __QuotationLineType(PrefixCAC, ComplexXMLParseableObject):
                  document_reference: List['DocumentReference'] = None,
                  seller_proposed_substitute_line_item: List['SellerProposedSubstituteLineItem'] = None,
                  alternative_line_item: List['AlternativeLineItem'] = None,
-                 request_line_reference: 'RequestLineReference' = None):
+                 request_line_reference: 'RequestLineReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.line_item = line_item
-        self.id = id_
+        self.id_ = id_
         self.note = note
         self.quantity = quantity
         self.line_extension_amount = line_extension_amount
@@ -6625,14 +6791,15 @@ class __RailTransportType(PrefixCAC, ComplexXMLParseableObject):
         'train_id',
         'rail_car_id',
     ]
-    def __init__(self, train_id: cbc.TrainID,
-                 rail_car_id: cbc.RailCarID = None):
+    def __init__(self,		train_id: cbc.TrainID,
+                 rail_car_id: cbc.RailCarID = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.train_id = train_id
         self.rail_car_id = rail_car_id
 
 
 class __ReceiptLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     uuid = None
     note = None
     received_quantity = None
@@ -6653,7 +6820,7 @@ class __ReceiptLineType(PrefixCAC, ComplexXMLParseableObject):
     item = None
     shipment = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'note',
         'received_quantity',
@@ -6675,7 +6842,7 @@ class __ReceiptLineType(PrefixCAC, ComplexXMLParseableObject):
         'shipment',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  uuid: cbc.UUID = None,
                  note: List[cbc.Note] = None,
                  received_quantity: cbc.ReceivedQuantity = None,
@@ -6694,8 +6861,9 @@ class __ReceiptLineType(PrefixCAC, ComplexXMLParseableObject):
                  despatch_line_reference: List['DespatchLineReference'] = None,
                  document_reference: List['DocumentReference'] = None,
                  item: List['Item'] = None,
-                 shipment: List['Shipment'] = None):
-        self.id = id_
+                 shipment: List['Shipment'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.uuid = uuid
         self.note = note
         self.received_quantity = received_quantity
@@ -6727,34 +6895,36 @@ class __RegulationType(PrefixCAC, ComplexXMLParseableObject):
         'ontology_uri',
     ]
 
-    def __init__(self, name: cbc.Name,
+    def __init__(self,		name: cbc.Name,
                  legal_reference: cbc.LegalReference = None,
-                 ontology_uri: cbc.OntologyURI = None):
+                 ontology_uri: cbc.OntologyURI = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
         self.legal_reference = legal_reference
         self.ontology_uri = ontology_uri
 
 
 class __RelatedItemType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     quantity = None
     description = None
     order_list = [
-        'id',
+        'id_',
         'quantity',
         'description',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  quantity: cbc.Quantity = None,
-                 description: List[cbc.Description] = None):
-        self.id = id_
+                 description: List[cbc.Description] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.quantity = quantity
         self.description = description
 
 
 class __ReminderLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     note = None
     uuid = None
     balance_brought_forward_indicator = None
@@ -6769,7 +6939,7 @@ class __ReminderLineType(PrefixCAC, ComplexXMLParseableObject):
     billing_reference = None
     exchange_rate = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'uuid',
         'balance_brought_forward_indicator',
@@ -6785,7 +6955,7 @@ class __ReminderLineType(PrefixCAC, ComplexXMLParseableObject):
         'exchange_rate',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  note: List[cbc.Note] = None,
                  uuid: cbc.UUID = None,
                  balance_brought_forward_indicator: cbc.BalanceBroughtForwardIndicator = None,
@@ -6798,8 +6968,9 @@ class __ReminderLineType(PrefixCAC, ComplexXMLParseableObject):
                  payment_purpose_code: cbc.PaymentPurposeCode = None,
                  reminder_period: List['ReminderPeriod'] = None,
                  billing_reference: List['BillingReference'] = None,
-                 exchange_rate: 'ExchangeRate' = None):
-        self.id = id_
+                 exchange_rate: 'ExchangeRate' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.note = note
         self.uuid = uuid
         self.balance_brought_forward_indicator = balance_brought_forward_indicator
@@ -6816,7 +6987,7 @@ class __ReminderLineType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __RemittanceAdviceLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     note = None
     uuid = None
     debit_line_amount = None
@@ -6835,7 +7006,7 @@ class __RemittanceAdviceLineType(PrefixCAC, ComplexXMLParseableObject):
     document_reference = None
     exchange_rate = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'uuid',
         'debit_line_amount',
@@ -6855,7 +7026,7 @@ class __RemittanceAdviceLineType(PrefixCAC, ComplexXMLParseableObject):
         'exchange_rate',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  note: List[cbc.Note] = None,
                  uuid: cbc.UUID = None,
                  debit_line_amount: cbc.DebitLineAmount = None,
@@ -6872,8 +7043,9 @@ class __RemittanceAdviceLineType(PrefixCAC, ComplexXMLParseableObject):
                  invoice_period: List['InvoicePeriod'] = None,
                  billing_reference: List['BillingReference'] = None,
                  document_reference: List['DocumentReference'] = None,
-                 exchange_rate: 'ExchangeRate' = None):
-        self.id = id_
+                 exchange_rate: 'ExchangeRate' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.note = note
         self.uuid = uuid
         self.debit_line_amount = debit_line_amount
@@ -6900,15 +7072,16 @@ class __RenewalType(PrefixCAC, ComplexXMLParseableObject):
         'amount',
         'period',
     ]
-    def __init__(self, amount: cbc.Amount = None,
-                 period: 'Period' = None):
+    def __init__(self,		amount: cbc.Amount = None,
+                 period: 'Period' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.amount = amount
         self.period = period
 
 
 class __RequestForQuotationLineType(PrefixCAC, ComplexXMLParseableObject):
     line_item = None
-    id = None
+    id_ = None
     uuid = None
     note = None
     optional_line_item_indicator = None
@@ -6916,7 +7089,7 @@ class __RequestForQuotationLineType(PrefixCAC, ComplexXMLParseableObject):
     security_classification_code = None
     document_reference = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'note',
         'optional_line_item_indicator',
@@ -6926,16 +7099,17 @@ class __RequestForQuotationLineType(PrefixCAC, ComplexXMLParseableObject):
         'line_item',
     ]
 
-    def __init__(self, line_item: 'LineItem',
+    def __init__(self,		line_item: 'LineItem',
                  id_: cbc.ID = None,
                  uuid: cbc.UUID = None,
                  note: List[cbc.Note] = None,
                  optional_line_item_indicator: cbc.OptionalLineItemIndicator = None,
                  privacy_code: cbc.PrivacyCode = None,
                  security_classification_code: cbc.SecurityClassificationCode = None,
-                 document_reference: List['DocumentReference'] = None):
+                 document_reference: List['DocumentReference'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.line_item = line_item
-        self.id = id_
+        self.id_ = id_
         self.uuid = uuid
         self.note = note
         self.optional_line_item_indicator = optional_line_item_indicator
@@ -6946,7 +7120,7 @@ class __RequestForQuotationLineType(PrefixCAC, ComplexXMLParseableObject):
 
 class __RequestForTenderLineType(PrefixCAC, ComplexXMLParseableObject):
     item = None
-    id = None
+    id_ = None
     uuid = None
     note = None
     quantity = None
@@ -6962,7 +7136,7 @@ class __RequestForTenderLineType(PrefixCAC, ComplexXMLParseableObject):
     warranty_validity_period = None
     sub_request_for_tender_line = None
     order_list = [
-        'id',
+        'id_',
         'uuid',
         'note',
         'quantity',
@@ -6980,7 +7154,7 @@ class __RequestForTenderLineType(PrefixCAC, ComplexXMLParseableObject):
         'sub_request_for_tender_line',
     ]
 
-    def __init__(self, item: 'Item',
+    def __init__(self,		item: 'Item',
                  id_: cbc.ID = None,
                  uuid: cbc.UUID = None,
                  note: List[cbc.Note] = None,
@@ -6995,9 +7169,10 @@ class __RequestForTenderLineType(PrefixCAC, ComplexXMLParseableObject):
                  delivery_period: List['DeliveryPeriod'] = None,
                  required_item_location_quantity: List['RequiredItemLocationQuantity'] = None,
                  warranty_validity_period: 'WarrantyValidityPeriod' = None,
-                 sub_request_for_tender_line: List['SubRequestForTenderLine'] = None):
+                 sub_request_for_tender_line: List['SubRequestForTenderLine'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.item = item
-        self.id = id_
+        self.id_ = id_
         self.uuid = uuid
         self.note = note
         self.quantity = quantity
@@ -7034,14 +7209,15 @@ class __RequestedTenderTotalType(PrefixCAC, ComplexXMLParseableObject):
         'applicable_tax_category',
     ]
 
-    def __init__(self, estimated_overall_contract_amount: cbc.EstimatedOverallContractAmount = None,
+    def __init__(self,		estimated_overall_contract_amount: cbc.EstimatedOverallContractAmount = None,
                  total_amount: cbc.TotalAmount = None,
                  tax_included_indicator: cbc.TaxIncludedIndicator = None,
                  minimum_amount: cbc.MinimumAmount = None,
                  maximum_amount: cbc.MaximumAmount = None,
                  monetary_scope: List[cbc.MonetaryScope] = None,
                  average_subsequent_contract_amount: cbc.AverageSubsequentContractAmount = None,
-                 applicable_tax_category: List['ApplicableTaxCategory'] = None):
+                 applicable_tax_category: List['ApplicableTaxCategory'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.estimated_overall_contract_amount = estimated_overall_contract_amount
         self.total_amount = total_amount
         self.tax_included_indicator = tax_included_indicator
@@ -7068,12 +7244,13 @@ class __ResponseType(PrefixCAC, ComplexXMLParseableObject):
         'status',
     ]
 
-    def __init__(self, reference_id: cbc.ReferenceID = None,
+    def __init__(self,		reference_id: cbc.ReferenceID = None,
                  response_code: cbc.ResponseCode = None,
                  description: List[cbc.Description] = None,
                  effective_date: cbc.EffectiveDate = None,
                  effective_time: cbc.EffectiveTime = None,
-                 status: List['Status'] = None):
+                 status: List['Status'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.reference_id = reference_id
         self.response_code = response_code
         self.description = description
@@ -7102,14 +7279,15 @@ class __ResultOfVerificationType(PrefixCAC, ComplexXMLParseableObject):
         'signatory_party',
     ]
 
-    def __init__(self, validator_id: cbc.ValidatorID = None,
+    def __init__(self,		validator_id: cbc.ValidatorID = None,
                  validation_result_code: cbc.ValidationResultCode = None,
                  validation_date: cbc.ValidationDate = None,
                  validation_time: cbc.ValidationTime = None,
                  validate_process: cbc.ValidateProcess = None,
                  validate_tool: cbc.ValidateTool = None,
                  validate_tool_version: cbc.ValidateToolVersion = None,
-                 signatory_party: 'SignatoryParty' = None):
+                 signatory_party: 'SignatoryParty' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.validator_id = validator_id
         self.validation_result_code = validation_result_code
         self.validation_date = validation_date
@@ -7132,10 +7310,11 @@ class __RetailPlannedImpactType(PrefixCAC, ComplexXMLParseableObject):
         'period',
     ]
 
-    def __init__(self, amount: cbc.Amount,
+    def __init__(self,		amount: cbc.Amount,
                  forecast_purpose_code: cbc.ForecastPurposeCode,
                  forecast_type_code: cbc.ForecastTypeCode,
-                 period: 'Period' = None):
+                 period: 'Period' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.amount = amount
         self.forecast_purpose_code = forecast_purpose_code
         self.forecast_type_code = forecast_type_code
@@ -7148,7 +7327,8 @@ class __RoadTransportType(PrefixCAC, ComplexXMLParseableObject):
         'license_plate_id',
     ]
 
-    def __init__(self, license_plate_id: cbc.LicensePlateID):
+    def __init__(self,		license_plate_id: cbc.LicensePlateID, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.license_plate_id = license_plate_id
 
 
@@ -7166,11 +7346,12 @@ class __SalesItemType(PrefixCAC, ComplexXMLParseableObject):
         'item',
     ]
 
-    def __init__(self, quantity: cbc.Quantity,
+    def __init__(self,		quantity: cbc.Quantity,
                  item: 'Item',
                  activity_property: List['ActivityProperty'] = None,
                  tax_exclusive_price: List['TaxExclusivePrice'] = None,
-                 tax_inclusive_price: List['TaxInclusivePrice'] = None):
+                 tax_inclusive_price: List['TaxInclusivePrice'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.quantity = quantity
         self.item = item
         self.activity_property = activity_property
@@ -7179,25 +7360,26 @@ class __SalesItemType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __SecondaryHazardType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     placard_notation = None
     placard_endorsement = None
     emergency_procedures_code = None
     extension = None
     order_list = [
-        'id',
+        'id_',
         'placard_notation',
         'placard_endorsement',
         'emergency_procedures_code',
         'extension',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  placard_notation: cbc.PlacardNotation = None,
                  placard_endorsement: cbc.PlacardEndorsement = None,
                  emergency_procedures_code: cbc.EmergencyProceduresCode = None,
-                 extension: List[cbc.Extension] = None):
-        self.id = id_
+                 extension: List[cbc.Extension] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.placard_notation = placard_notation
         self.placard_endorsement = placard_endorsement
         self.emergency_procedures_code = emergency_procedures_code
@@ -7210,31 +7392,33 @@ class __ServiceFrequencyType(PrefixCAC, ComplexXMLParseableObject):
         'week_day_code',
     ]
 
-    def __init__(self, week_day_code: cbc.WeekDayCode):
+    def __init__(self,		week_day_code: cbc.WeekDayCode, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.week_day_code = week_day_code
 
 
 class __ServiceProviderPartyType(PrefixCAC, ComplexXMLParseableObject):
     party = None
-    id = None
+    id_ = None
     service_type_code = None
     service_type = None
     seller_contact = None
     order_list = [
-        'id',
+        'id_',
         'service_type_code',
         'service_type',
         'party',
         'seller_contact',
     ]
 
-    def __init__(self, party: 'Party',
+    def __init__(self,		party: 'Party',
                  id_: cbc.ID = None,
                  service_type_code: cbc.ServiceTypeCode = None,
                  service_type: List[cbc.ServiceType] = None,
-                 seller_contact: 'SellerContact' = None):
+                 seller_contact: 'SellerContact' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.party = party
-        self.id = id_
+        self.id_ = id_
         self.service_type_code = service_type_code
         self.service_type = service_type
         self.seller_contact = seller_contact
@@ -7247,14 +7431,15 @@ class __ShareholderPartyType(PrefixCAC, ComplexXMLParseableObject):
         'partecipation_percent',
         'party',
     ]
-    def __init__(self, partecipation_percent: cbc.PartecipationPercent = None,
-                 party: 'Party' = None):
+    def __init__(self,		partecipation_percent: cbc.PartecipationPercent = None,
+                 party: 'Party' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.partecipation_percent = partecipation_percent
         self.party = party
 
 
 class __ShipmentType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     shipping_priority_level_code = None
     handling_code = None
     handling_instructions = None
@@ -7287,7 +7472,7 @@ class __ShipmentType(PrefixCAC, ComplexXMLParseableObject):
     export_country = None
     freight_allowance_charge = None
     order_list = [
-        'id',
+        'id_',
         'shipping_priority_level_code',
         'handling_code',
         'handling_instructions',
@@ -7321,7 +7506,7 @@ class __ShipmentType(PrefixCAC, ComplexXMLParseableObject):
         'freight_allowance_charge',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  shipping_priority_level_code: cbc.ShippingPriorityLevelCode = None,
                  handling_code: cbc.HandlingCode = None,
                  handling_instructions: List[cbc.HandlingInstructions] = None,
@@ -7352,9 +7537,9 @@ class __ShipmentType(PrefixCAC, ComplexXMLParseableObject):
                  first_arrival_port_location: 'FirstArrivalPortLocation' = None,
                  last_exit_port_location: 'LastExitPortLocation' = None,
                  export_country: 'ExportCountry' = None,
-                 freight_allowance_charge: List['FreightAllowanceCharge'] = None, xml_namespaces = None):
+                 freight_allowance_charge: List['FreightAllowanceCharge'] = None, xml_namespaces=None):
         super().__init__(xml_namespaces)
-        self.id = id_
+        self.id_ = id_
         self.shipping_priority_level_code = shipping_priority_level_code
         self.handling_code = handling_code
         self.handling_instructions = handling_instructions
@@ -7389,7 +7574,7 @@ class __ShipmentType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __ShipmentStageType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     transport_mode_code = None
     transport_means_type_code = None
     transit_direction_code = None
@@ -7451,7 +7636,7 @@ class __ShipmentStageType(PrefixCAC, ComplexXMLParseableObject):
     master_person = None
     ships_surgeon_person = None
     order_list = [
-        'id',
+        'id_',
         'transport_mode_code',
         'transport_means_type_code',
         'transit_direction_code',
@@ -7514,7 +7699,7 @@ class __ShipmentStageType(PrefixCAC, ComplexXMLParseableObject):
         'ships_surgeon_person',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  transport_mode_code: cbc.TransportModeCode = None,
                  transport_means_type_code: cbc.TransportMeansTypeCode = None,
                  transit_direction_code: cbc.TransitDirectionCode = None,
@@ -7574,8 +7759,9 @@ class __ShipmentStageType(PrefixCAC, ComplexXMLParseableObject):
                  crew_member_person: List['CrewMemberPerson'] = None,
                  security_officer_person: 'SecurityOfficerPerson' = None,
                  master_person: 'MasterPerson' = None,
-                 ships_surgeon_person: 'ShipsSurgeonPerson' = None):
-        self.id = id_
+                 ships_surgeon_person: 'ShipsSurgeonPerson' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.transport_mode_code = transport_mode_code
         self.transport_means_type_code = transport_means_type_code
         self.transit_direction_code = transit_direction_code
@@ -7639,7 +7825,7 @@ class __ShipmentStageType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __SignatureType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     note = None
     validation_date = None
     validation_time = None
@@ -7650,7 +7836,7 @@ class __SignatureType(PrefixCAC, ComplexXMLParseableObject):
     digital_signature_attachment = None
     original_document_reference = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'validation_date',
         'validation_time',
@@ -7662,7 +7848,7 @@ class __SignatureType(PrefixCAC, ComplexXMLParseableObject):
         'original_document_reference',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  note: List[cbc.Note] = None,
                  validation_date: cbc.ValidationDate = None,
                  validation_time: cbc.ValidationTime = None,
@@ -7671,8 +7857,9 @@ class __SignatureType(PrefixCAC, ComplexXMLParseableObject):
                  signature_method: cbc.SignatureMethod = None,
                  signatory_party: 'SignatoryParty' = None,
                  digital_signature_attachment: 'DigitalSignatureAttachment' = None,
-                 original_document_reference: 'OriginalDocumentReference' = None):
-        self.id = id_
+                 original_document_reference: 'OriginalDocumentReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.note = note
         self.validation_date = validation_date
         self.validation_time = validation_time
@@ -7685,7 +7872,7 @@ class __SignatureType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __StatementLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     note = None
     uuid = None
     balance_brought_forward_indicator = None
@@ -7708,7 +7895,7 @@ class __StatementLineType(PrefixCAC, ComplexXMLParseableObject):
     allowance_charge = None
     collected_payment = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'uuid',
         'balance_brought_forward_indicator',
@@ -7732,7 +7919,7 @@ class __StatementLineType(PrefixCAC, ComplexXMLParseableObject):
         'collected_payment',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  note: List[cbc.Note] = None,
                  uuid: cbc.UUID = None,
                  balance_brought_forward_indicator: cbc.BalanceBroughtForwardIndicator = None,
@@ -7753,8 +7940,9 @@ class __StatementLineType(PrefixCAC, ComplexXMLParseableObject):
                  document_reference: List['DocumentReference'] = None,
                  exchange_rate: 'ExchangeRate' = None,
                  allowance_charge: List['AllowanceCharge'] = None,
-                 collected_payment: List['CollectedPayment'] = None):
-        self.id = id_
+                 collected_payment: List['CollectedPayment'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.note = note
         self.uuid = uuid
         self.balance_brought_forward_indicator = balance_brought_forward_indicator
@@ -7806,7 +7994,7 @@ class __StatusType(PrefixCAC, ComplexXMLParseableObject):
         'condition',
     ]
 
-    def __init__(self, condition_code: cbc.ConditionCode = None,
+    def __init__(self,		condition_code: cbc.ConditionCode = None,
                  reference_date: cbc.ReferenceDate = None,
                  reference_time: cbc.ReferenceTime = None,
                  description: List[cbc.Description] = None,
@@ -7817,7 +8005,8 @@ class __StatusType(PrefixCAC, ComplexXMLParseableObject):
                  indication_indicator: cbc.IndicationIndicator = None,
                  percent: cbc.Percent = None,
                  reliability_percent: cbc.ReliabilityPercent = None,
-                 condition: List['Condition'] = None):
+                 condition: List['Condition'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.condition_code = condition_code
         self.reference_date = reference_date
         self.reference_time = reference_time
@@ -7833,7 +8022,7 @@ class __StatusType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __StockAvailabilityReportLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     quantity = None
     item = None
     note = None
@@ -7841,7 +8030,7 @@ class __StockAvailabilityReportLineType(PrefixCAC, ComplexXMLParseableObject):
     availability_date = None
     availability_status_code = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'quantity',
         'value_amount',
@@ -7850,14 +8039,15 @@ class __StockAvailabilityReportLineType(PrefixCAC, ComplexXMLParseableObject):
         'item',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  quantity: cbc.Quantity,
                  item: 'Item',
                  note: List[cbc.Note] = None,
                  value_amount: cbc.ValueAmount = None,
                  availability_date: cbc.AvailabilityDate = None,
-                 availability_status_code: cbc.AvailabilityStatusCode = None):
-        self.id = id_
+                 availability_status_code: cbc.AvailabilityStatusCode = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.quantity = quantity
         self.item = item
         self.note = note
@@ -7876,9 +8066,10 @@ class __StowageType(PrefixCAC, ComplexXMLParseableObject):
         'measurement_dimension',
     ]
 
-    def __init__(self, location_id: cbc.LocationID = None,
+    def __init__(self,		location_id: cbc.LocationID = None,
                  location: List[cbc.Location] = None,
-                 measurement_dimension: List['MeasurementDimension'] = None):
+                 measurement_dimension: List['MeasurementDimension'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.location_id = location_id
         self.location = location
         self.measurement_dimension = measurement_dimension
@@ -7902,13 +8093,14 @@ class __SubcontractTermsType(PrefixCAC, ComplexXMLParseableObject):
         'minimum_percent',
     ]
 
-    def __init__(self, rate: cbc.Rate = None,
+    def __init__(self,		rate: cbc.Rate = None,
                  unknown_price_indicator: cbc.UnknownPriceIndicator = None,
                  description: List[cbc.Description] = None,
                  amount: cbc.Amount = None,
                  subcontracting_conditions_code: cbc.SubcontractingConditionsCode = None,
                  maximum_percent: cbc.MaximumPercent = None,
-                 minimum_percent: cbc.MinimumPercent = None):
+                 minimum_percent: cbc.MinimumPercent = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.rate = rate
         self.unknown_price_indicator = unknown_price_indicator
         self.description = description
@@ -7940,7 +8132,7 @@ class __SubscriberConsumptionType(PrefixCAC, ComplexXMLParseableObject):
         'supplier_consumption',
     ]
 
-    def __init__(self, utility_consumption_point: 'UtilityConsumptionPoint',
+    def __init__(self,		utility_consumption_point: 'UtilityConsumptionPoint',
                  consumption_id: cbc.ConsumptionID = None,
                  specification_type_code: cbc.SpecificationTypeCode = None,
                  note: List[cbc.Note] = None,
@@ -7948,7 +8140,8 @@ class __SubscriberConsumptionType(PrefixCAC, ComplexXMLParseableObject):
                  subscriber_party: 'SubscriberParty' = None,
                  on_account_payment: List['OnAccountPayment'] = None,
                  consumption: 'Consumption' = None,
-                 supplier_consumption: List['SupplierConsumption'] = None):
+                 supplier_consumption: List['SupplierConsumption'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.utility_consumption_point = utility_consumption_point
         self.consumption_id = consumption_id
         self.specification_type_code = specification_type_code
@@ -7976,14 +8169,15 @@ class __SupplierConsumptionType(PrefixCAC, ComplexXMLParseableObject):
         'consumption_line',
     ]
 
-    def __init__(self, consumption: 'Consumption',
+    def __init__(self,		consumption: 'Consumption',
                  description: List[cbc.Description] = None,
                  utility_supplier_party: 'UtilitySupplierParty' = None,
                  utility_customer_party: 'UtilityCustomerParty' = None,
                  contract: 'Contract' = None,
-                 consumption_line: List['ConsumptionLine'] = None):
+                 consumption_line: List['ConsumptionLine'] = None, xml_namespaces=None):
         if not consumption_line:
             raise ListMustNotBeEmptyException('consumption_line')
+        super().__init__(xml_namespaces)
         self.consumption = consumption
         self.description = description
         self.utility_supplier_party = utility_supplier_party
@@ -8010,13 +8204,14 @@ class __SupplierPartyType(PrefixCAC, ComplexXMLParseableObject):
         'seller_contact',
     ]
 
-    def __init__(self, customer_assigned_account_id: cbc.CustomerAssignedAccountID = None,
+    def __init__(self,		customer_assigned_account_id: cbc.CustomerAssignedAccountID = None,
                  additional_account_id: List[cbc.AdditionalAccountID] = None,
                  data_sending_capability: cbc.DataSendingCapability = None,
                  party: 'Party' = None,
                  despatch_contact: 'DespatchContact' = None,
                  accounting_contact: 'AccountingContact' = None,
-                 seller_contact: 'SellerContact' = None):
+                 seller_contact: 'SellerContact' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.customer_assigned_account_id = customer_assigned_account_id
         self.additional_account_id = additional_account_id
         self.data_sending_capability = data_sending_capability
@@ -8028,7 +8223,7 @@ class __SupplierPartyType(PrefixCAC, ComplexXMLParseableObject):
 
 class __TaxCategoryType(PrefixCAC, ComplexXMLParseableObject):
     tax_scheme = None
-    id = None
+    id_ = None
     name = None
     percent = None
     base_unit_measure = None
@@ -8038,7 +8233,7 @@ class __TaxCategoryType(PrefixCAC, ComplexXMLParseableObject):
     tier_range = None
     tier_rate_percent = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'percent',
         'base_unit_measure',
@@ -8050,7 +8245,7 @@ class __TaxCategoryType(PrefixCAC, ComplexXMLParseableObject):
         'tax_scheme',
     ]
 
-    def __init__(self, tax_scheme: 'TaxScheme',
+    def __init__(self,		tax_scheme: 'TaxScheme',
                  id_: cbc.ID = None,
                  name: cbc.Name = None,
                  percent: cbc.Percent = None,
@@ -8059,9 +8254,10 @@ class __TaxCategoryType(PrefixCAC, ComplexXMLParseableObject):
                  tax_exemption_reason_code: cbc.TaxExemptionReasonCode = None,
                  tax_exemption_reason: List[cbc.TaxExemptionReason] = None,
                  tier_range: cbc.TierRange = None,
-                 tier_rate_percent: cbc.TierRatePercent = None):
+                 tier_rate_percent: cbc.TierRatePercent = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.tax_scheme = tax_scheme
-        self.id = id_
+        self.id_ = id_
         self.name = name
         self.percent = percent
         self.base_unit_measure = base_unit_measure
@@ -8073,25 +8269,26 @@ class __TaxCategoryType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __TaxSchemeType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     name = None
     tax_type_code = None
     currency_code = None
     jurisdiction_region_address = None
     order_list = [
-        'id',
+        'id_',
         'name',
         'tax_type_code',
         'currency_code',
         'jurisdiction_region_address',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  name: cbc.Name = None,
                  tax_type_code: cbc.TaxTypeCode = None,
                  currency_code: cbc.CurrencyCode = None,
-                 jurisdiction_region_address: List['JurisdictionRegionAddress'] = None):
-        self.id = id_
+                 jurisdiction_region_address: List['JurisdictionRegionAddress'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.name = name
         self.tax_type_code = tax_type_code
         self.currency_code = currency_code
@@ -8122,7 +8319,7 @@ class __TaxSubtotalType(PrefixCAC, ComplexXMLParseableObject):
         'tax_category',
     ]
 
-    def __init__(self, tax_amount: cbc.TaxAmount,
+    def __init__(self,		tax_amount: cbc.TaxAmount,
                  tax_category: 'TaxCategory',
                  taxable_amount: cbc.TaxableAmount = None,
                  calculation_sequence_numeric: cbc.CalculationSequenceNumeric = None,
@@ -8131,7 +8328,8 @@ class __TaxSubtotalType(PrefixCAC, ComplexXMLParseableObject):
                  base_unit_measure: cbc.BaseUnitMeasure = None,
                  per_unit_amount: cbc.PerUnitAmount = None,
                  tier_range: cbc.TierRange = None,
-                 tier_rate_percent: cbc.TierRatePercent = None):
+                 tier_rate_percent: cbc.TierRatePercent = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.tax_amount = tax_amount
         self.tax_category = tax_category
         self.taxable_amount = taxable_amount
@@ -8158,11 +8356,12 @@ class __TaxTotalType(PrefixCAC, ComplexXMLParseableObject):
         'tax_subtotal',
     ]
 
-    def __init__(self, tax_amount: cbc.TaxAmount,
+    def __init__(self,		tax_amount: cbc.TaxAmount,
                  rounding_amount: cbc.RoundingAmount = None,
                  tax_evidence_indicator: cbc.TaxEvidenceIndicator = None,
                  tax_included_indicator: cbc.TaxIncludedIndicator = None,
-                 tax_subtotal: List['TaxSubtotal'] = None):
+                 tax_subtotal: List['TaxSubtotal'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.tax_amount = tax_amount
         self.rounding_amount = rounding_amount
         self.tax_evidence_indicator = tax_evidence_indicator
@@ -8174,7 +8373,7 @@ class __TelecommunicationsServiceType(PrefixCAC, ComplexXMLParseableObject):
     call_date = None
     call_time = None
     service_number_called = None
-    id = None
+    id_ = None
     telecommunications_service_category = None
     telecommunications_service_category_code = None
     movie_title = None
@@ -8193,7 +8392,7 @@ class __TelecommunicationsServiceType(PrefixCAC, ComplexXMLParseableObject):
     call_duty = None
     time_duty = None
     order_list = [
-        'id',
+        'id_',
         'call_date',
         'call_time',
         'service_number_called',
@@ -8216,7 +8415,7 @@ class __TelecommunicationsServiceType(PrefixCAC, ComplexXMLParseableObject):
         'time_duty',
     ]
 
-    def __init__(self, call_date: cbc.CallDate,
+    def __init__(self,		call_date: cbc.CallDate,
                  call_time: cbc.CallTime,
                  service_number_called: cbc.ServiceNumberCalled,
                  id_: cbc.ID = None,
@@ -8236,11 +8435,12 @@ class __TelecommunicationsServiceType(PrefixCAC, ComplexXMLParseableObject):
                  allowance_charge: List['AllowanceCharge'] = None,
                  tax_total: List['TaxTotal'] = None,
                  call_duty: List['CallDuty'] = None,
-                 time_duty: List['TimeDuty'] = None):
+                 time_duty: List['TimeDuty'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.call_date = call_date
         self.call_time = call_time
         self.service_number_called = service_number_called
-        self.id = id_
+        self.id_ = id_
         self.telecommunications_service_category = telecommunications_service_category
         self.telecommunications_service_category_code = telecommunications_service_category_code
         self.movie_title = movie_title
@@ -8276,14 +8476,15 @@ class __TelecommunicationsSupplyType(PrefixCAC, ComplexXMLParseableObject):
         'telecommunications_supply_line',
     ]
 
-    def __init__(self, privacy_code: cbc.PrivacyCode,
+    def __init__(self,		privacy_code: cbc.PrivacyCode,
                  telecommunications_supply_type: cbc.TelecommunicationsSupplyType = None,
                  telecommunications_supply_type_code: cbc.TelecommunicationsSupplyTypeCode = None,
                  description: List[cbc.Description] = None,
                  total_amount: cbc.TotalAmount = None,
-                 telecommunications_supply_line: List['TelecommunicationsSupplyLine'] = None):
+                 telecommunications_supply_line: List['TelecommunicationsSupplyLine'] = None, xml_namespaces=None):
         if not telecommunications_supply_line:
             raise ListMustNotBeEmptyException('telecommunications_supply_line')
+        super().__init__(xml_namespaces)
         self.privacy_code = privacy_code
         self.telecommunications_supply_type = telecommunications_supply_type
         self.telecommunications_supply_type_code = telecommunications_supply_type_code
@@ -8293,7 +8494,7 @@ class __TelecommunicationsSupplyType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __TelecommunicationsSupplyLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     phone_number = None
     description = None
     line_extension_amount = None
@@ -8302,7 +8503,7 @@ class __TelecommunicationsSupplyLineType(PrefixCAC, ComplexXMLParseableObject):
     tax_total = None
     telecommunications_service = None
     order_list = [
-        'id',
+        'id_',
         'phone_number',
         'description',
         'line_extension_amount',
@@ -8312,17 +8513,18 @@ class __TelecommunicationsSupplyLineType(PrefixCAC, ComplexXMLParseableObject):
         'telecommunications_service',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  phone_number: cbc.PhoneNumber,
                  description: List[cbc.Description] = None,
                  line_extension_amount: cbc.LineExtensionAmount = None,
                  exchange_rate: List['ExchangeRate'] = None,
                  allowance_charge: List['AllowanceCharge'] = None,
                  tax_total: List['TaxTotal'] = None,
-                 telecommunications_service: List['TelecommunicationsService'] = None):
+                 telecommunications_service: List['TelecommunicationsService'] = None, xml_namespaces=None):
         if not telecommunications_service:
             raise ListMustNotBeEmptyException('telecommunications_service')
-        self.id = id_
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.phone_number = phone_number
         self.description = description
         self.line_extension_amount = line_extension_amount
@@ -8342,16 +8544,17 @@ class __TemperatureType(PrefixCAC, ComplexXMLParseableObject):
         'description',
     ]
 
-    def __init__(self, attribute_id: cbc.AttributeID,
+    def __init__(self,		attribute_id: cbc.AttributeID,
                  measure: cbc.Measure,
-                 description: List[cbc.Description] = None):
+                 description: List[cbc.Description] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.attribute_id = attribute_id
         self.measure = measure
         self.description = description
 
 
 class __TenderLineType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     note = None
     quantity = None
     line_extension_amount = None
@@ -8373,7 +8576,7 @@ class __TenderLineType(PrefixCAC, ComplexXMLParseableObject):
     call_for_tenders_line_reference = None
     call_for_tenders_document_reference = None
     order_list = [
-        'id',
+        'id_',
         'note',
         'quantity',
         'line_extension_amount',
@@ -8396,7 +8599,7 @@ class __TenderLineType(PrefixCAC, ComplexXMLParseableObject):
         'call_for_tenders_document_reference',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  note: List[cbc.Note] = None,
                  quantity: cbc.Quantity = None,
                  line_extension_amount: cbc.LineExtensionAmount = None,
@@ -8416,8 +8619,9 @@ class __TenderLineType(PrefixCAC, ComplexXMLParseableObject):
                  warranty_validity_period: 'WarrantyValidityPeriod' = None,
                  sub_tender_line: List['SubTenderLine'] = None,
                  call_for_tenders_line_reference: 'CallForTendersLineReference' = None,
-                 call_for_tenders_document_reference: 'CallForTendersDocumentReference' = None):
-        self.id = id_
+                 call_for_tenders_document_reference: 'CallForTendersDocumentReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.note = note
         self.quantity = quantity
         self.line_extension_amount = line_extension_amount
@@ -8456,12 +8660,13 @@ class __TenderPreparationType(PrefixCAC, ComplexXMLParseableObject):
         'document_tender_requirement',
     ]
 
-    def __init__(self, tender_envelope_id: cbc.TenderEnvelopeID,
+    def __init__(self,		tender_envelope_id: cbc.TenderEnvelopeID,
                  tender_envelope_type_code: cbc.TenderEnvelopeTypeCode = None,
                  description: List[cbc.Description] = None,
                  open_tender_id: cbc.OpenTenderID = None,
                  procurement_project_lot: List['ProcurementProjectLot'] = None,
-                 document_tender_requirement: List['DocumentTenderRequirement'] = None):
+                 document_tender_requirement: List['DocumentTenderRequirement'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.tender_envelope_id = tender_envelope_id
         self.tender_envelope_type_code = tender_envelope_type_code
         self.description = description
@@ -8480,9 +8685,10 @@ class __TenderRequirementType(PrefixCAC, ComplexXMLParseableObject):
         'template_document_reference',
     ]
 
-    def __init__(self, name: cbc.Name,
+    def __init__(self,		name: cbc.Name,
                  description: List[cbc.Description] = None,
-                 template_document_reference: 'TemplateDocumentReference' = None):
+                 template_document_reference: 'TemplateDocumentReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
         self.description = description
         self.template_document_reference = template_document_reference
@@ -8524,7 +8730,7 @@ class __TenderResultType(PrefixCAC, ComplexXMLParseableObject):
         'winning_party',
     ]
 
-    def __init__(self, award_date: cbc.AwardDate,
+    def __init__(self,		award_date: cbc.AwardDate,
                  tender_result_code: cbc.TenderResultCode = None,
                  description: List[cbc.Description] = None,
                  advertisement_amount: cbc.AdvertisementAmount = None,
@@ -8539,7 +8745,8 @@ class __TenderResultType(PrefixCAC, ComplexXMLParseableObject):
                  awarded_tendered_project: 'AwardedTenderedProject' = None,
                  contract_formalization_period: 'ContractFormalizationPeriod' = None,
                  subcontract_terms: List['SubcontractTerms'] = None,
-                 winning_party: List['WinningParty'] = None):
+                 winning_party: List['WinningParty'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.award_date = award_date
         self.tender_result_code = tender_result_code
         self.description = description
@@ -8584,7 +8791,7 @@ class __TenderedProjectType(PrefixCAC, ComplexXMLParseableObject):
         'awarding_criterion_response',
     ]
 
-    def __init__(self, variant_id: cbc.VariantID = None,
+    def __init__(self,		variant_id: cbc.VariantID = None,
                  fee_amount: cbc.FeeAmount = None,
                  fee_description: List[cbc.FeeDescription] = None,
                  tender_envelope_id: cbc.TenderEnvelopeID = None,
@@ -8594,7 +8801,8 @@ class __TenderedProjectType(PrefixCAC, ComplexXMLParseableObject):
                  tax_total: List['TaxTotal'] = None,
                  legal_monetary_total: 'LegalMonetaryTotal' = None,
                  tender_line: List['TenderLine'] = None,
-                 awarding_criterion_response: List['AwardingCriterionResponse'] = None):
+                 awarding_criterion_response: List['AwardingCriterionResponse'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.variant_id = variant_id
         self.fee_amount = fee_amount
         self.fee_description = fee_description
@@ -8618,9 +8826,10 @@ class __TendererPartyQualificationType(PrefixCAC, ComplexXMLParseableObject):
         'additional_qualifying_party',
     ]
 
-    def __init__(self, main_qualifying_party: 'MainQualifyingParty',
+    def __init__(self,		main_qualifying_party: 'MainQualifyingParty',
                  interested_procurement_project_lot: List['InterestedProcurementProjectLot'] = None,
-                 additional_qualifying_party: List['AdditionalQualifyingParty'] = None):
+                 additional_qualifying_party: List['AdditionalQualifyingParty'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.main_qualifying_party = main_qualifying_party
         self.interested_procurement_project_lot = interested_procurement_project_lot
         self.additional_qualifying_party = additional_qualifying_party
@@ -8652,7 +8861,7 @@ class __TendererQualificationRequestType(PrefixCAC, ComplexXMLParseableObject):
         'economic_operator_role',
     ]
 
-    def __init__(self, company_legal_form_code: cbc.CompanyLegalFormCode = None,
+    def __init__(self,		company_legal_form_code: cbc.CompanyLegalFormCode = None,
                  company_legal_form: cbc.CompanyLegalForm = None,
                  personal_situation: List[cbc.PersonalSituation] = None,
                  operating_years_quantity: cbc.OperatingYearsQuantity = None,
@@ -8663,7 +8872,8 @@ class __TendererQualificationRequestType(PrefixCAC, ComplexXMLParseableObject):
                  technical_evaluation_criterion: List['TechnicalEvaluationCriterion'] = None,
                  financial_evaluation_criterion: List['FinancialEvaluationCriterion'] = None,
                  specific_tenderer_requirement: List['SpecificTendererRequirement'] = None,
-                 economic_operator_role: List['EconomicOperatorRole'] = None):
+                 economic_operator_role: List['EconomicOperatorRole'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.company_legal_form_code = company_legal_form_code
         self.company_legal_form = company_legal_form
         self.personal_situation = personal_situation
@@ -8691,11 +8901,12 @@ class __TendererRequirementType(PrefixCAC, ComplexXMLParseableObject):
         'suggested_evidence',
     ]
 
-    def __init__(self, name: List[cbc.Name] = None,
+    def __init__(self,		name: List[cbc.Name] = None,
                  tenderer_requirement_type_code: cbc.TendererRequirementTypeCode = None,
                  description: List[cbc.Description] = None,
                  legal_reference: cbc.LegalReference = None,
-                 suggested_evidence: List['SuggestedEvidence'] = None):
+                 suggested_evidence: List['SuggestedEvidence'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.name = name
         self.tenderer_requirement_type_code = tenderer_requirement_type_code
         self.description = description
@@ -8704,7 +8915,7 @@ class __TendererRequirementType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __TenderingProcessType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     original_contracting_system_id = None
     description = None
     negotiation_description = None
@@ -8728,7 +8939,7 @@ class __TenderingProcessType(PrefixCAC, ComplexXMLParseableObject):
     auction_terms = None
     framework_agreement = None
     order_list = [
-        'id',
+        'id_',
         'original_contracting_system_id',
         'description',
         'negotiation_description',
@@ -8753,7 +8964,7 @@ class __TenderingProcessType(PrefixCAC, ComplexXMLParseableObject):
         'framework_agreement',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  original_contracting_system_id: cbc.OriginalContractingSystemID = None,
                  description: List[cbc.Description] = None,
                  negotiation_description: List[cbc.NegotiationDescription] = None,
@@ -8775,8 +8986,9 @@ class __TenderingProcessType(PrefixCAC, ComplexXMLParseableObject):
                  economic_operator_short_list: 'EconomicOperatorShortList' = None,
                  open_tender_event: List['OpenTenderEvent'] = None,
                  auction_terms: 'AuctionTerms' = None,
-                 framework_agreement: 'FrameworkAgreement' = None):
-        self.id = id_
+                 framework_agreement: 'FrameworkAgreement' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.original_contracting_system_id = original_contracting_system_id
         self.description = description
         self.negotiation_description = negotiation_description
@@ -8891,7 +9103,7 @@ class __TenderingTermsType(PrefixCAC, ComplexXMLParseableObject):
         'replaced_notice_document_reference',
     ]
 
-    def __init__(self, awarding_method_type_code: cbc.AwardingMethodTypeCode = None,
+    def __init__(self,		awarding_method_type_code: cbc.AwardingMethodTypeCode = None,
                  price_evaluation_code: cbc.PriceEvaluationCode = None,
                  maximum_variant_quantity: cbc.MaximumVariantQuantity = None,
                  variant_constraint_indicator: cbc.VariantConstraintIndicator = None,
@@ -8933,7 +9145,8 @@ class __TenderingTermsType(PrefixCAC, ComplexXMLParseableObject):
                  appeal_terms: 'AppealTerms' = None,
                  language: List['Language'] = None,
                  budget_account_line: List['BudgetAccountLine'] = None,
-                 replaced_notice_document_reference: 'ReplacedNoticeDocumentReference' = None):
+                 replaced_notice_document_reference: 'ReplacedNoticeDocumentReference' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.awarding_method_type_code = awarding_method_type_code
         self.price_evaluation_code = price_evaluation_code
         self.maximum_variant_quantity = maximum_variant_quantity
@@ -8981,14 +9194,14 @@ class __TenderingTermsType(PrefixCAC, ComplexXMLParseableObject):
 
 class __TradeFinancingType(PrefixCAC, ComplexXMLParseableObject):
     financing_party = None
-    id = None
+    id_ = None
     financing_instrument_code = None
     contract_document_reference = None
     document_reference = None
     financing_financial_account = None
     clause = None
     order_list = [
-        'id',
+        'id_',
         'financing_instrument_code',
         'contract_document_reference',
         'document_reference',
@@ -8997,15 +9210,16 @@ class __TradeFinancingType(PrefixCAC, ComplexXMLParseableObject):
         'clause',
     ]
 
-    def __init__(self, financing_party: 'FinancingParty',
+    def __init__(self,		financing_party: 'FinancingParty',
                  id_: cbc.ID = None,
                  financing_instrument_code: cbc.FinancingInstrumentCode = None,
                  contract_document_reference: 'ContractDocumentReference' = None,
                  document_reference: List['DocumentReference'] = None,
                  financing_financial_account: 'FinancingFinancialAccount' = None,
-                 clause: List['Clause'] = None):
+                 clause: List['Clause'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.financing_party = financing_party
-        self.id = id_
+        self.id_ = id_
         self.financing_instrument_code = financing_instrument_code
         self.contract_document_reference = contract_document_reference
         self.document_reference = document_reference
@@ -9023,38 +9237,40 @@ class __TradingTermsType(PrefixCAC, ComplexXMLParseableObject):
         'applicable_address',
     ]
 
-    def __init__(self, information: List[cbc.Information] = None,
+    def __init__(self,		information: List[cbc.Information] = None,
                  reference: cbc.Reference = None,
-                 applicable_address: 'ApplicableAddress' = None):
+                 applicable_address: 'ApplicableAddress' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.information = information
         self.reference = reference
         self.applicable_address = applicable_address
 
 
 class __TransactionConditionsType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     action_code = None
     description = None
     document_reference = None
     order_list = [
-        'id',
+        'id_',
         'action_code',
         'description',
         'document_reference',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  action_code: cbc.ActionCode = None,
                  description: List[cbc.Description] = None,
-                 document_reference: List['DocumentReference'] = None):
-        self.id = id_
+                 document_reference: List['DocumentReference'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.action_code = action_code
         self.description = description
         self.document_reference = document_reference
 
 
 class __TransportEquipmentType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     referenced_consignment_id = None
     transport_equipment_type_code = None
     provider_type_code = None
@@ -9116,7 +9332,7 @@ class __TransportEquipmentType(PrefixCAC, ComplexXMLParseableObject):
     package = None
     goods_item = None
     order_list = [
-        'id',
+        'id_',
         'referenced_consignment_id',
         'transport_equipment_type_code',
         'provider_type_code',
@@ -9179,7 +9395,7 @@ class __TransportEquipmentType(PrefixCAC, ComplexXMLParseableObject):
         'goods_item',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  referenced_consignment_id: List[cbc.ReferencedConsignmentID] = None,
                  transport_equipment_type_code: cbc.TransportEquipmentTypeCode = None,
                  provider_type_code: cbc.ProviderTypeCode = None,
@@ -9239,8 +9455,9 @@ class __TransportEquipmentType(PrefixCAC, ComplexXMLParseableObject):
                  shipment_document_reference: List['ShipmentDocumentReference'] = None,
                  contained_in_transport_equipment: List['ContainedInTransportEquipment'] = None,
                  package: List['Package'] = None,
-                 goods_item: List['GoodsItem'] = None):
-        self.id = id_
+                 goods_item: List['GoodsItem'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.referenced_consignment_id = referenced_consignment_id
         self.transport_equipment_type_code = transport_equipment_type_code
         self.provider_type_code = provider_type_code
@@ -9304,25 +9521,26 @@ class __TransportEquipmentType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __TransportEquipmentSealType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     seal_issuer_type_code = None
     condition = None
     seal_status_code = None
     sealing_party_type = None
     order_list = [
-        'id',
+        'id_',
         'seal_issuer_type_code',
         'condition',
         'seal_status_code',
         'sealing_party_type',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  seal_issuer_type_code: cbc.SealIssuerTypeCode = None,
                  condition: cbc.Condition = None,
                  seal_status_code: cbc.SealStatusCode = None,
-                 sealing_party_type: cbc.SealingPartyType = None):
-        self.id = id_
+                 sealing_party_type: cbc.SealingPartyType = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.seal_issuer_type_code = seal_issuer_type_code
         self.condition = condition
         self.seal_status_code = seal_status_code
@@ -9357,7 +9575,7 @@ class __TransportEventType(PrefixCAC, ComplexXMLParseableObject):
         'period',
     ]
 
-    def __init__(self, identification_id: cbc.IdentificationID = None,
+    def __init__(self,		identification_id: cbc.IdentificationID = None,
                  occurrence_date: cbc.OccurrenceDate = None,
                  occurrence_time: cbc.OccurrenceTime = None,
                  transport_event_type_code: cbc.TransportEventTypeCode = None,
@@ -9368,7 +9586,8 @@ class __TransportEventType(PrefixCAC, ComplexXMLParseableObject):
                  contact: List['Contact'] = None,
                  location: 'Location' = None,
                  signature: 'Signature' = None,
-                 period: List['Period'] = None):
+                 period: List['Period'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.identification_id = identification_id
         self.occurrence_date = occurrence_date
         self.occurrence_time = occurrence_time
@@ -9409,7 +9628,7 @@ class __TransportExecutionTermsType(PrefixCAC, ComplexXMLParseableObject):
         'service_charge_payment_terms',
     ]
 
-    def __init__(self, transport_user_special_terms: List[cbc.TransportUserSpecialTerms] = None,
+    def __init__(self,		transport_user_special_terms: List[cbc.TransportUserSpecialTerms] = None,
                  transport_service_provider_special_terms: List[
                      cbc.TransportServiceProviderSpecialTerms] = None,
                  change_conditions: List[cbc.ChangeConditions] = None,
@@ -9420,7 +9639,8 @@ class __TransportExecutionTermsType(PrefixCAC, ComplexXMLParseableObject):
                  penalty_payment_terms: 'PenaltyPaymentTerms' = None,
                  environmental_emission: List['EnvironmentalEmission'] = None,
                  notification_requirement: List['NotificationRequirement'] = None,
-                 service_charge_payment_terms: 'ServiceChargePaymentTerms' = None):
+                 service_charge_payment_terms: 'ServiceChargePaymentTerms' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.transport_user_special_terms = transport_user_special_terms
         self.transport_service_provider_special_terms = transport_service_provider_special_terms
         self.change_conditions = change_conditions
@@ -9435,7 +9655,7 @@ class __TransportExecutionTermsType(PrefixCAC, ComplexXMLParseableObject):
 
 
 class __TransportHandlingUnitType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     transport_handling_unit_type_code = None
     handling_code = None
     handling_instructions = None
@@ -9463,7 +9683,7 @@ class __TransportHandlingUnitType(PrefixCAC, ComplexXMLParseableObject):
     referenced_shipment = None
     package = None
     order_list = [
-        'id',
+        'id_',
         'transport_handling_unit_type_code',
         'handling_code',
         'handling_instructions',
@@ -9492,7 +9712,7 @@ class __TransportHandlingUnitType(PrefixCAC, ComplexXMLParseableObject):
         'package',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  transport_handling_unit_type_code: cbc.TransportHandlingUnitTypeCode = None,
                  handling_code: cbc.HandlingCode = None,
                  handling_instructions: List[cbc.HandlingInstructions] = None,
@@ -9518,8 +9738,9 @@ class __TransportHandlingUnitType(PrefixCAC, ComplexXMLParseableObject):
                  status: List['Status'] = None,
                  customs_declaration: List['CustomsDeclaration'] = None,
                  referenced_shipment: List['ReferencedShipment'] = None,
-                 package: List['Package'] = None):
-        self.id = id_
+                 package: List['Package'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.transport_handling_unit_type_code = transport_handling_unit_type_code
         self.handling_code = handling_code
         self.handling_instructions = handling_instructions
@@ -9578,7 +9799,7 @@ class __TransportMeansType(PrefixCAC, ComplexXMLParseableObject):
         'measurement_dimension',
     ]
 
-    def __init__(self, journey_id: cbc.JourneyID = None,
+    def __init__(self,		journey_id: cbc.JourneyID = None,
                  registration_nationality_id: cbc.RegistrationNationalityID = None,
                  registration_nationality: List[cbc.RegistrationNationality] = None,
                  direction_code: cbc.DirectionCode = None,
@@ -9590,7 +9811,8 @@ class __TransportMeansType(PrefixCAC, ComplexXMLParseableObject):
                  rail_transport: 'RailTransport' = None,
                  maritime_transport: 'MaritimeTransport' = None,
                  owner_party: 'OwnerParty' = None,
-                 measurement_dimension: List['MeasurementDimension'] = None):
+                 measurement_dimension: List['MeasurementDimension'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.journey_id = journey_id
         self.registration_nationality_id = registration_nationality_id
         self.registration_nationality = registration_nationality
@@ -9634,7 +9856,7 @@ class __TransportScheduleType(PrefixCAC, ComplexXMLParseableObject):
         'planned_arrival_transport_event',
     ]
 
-    def __init__(self, sequence_numeric: cbc.SequenceNumeric,
+    def __init__(self,		sequence_numeric: cbc.SequenceNumeric,
                  status_location: 'StatusLocation',
                  reference_date: cbc.ReferenceDate = None,
                  reference_time: cbc.ReferenceTime = None,
@@ -9645,7 +9867,8 @@ class __TransportScheduleType(PrefixCAC, ComplexXMLParseableObject):
                  estimated_departure_transport_event: 'EstimatedDepartureTransportEvent' = None,
                  estimated_arrival_transport_event: 'EstimatedArrivalTransportEvent' = None,
                  planned_departure_transport_event: 'PlannedDepartureTransportEvent' = None,
-                 planned_arrival_transport_event: 'PlannedArrivalTransportEvent' = None):
+                 planned_arrival_transport_event: 'PlannedArrivalTransportEvent' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.sequence_numeric = sequence_numeric
         self.status_location = status_location
         self.reference_date = reference_date
@@ -9676,12 +9899,13 @@ class __TransportationSegmentType(PrefixCAC, ComplexXMLParseableObject):
         'shipment_stage',
     ]
 
-    def __init__(self, sequence_numeric: cbc.SequenceNumeric,
+    def __init__(self,		sequence_numeric: cbc.SequenceNumeric,
                  transportation_service: 'TransportationService',
                  transport_service_provider_party: 'TransportServiceProviderParty',
                  transport_execution_plan_reference_id: cbc.TransportExecutionPlanReferenceID = None,
                  referenced_consignment: 'ReferencedConsignment' = None,
-                 shipment_stage: List['ShipmentStage'] = None):
+                 shipment_stage: List['ShipmentStage'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.sequence_numeric = sequence_numeric
         self.transportation_service = transportation_service
         self.transport_service_provider_party = transport_service_provider_party
@@ -9740,7 +9964,7 @@ class __TransportationServiceType(PrefixCAC, ComplexXMLParseableObject):
         'scheduled_service_frequency',
     ]
 
-    def __init__(self, transport_service_code: cbc.TransportServiceCode,
+    def __init__(self,		transport_service_code: cbc.TransportServiceCode,
                  tariff_class_code: cbc.TariffClassCode = None,
                  priority: cbc.Priority = None,
                  freight_rate_class_code: cbc.FreightRateClassCode = None,
@@ -9762,7 +9986,8 @@ class __TransportationServiceType(PrefixCAC, ComplexXMLParseableObject):
                  responsible_transport_service_provider_party: 'ResponsibleTransportServiceProviderParty' = None,
                  environmental_emission: List['EnvironmentalEmission'] = None,
                  estimated_duration_period: 'EstimatedDurationPeriod' = None,
-                 scheduled_service_frequency: List['ScheduledServiceFrequency'] = None):
+                 scheduled_service_frequency: List['ScheduledServiceFrequency'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.transport_service_code = transport_service_code
         self.tariff_class_code = tariff_class_code
         self.priority = priority
@@ -9795,14 +10020,15 @@ class __UnstructuredPriceType(PrefixCAC, ComplexXMLParseableObject):
         'price_amount',
         'time_amount',
     ]
-    def __init__(self, price_amount: cbc.PriceAmount = None,
-                 time_amount: cbc.TimeAmount = None):
+    def __init__(self,		price_amount: cbc.PriceAmount = None,
+                 time_amount: cbc.TimeAmount = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.price_amount = price_amount
         self.time_amount = time_amount
 
 
 class __UtilityItemType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     subscriber_id = None
     subscriber_type = None
     subscriber_type_code = None
@@ -9818,7 +10044,7 @@ class __UtilityItemType(PrefixCAC, ComplexXMLParseableObject):
     tax_category = None
     contract = None
     order_list = [
-        'id',
+        'id_',
         'subscriber_id',
         'subscriber_type',
         'subscriber_type_code',
@@ -9835,7 +10061,7 @@ class __UtilityItemType(PrefixCAC, ComplexXMLParseableObject):
         'contract',
     ]
 
-    def __init__(self, id_: cbc.ID,
+    def __init__(self,		id_: cbc.ID,
                  subscriber_id: cbc.SubscriberID = None,
                  subscriber_type: cbc.SubscriberType = None,
                  subscriber_type_code: cbc.SubscriberTypeCode = None,
@@ -9849,8 +10075,9 @@ class __UtilityItemType(PrefixCAC, ComplexXMLParseableObject):
                  one_time_charge_type: cbc.OneTimeChargeType = None,
                  one_time_charge_type_code: cbc.OneTimeChargeTypeCode = None,
                  tax_category: 'TaxCategory' = None,
-                 contract: 'Contract' = None):
-        self.id = id_
+                 contract: 'Contract' = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.subscriber_id = subscriber_id
         self.subscriber_type = subscriber_type
         self.subscriber_type_code = subscriber_type_code
@@ -9877,9 +10104,10 @@ class __WebSiteAccessType(PrefixCAC, ComplexXMLParseableObject):
         'login',
     ]
 
-    def __init__(self, password: cbc.Password,
+    def __init__(self,		password: cbc.Password,
                  login: cbc.Login,
-                 uri: cbc.URI = None):
+                 uri: cbc.URI = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.password = password
         self.login = login
         self.uri = uri
@@ -9892,14 +10120,15 @@ class __WinningPartyType(PrefixCAC, ComplexXMLParseableObject):
         'rank',
         'party',
     ]
-    def __init__(self, party: 'Party',
-                 rank: cbc.Rank = None):
+    def __init__(self,		party: 'Party',
+                 rank: cbc.Rank = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
         self.party = party
         self.rank = rank
 
 
 class __WorkPhaseReferenceType(PrefixCAC, ComplexXMLParseableObject):
-    id = None
+    id_ = None
     work_phase_code = None
     work_phase = None
     progress_percent = None
@@ -9907,7 +10136,7 @@ class __WorkPhaseReferenceType(PrefixCAC, ComplexXMLParseableObject):
     end_date = None
     work_order_document_reference = None
     order_list = [
-        'id',
+        'id_',
         'work_phase_code',
         'work_phase',
         'progress_percent',
@@ -9916,14 +10145,15 @@ class __WorkPhaseReferenceType(PrefixCAC, ComplexXMLParseableObject):
         'work_order_document_reference',
     ]
 
-    def __init__(self, id_: cbc.ID = None,
+    def __init__(self,		id_: cbc.ID = None,
                  work_phase_code: cbc.WorkPhaseCode = None,
                  work_phase: List[cbc.WorkPhase] = None,
                  progress_percent: cbc.ProgressPercent = None,
                  start_date: cbc.StartDate = None,
                  end_date: cbc.EndDate = None,
-                 work_order_document_reference: List['WorkOrderDocumentReference'] = None):
-        self.id = id_
+                 work_order_document_reference: List['WorkOrderDocumentReference'] = None, xml_namespaces=None):
+        super().__init__(xml_namespaces)
+        self.id_ = id_
         self.work_phase_code = work_phase_code
         self.work_phase = work_phase
         self.progress_percent = progress_percent

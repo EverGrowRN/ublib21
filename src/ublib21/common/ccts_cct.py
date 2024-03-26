@@ -128,8 +128,6 @@ class IdentifierType(BasicXMLParseableObject):
         "scheme_version_id": "schemeVersionID",
         "scheme_data_uri": "schemeDataURI",
         "scheme_uri": "schemeURI",
-
-
     }
 
     def __init__(self, value, scheme_id=None, scheme_name=None, scheme_agency_id=None, scheme_agency_name=None,
