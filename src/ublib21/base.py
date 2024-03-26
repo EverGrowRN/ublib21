@@ -30,9 +30,10 @@ class BasicXMLParseableObject:
 
     def build_attr_string(self):
         attr_string = ''
-        for attr, string_attr in self.attr_names_mapping.items():
-            value = getattr(self, attr, '')
-            attr_string += value and f' {string_attr}="{value}"' or ''
+        if self.attr_names_mapping is not None:
+            for attr, string_attr in self.attr_names_mapping.items():
+                value = getattr(self, attr, '')
+                attr_string += value and f' {string_attr}="{value}"' or ''
         if self.xml_namespaces is not None:
             for ns in self.xml_namespaces:
                 attr_string += f' {ns}'
@@ -68,7 +69,7 @@ class ComplexXMLParseableObject:
         if self.xml_namespaces is not None:
             for ns in self.xml_namespaces:
                 namespaces += f' {ns}'
-            xml = f"<{tag}{namespaces}>{self.get_value()}</{tag}>"
+        xml = f"<{tag}{namespaces}>{self.get_value()}</{tag}>"
         return xml
 
     def get_name(self):
