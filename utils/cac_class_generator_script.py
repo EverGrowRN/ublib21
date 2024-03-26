@@ -31,7 +31,7 @@ class Attribute:
     def __init__(self, name: str, min: str, max: str) -> None:
         # cbc = 'cbc:ID' ---> self.name = 'id'
         self.required = False
-        self.name = camel_to_snake(name[4:])
+        self.name = 'id_' if camel_to_snake(name[4:])=='id' else camel_to_snake(name[4:])
         self.param, self.validation = self.get_constructor_param(
             name, min, max)
 
@@ -40,7 +40,7 @@ class Attribute:
         # cac = 'cac:BuyerCustomerParty'
         class_name = f"{name.replace(':','.')}" if name.startswith(
             'cbc') else f"'{name[4:]}'"
-        param_name = camel_to_snake(name[4:])
+        param_name = 'id_' if camel_to_snake(name[4:])=='id' else camel_to_snake(name[4:])
         validation = ''
         if min == '1' and max == '1':
             self.required = True
@@ -88,7 +88,7 @@ class ComplexType:
 
 
 # Load the XML file
-cac_schema = '../schemes/common/UBL-CommonAggregateComponents-2.1.xsd'
+cac_schema = '../src/ublib21/validation/schemes/common/UBL-CommonAggregateComponents-2.1.xsd'
 tree = etree.parse(cac_schema)
 nsmap = {'xsd': 'http://www.w3.org/2001/XMLSchema'}
 
@@ -121,7 +121,7 @@ code += "from ublib21.common.cac import *\n"
 code += "from ublib21.base import ComplexXMLParseableObject\n\n"
 code += "class ListMustNotBeEmptyException(Exception):\n\tpass\n"
 for complex_type in complex_types_dict.values():
-    code += f"class __{complex_type.name}(ComplexXMLParseableObject):\n"
+    code += f"class __{complex_type.name}(PrefixCAC, ComplexXMLParseableObject):\n"
     for req_attr in complex_type.required:
         code += f"\t{req_attr.name} = None\n"
     for req_attr in complex_type.not_required:
@@ -133,9 +133,9 @@ for complex_type in complex_types_dict.values():
         
     code += "\tdef __init__(self,"
     for i, req_attr in enumerate(complex_type.required):
-        code += f"\t\t{req_attr.param}{',' if (not i==(len(complex_type.required)-1)) or (len(complex_type.not_required)!=0) else '):'}\n"
+        code += f"\t\t{req_attr.param}{',' if (not i==(len(complex_type.required)-1)) or (len(complex_type.not_required)!=0) else ', xml_namespaces = None):'}\n"
     for i, req_attr in enumerate(complex_type.not_required):
-        code += f"\t\t{req_attr.param}{',' if (not i==(len(complex_type.not_required)-1)) else '):'}\n"
+        code += f"\t\t{req_attr.param}{',' if (not i==(len(complex_type.not_required)-1)) else ', xml_namespaces = None):'}\n"
 
     for req_attr in complex_type.required:
         if req_attr.validation != '':
@@ -143,9 +143,9 @@ for complex_type in complex_types_dict.values():
     for req_attr in complex_type.not_required:
         if req_attr.validation != '':
             code += f"\t{req_attr.validation}\n"
-
+    code += '\t\tsuper().__init__(xml_namespaces)\n'
     for req_attr in complex_type.required:
-        code += f"\t\tself.{req_attr.name} = {req_attr.name}\n"
+        code += f"\t\tself.{req_attr.name.replace} = {req_attr.name}\n"
     for req_attr in complex_type.not_required:
         code += f"\t\tself.{req_attr.name} = {req_attr.name}\n"
     code += '\n'
@@ -153,9 +153,21 @@ for complex_type in complex_types_dict.values():
 with open('cac_types.py', "w") as file:
     file.write(code)
 
-code = "from ublib21.common import cac_types\n\n"
+code = "from ublib21.common import cac_types, cbc\n"
+code += 'from typing import List\n\n'
 for element, complex_type in element_type_mapping.items():
-    code += f"class {element}(cac_types.__{complex_type}):\n\tpass\n"
+    code += f"class {element}(cac_types.__{complex_type}):\n\n"
+    code += "\tdef __init__(self,"
+    for i, req_attr in enumerate(complex_types_dict[complex_type].required):
+        code += f"\t\t{req_attr.param}{',' if (not i==(len(complex_types_dict[complex_type].required)-1)) or (len(complex_types_dict[complex_type].not_required)!=0) else ', xml_namespaces = None):'}\n"
+    for i, req_attr in enumerate(complex_types_dict[complex_type].not_required):
+        code += f"\t\t{req_attr.param}{',' if (not i==(len(complex_types_dict[complex_type].not_required)-1)) else ', xml_namespaces = None):'}\n"
+    code += '\t\tsuper().__init__(\n'
+    for i, req_attr in enumerate(complex_types_dict[complex_type].required):
+        code += f"\t\t{req_attr.name}{',' if (not i==(len(complex_types_dict[complex_type].required)-1)) or (len(complex_types_dict[complex_type].not_required)!=0) else ', xml_namespaces)'}\n"
+    for i, req_attr in enumerate(complex_types_dict[complex_type].not_required):
+        code += f"\t\t{req_attr.name}{',' if (not i==(len(complex_types_dict[complex_type].not_required)-1)) else ', xml_namespaces)'}\n"
+
 
 with open('cac.py', "w") as file:
     file.write(code)
