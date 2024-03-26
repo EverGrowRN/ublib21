@@ -1,7 +1,10 @@
-import pytest
-from ublib21.common.ccts_cct import AmountType
+from ublib21.common.ccts_cct import AmountType as AmountType_
+
+class AmountType(AmountType_):
+        prefix = ''
 
 class TestAmountType:
+    
 
     def test_no_attrs(self):
         a = AmountType(100)

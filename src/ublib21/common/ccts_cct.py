@@ -10,6 +10,7 @@ class AmountType(BasicXMLParseableObject):
     A number of monetary units specified in a currency where the unit of the 
     currency is explicit or implied.
     """
+    prefix = 'ccts'
     
     attr_names_mapping = {
         'currency_id': 'currencyID',
@@ -34,6 +35,7 @@ class BinaryObjectType(BasicXMLParseableObject):
     """
     A set of finite-length sequences of binary octets.
     """
+    prefix = 'ccts'
 
     attr_names_mapping = {
         "format": "format",
@@ -62,6 +64,7 @@ class CodeType(BasicXMLParseableObject):
     languange independence may be used to represent or replace a definitive value 
     or text of an attribute together with relevant supplementary information.
     """
+    prefix = 'ccts'
 
     attr_names_mapping = {
         "list_id": "listID",
@@ -97,6 +100,7 @@ class DateTimeType(BasicXMLParseableObject):
     """
     A particular point in the progression of time together with the relevant supplementary information.
     """
+    prefix = 'ccts'
 
     attr_names_mapping = {
         "format": "format",
@@ -114,6 +118,7 @@ class IdentifierType(BasicXMLParseableObject):
     A character string to identify and distinguish uniquely, one instance of an object in an identification 
     scheme from all other objects in the same scheme together with relevant supplementary information.    
     """
+    prefix = 'ccts'
 
     attr_names_mapping = {
         "scheme_id": "schemeID",
@@ -144,6 +149,7 @@ class IndicatorType(BasicXMLParseableObject):
     """
     A list of two mutually exclusive Boolean values that express the only possible states of a Property
     """
+    prefix = 'ccts'
 
     attr_names_mapping = {
         "format": "format",
@@ -160,6 +166,7 @@ class MeasureType(BasicXMLParseableObject):
     """
     A numeric value determined by measuring an object along with the specified unit of measure.   
     """
+    prefix = 'ccts'
 
     attr_names_mapping = {
         "unit_code": "unitCode",
@@ -178,6 +185,7 @@ class NumericType(BasicXMLParseableObject):
     Numeric information that is assigned or is determined by calculation, counting, or sequencing.
     It does not require a unit of quantity or unit of measure.
     """
+    prefix = 'ccts'
 
     attr_names_mapping = {
         "format": "format",
@@ -194,6 +202,7 @@ class QuantityType(BasicXMLParseableObject):
     """
     A counted number of non-monetary units possibly including fractions.
     """
+    prefix = 'ccts'
 
     attr_names_mapping = {
         "unit_code": "unitCode",
@@ -217,6 +226,7 @@ class TextType(BasicXMLParseableObject):
     """
     A character string (i.e. a finite set of characters) generally in the form of words of a language.
     """
+    prefix = 'ccts'
 
     attr_names_mapping = {
         "language_id": "languageID",

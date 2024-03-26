@@ -1,11 +1,8 @@
 from typing import List
+from ublib21.exceptions import ListMustNotBeEmptyException
 from ublib21.common import cbc
 from ublib21.common.cac import *
 from ublib21.base import ComplexXMLParseableObject
-
-
-class ListMustNotBeEmptyException(Exception):
-    pass
 
 
 class PrefixCAC:

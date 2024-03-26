@@ -3,3 +3,9 @@ class MissingAttributeNamesMappingException(Exception):
 
 class ImproperlyConfiguredException(Exception):
     pass
+
+class JustOneElementAllowed(Exception):
+    pass
+
+class ListMustNotBeEmptyException(Exception):
+    pass

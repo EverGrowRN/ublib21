@@ -22,6 +22,7 @@ class AmountType(AmountType_):
     """
     A number of monetary units specified using a given unit of currency.
     """
+    prefix = 'udt'
 
     def __init__(self, value: float, currency_id: str, currency_code_list_version_id: str = None):
         super().__init__(value, currency_id, currency_code_list_version_id)
@@ -31,10 +32,11 @@ class BinaryObjectType(BinaryObjectType_):
     """
     A set of finite-length sequences of binary octets.
     """
+    prefix = 'udt'
 
     def __init__(self, value, mime_code, format_=None, encoding=None,
                  character_set_code=None, uri=None, filename=None):
-        super().__init__(value, mime_code, format_,
+        super().__init__(value, format_, mime_code,
                          encoding, character_set_code, uri, filename)
 
 
@@ -42,6 +44,7 @@ class GraphicType(BinaryObjectType):
     """
     A diagram, graph, mathematical curve, or similar representation.
     """
+    prefix = 'udt'
     pass
 
 
@@ -49,6 +52,7 @@ class PictureType(BinaryObjectType):
     """
     A diagram, graph, mathematical curve, or similar representation.
     """
+    prefix = 'udt'
     pass
 
 
@@ -56,6 +60,7 @@ class SoundType(BinaryObjectType):
     """
     An audio representation.
     """
+    prefix = 'udt'
     pass
 
 
@@ -63,6 +68,7 @@ class VideoType(BinaryObjectType):
     """
     A video representation.
     """
+    prefix = 'udt'
     pass
 
 
@@ -73,6 +79,7 @@ class CodeType(CodeType_):
     or replace a definitive value or text of an attribute, 
     together with relevant supplementary information.
     """
+    prefix = 'udt'
     pass
 
 
@@ -80,6 +87,7 @@ class DateTimeType(DateTimeType_):
     """
     A particular point in the progression of time, together with relevant supplementary information.
     """
+    prefix = 'udt'
     pass
 
 
@@ -87,6 +95,7 @@ class DateType(BasicXMLParseableObject):
     """
     One calendar day according the Gregorian calendar.
     """
+    prefix = 'udt'
 
     def __init__(self, value) -> None:
         self.value = value
@@ -99,6 +108,7 @@ class TimeType(BasicXMLParseableObject):
     """
     An instance of time that occurs every day.
     """
+    prefix = 'udt'
 
     def __init__(self, value) -> None:
         self.value = value
@@ -113,14 +123,15 @@ class IdentifierType(IdentifierType_):
     in an identification scheme from all other objects in the same scheme, together with relevant 
     supplementary information.
     """
+    prefix = 'udt'
     pass
 
 
 class IndicatorType(BasicXMLParseableObject):
     """
     A list of two mutually exclusive Boolean values that express the only possible states of a property.
-
     """
+    prefix = 'udt'
 
     def __init__(self, value) -> None:
         self.value = value
@@ -133,6 +144,7 @@ class MeasureType(MeasureType_):
     """
     A numeric value determined by measuring an object using a specified unit of measure.
     """
+    prefix = 'udt'
 
     def __init__(self, value, unit_code, unit_code_list_version_id=None):
         super().__init__(value, unit_code, unit_code_list_version_id)
@@ -142,8 +154,8 @@ class NumericType(NumericType_):
     """
     Numeric information that is assigned or is determined by calculation, counting,
       or sequencing. It does not require a unit of quantity or unit of measure.
-
     """
+    prefix = 'udt'
     pass
 
 
@@ -152,6 +164,7 @@ class ValueType(NumericType_):
     Numeric information that is assigned or is determined by calculation, counting, or 
     sequencing. It does not require a unit of quantity or unit of measure.
     """
+    prefix = 'udt'
     pass
 
 
@@ -160,6 +173,7 @@ class PercentType(NumericType_):
     Numeric information that is assigned or is determined by calculation, counting, 
     or sequencing and is expressed as a percentage. It does not require a unit of quantity or unit of measure.
     """
+    prefix = 'udt'
     pass
 
 
@@ -168,6 +182,7 @@ class RateType(NumericType_):
     A numeric expression of a rate that is assigned or is determined by calculation, counting, or
       sequencing. It does not require a unit of quantity or unit of measure.
     """
+    prefix = 'udt'
     pass
 
 
@@ -175,6 +190,7 @@ class QuantityType(QuantityType_):
     """
     A counted number of non-monetary units, possibly including a fractional part.
     """
+    prefix = 'udt'
     pass
 
 
@@ -182,6 +198,7 @@ class TextType(TextType_):
     """
     A character string (i.e. a finite set of characters), generally in the form of words of a language.
     """
+    prefix = 'udt'
     pass
 
 
@@ -189,4 +206,5 @@ class NameType(TextType_):
     """
     A character string that constitutes the distinctive designation of a person, place, thing or concept.
     """
+    prefix = 'udt'
     pass
